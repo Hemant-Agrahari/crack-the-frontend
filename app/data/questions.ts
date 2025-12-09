@@ -137,14 +137,6 @@ export const questions: Question[] = [
     category: "html",
   },
   {
-    id: 70.98754333333,
-    question:
-      "What is the difference between async and defer in JavaScript script loading?",
-    answer:
-      "async and defer are script attributes that control how external JavaScript files are loaded and executed in the browser. Both allow the script to download in parallel while the HTML is still being parsed, but they behave very differently when it comes to execution. When a script uses async, it starts downloading in the background and executes as soon as the download finishes, even if the HTML parsing is still in progress. Because of this, the execution order is not guaranteed, and async is usually used for scripts that work independently, such as analytics or tracking code. On the other hand, defer also downloads the script in parallel, but it waits to execute until the entire HTML document has been fully parsed. This ensures that scripts execute in the same order they appear in the page, making defer the better choice for scripts that depend on DOM elements or rely on a specific execution sequence. In simple terms, async runs the moment it’s ready, while defer waits for the HTML to finish loading before running.",
-    category: "javascript",
-  },
-  {
     id: 6,
     question: "List of new HTML5 semantic tags?",
     answer:
@@ -366,6 +358,9 @@ export const questions: Question[] = [
     category: "css",
   },
   // JavaScript Questions
+  // ========================================
+  // SECTION 1: JavaScript Fundamentals
+  // ========================================
   {
     id: 2485,
     question: "What is JavaScript?",
@@ -374,107 +369,11 @@ export const questions: Question[] = [
     category: "javascript",
   },
   {
-    id: 248501,
-    question: "What is Web Workers",
-    answer:
-      "Web Workers are a way to run JavaScript code in the background, on a separate thread, so that heavy tasks don't block the main UI thread. Normally, JavaScript is single-threaded, which means if we do something expensive — like large calculations, data processing, or image manipulation — the UI can freeze. Web Workers solve this by giving us a background worker thread that handles the heavy work while the main thread stays free to keep the page smooth and responsive.\n\n\n\nThe main point is that Web Workers don't have access to the DOM; they communicate with the main thread using messages. They're especially useful for things like data-heavy operations, real-time calculations, or anything that could make the UI lag.",
-    category: "javascript",
-  },
-  {
-    id: 248502,
-    question: "What is Pure functions",
-    answer:
-      "A pure function is a function that always gives the same output for the same input and does not cause any side effects. That means it doesn't modify anything outside the function — it doesn't change global variables, doesn't update the DOM, and doesn't depend on external changing data",
-    category: "javascript",
-  },
-  {
-    id: 248503,
-    question: "What is Composition",
-    answer:
-      "Composition is a programming concept where we build complex functionality by combining smaller, reusable pieces together. Instead of creating big, complicated functions or components, we compose them from smaller ones that each do one clear job.\n\n\n\nIn React, composition means we build UI by combining components — passing data or UI as children or props. It gives more flexibility than inheritance, makes components easy to reuse, and keeps the code cleaner and easier to maintain.\n\n\n\nSo in simple terms, composition is about building bigger features by putting smaller pieces together, like Lego blocks",
-    category: "javascript",
-  },
-  {
-    id: 248504,
-    question: "What is Event emitter",
-    answer:
-      "An Event Emitter is a pattern used to handle communication between different parts of an application. Instead of calling functions directly, one part of the system 'emits' an event, and any other part that is listening for that event can react to it.\n\n\n\nIt's basically a publish–subscribe model. One side publishes an event, and listeners subscribe to it. This makes the code loosely coupled because the emitter doesn't need to know who is listening — it just emits the event.\n\n\n\nWe commonly use event emitters in Node.js, real-time systems, chat apps, notifications, or anywhere different components need to communicate without being tightly connected.",
-    category: "javascript",
-  },
-  {
-    id: 248505,
-    question: 'What\'s the output of: 1 == "1" & 1 === "1"?',
-    answer:
-      'The output is 0 (or false).\n\n1 == "1" returns true because == does type coercion (loose equality), so the string "1" is converted to number 1.\n\n1 === "1" returns false because === checks both value and type (strict equality), and number 1 is not the same type as string "1".\n\nThe & operator is a bitwise AND operator. When used with booleans, true is converted to 1 and false is converted to 0. So true & false becomes 1 & 0, which equals 0.',
-    category: "output-based",
-  },
-  {
-    id: 248506,
-    question:
-      "What is the output of true == typeof(var a = 10) == number ? true : false",
-    answer:
-      'This code will throw a SyntaxError because you cannot declare a variable inside the typeof operator. The syntax typeof(var a = 10) is invalid.\n\nIf the question was asking about a valid expression like: var a = 10; typeof a == "number" ? true : false, then the output would be true because typeof 10 returns the string "number", and "number" == "number" is true, so the ternary operator returns true.',
-    category: "output-based",
-  },
-  {
-    id: 248511,
-    question:
-      "What's the output of this code?\n\nvar a = 10;\nfunction check() {\n  var a = 20;\n  console.log(a);\n  a = a + a;\n}\nconsole.log(a);\ncheck();\nconsole.log(a);",
-    answer:
-      "The output is:\n10\n20\n10\n\nExplanation:\n1. First console.log(a) prints 10 (the global variable a)\n2. Inside the check() function, var a = 20 creates a new local variable that shadows the global a. So console.log(a) inside the function prints 20.\n3. The line a = a + a makes the local a equal to 40, but this doesn't affect the global a.\n4. After the function finishes, the final console.log(a) prints 10 because the global a was never changed.\n\nThis demonstrates variable shadowing with var — the local variable shadows the global one inside the function scope.",
-    category: "output-based",
-  },
-  {
-    id: 248512,
-    question:
-      "What's the output of this code?\n\nconst a = 10;\nfunction check() {\n  a = 20;\n  console.log(a);\n  a = a + a;\n}\nconsole.log(a);\ncheck();\nconsole.log(a);",
-    answer:
-      "The output is:\n10\nThen it throws a TypeError: Assignment to constant variable.\n\nExplanation:\n1. First console.log(a) prints 10.\n2. When check() is called, it tries to reassign a = 20, but a is declared with const, which means it cannot be reassigned.\n3. This causes a TypeError: Assignment to constant variable, and the code stops executing.\n4. The second console.log inside the function never runs, and neither does the final console.log(a) outside.\n\nThis demonstrates that const variables cannot be reassigned. If you try to change a const variable, JavaScript throws an error immediately.",
-    category: "output-based",
-  },
-  {
-    id: 248507,
-    question: "How can you declare a global variable in JavaScript?",
-    answer:
-      "A global variable in JavaScript can be created in a few different ways depending on how the code is written. If you assign a value to a variable without using var, let, or const, JavaScript automatically creates it as a global variable, although this approach is considered unsafe because it can cause accidental overwrites. When you use var at the top level, outside of any function, the variable also becomes global and is attached to the window object in the browser. Another way is to explicitly add a property to the global object, such as window.myVar in a browser environment. You can also declare variables with let or const at the top level, which makes them global within the module, though they are not attached to the window object, making them slightly safer. In practice, relying on global variables is discouraged because they can create naming conflicts and make the application harder to maintain, so it's better to use modules or structured state management whenever possible.",
-    category: "javascript",
-  },
-  {
-    id: 248508,
-    question: "What is the 'this' keyword? Explain.",
-    answer:
-      "'this' in JavaScript refers to the object that is currently calling or owning the function. It doesn’t depend on where the function is written, but on how it is called.\n\n1. In normal functions, 'this' points to the global object (or undefined in strict mode).\n2. In object methods, it refers to that object.\n3. Arrow functions don’t have their own 'this' — they use the 'this' from their surrounding scope.\n4. In event listeners, 'this' is the DOM element that triggered the event.\n5. And with call, apply, bind we can manually set the value of 'this'.",
-    category: "javascript",
-  },  
-  {
-    id: 248509,
-    question: "preventDefault() vs stopPropagation() – What's the difference?",
-    answer:
-      "preventDefault() and stopPropagation() are both event methods, but they do completely different things.\n\n\n\npreventDefault() stops the browser's default action for that event. For example, if you click a link, the default action is to navigate to that URL. If you call preventDefault(), the navigation won't happen, but the event will still propagate (bubble up) to parent elements.\n\nExample: Preventing a form from submitting or a link from navigating.\n\n\n\nstopPropagation() stops the event from bubbling up to parent elements. It doesn't stop the default action — it just prevents the event from reaching other elements in the DOM tree.\n\nExample: If you click a button inside a div, and both have click handlers, calling stopPropagation() on the button prevents the div's handler from running.\n\n\n\nIn short: preventDefault() stops what the browser wants to do, while stopPropagation() stops the event from traveling to other elements.",
-    category: "javascript",
-  },
-  {
-    id: 248510,
-    question: "map, filter, reduce – Explain with example.",
-    answer:
-      "map: The map method transforms every element of an array and returns a new array of the same size. For example: const numbers = [1, 2, 3, 4]; const doubled = numbers.map(num => num * 2); this gives [2, 4, 6, 8] because each value is multiplied by two.\n\nfilter: The filter method returns a new array containing only the elements that satisfy a given condition. For instance: const numbers = [1, 2, 3, 4, 5, 6]; const evenNumbers = numbers.filter(num => num % 2 === 0); this results in [2, 4, 6] since only the even values pass the check.\n\nreduce: The reduce method takes all elements of an array and combines them into a single output value by applying a reducer function. For example: const numbers = [1, 2, 3, 4]; const sum = numbers.reduce((total, num) => total + num, 0); the final output becomes 10. In simple terms, map transforms elements, filter chooses certain elements, and reduce compresses everything into one final value.",
-    category: "javascript",
-  },
-  {
-    id: 1256105,
-    question:
-      "What is layout thrashing and how do you prevent forced reflows in the browser?",
-    answer:
-      "Layout thrashing happens when the browser has to repeatedly recalculate layout and re-render the page because JavaScript is constantly reading and writing DOM values in a mixed and inefficient way.\n\nWhen JavaScript asks for layout information (like offsetHeight, scrollHeight, width, etc.) right after changing the DOM, the browser is forced to recalculate styles and layout again and again. This repeated cycle slows down the page and hurts performance.\n\n🔵 What causes layout thrashing?\n- Reading DOM properties immediately after writing them.\n- Making multiple style changes one by one.\n- Frequent DOM manipulations inside loops.\n- Using JavaScript animations instead of CSS.\n\n🔵 How to prevent forced reflows and layout thrashing?\n1. **Batch DOM reads and writes**\n   - Read all layout values together.\n   - Write all DOM changes together.\n\n2. **Use requestAnimationFrame() for smooth updates**\n   - Lets the browser group changes before repainting.\n\n3. **Use CSS classes instead of multiple style updates**\n   - Apply one class instead of setting many inline styles.\n\n4. **Avoid measuring DOM values too often**\n   - Cache values when possible.\n\n5. **Use CSS transitions/animations instead of JavaScript animations**\n   - They run on the GPU and avoid extra layout calculations.\n\n🟡 Simple Summary:\nLayout thrashing happens when we mix DOM reads and writes too fast. To prevent it, batch changes, avoid unnecessary DOM reads, and let the browser handle updates efficiently.",
-    category: "javascript",
-  },
-
-  {
     id: 2386,
     question:
       "What does it mean when JavaScript is called an interpreted language?",
     answer:
-      "JavaScript is considered an interpreted language because the browser's JavaScript engine reads and executes the code line by line without requiring a separate compilation step beforehand. When you write JavaScript, the engine immediately interprets and runs it during runtime, which allows the language to feel fast and flexible during development. You can write code in the browser console and see results instantly, and any changes you make reflect immediately without needing a formal compile process like languages such as C, C++, or Java. Although JavaScript is traditionally described as interpreted, modern engines actually use techniques like Just-In-Time compilation, which compiles certain parts of the code while it is running to make execution faster. Still, the overall behavior remains the same: JavaScript runs directly in the environment without requiring a separate compile step, which is why it’s described as an interpreted language.",
+      "JavaScript is considered an interpreted language because the browser's JavaScript engine reads and executes the code line by line without requiring a separate compilation step beforehand. When you write JavaScript, the engine immediately interprets and runs it during runtime, which allows the language to feel fast and flexible during development. You can write code in the browser console and see results instantly, and any changes you make reflect immediately without needing a formal compile process like languages such as C, C++, or Java. Although JavaScript is traditionally described as interpreted, modern engines actually use techniques like Just-In-Time compilation, which compiles certain parts of the code while it is running to make execution faster. Still, the overall behavior remains the same: JavaScript runs directly in the environment without requiring a separate compile step, which is why it's described as an interpreted language.",
     category: "javascript",
   },
   {
@@ -491,15 +390,6 @@ export const questions: Question[] = [
       "JavaScript supports multiple programming styles such as functional, object-oriented, and procedural programming, allowing developers to choose the best approach for each problem.",
     category: "javascript",
   },
-
-  {
-    id: 67412,
-    question: "What is event-driven programming?",
-    answer:
-      "JavaScript executes code in response to events like clicks, API calls, timers, and user interactions. These events trigger callback functions that make applications interactive.",
-    category: "javascript",
-  },
-
   {
     id: 345587,
     question: "What does it mean that JavaScript is single-threaded?",
@@ -508,17 +398,21 @@ export const questions: Question[] = [
     category: "javascript",
   },
   {
-    id: 98789889,
-    question: "What is Event Delegation in JavaScript?",
+    id: 67412,
+    question: "What is event-driven programming?",
     answer:
-      "Event Delegation is a technique in JavaScript where instead of adding event listeners to individual child elements, we attach a single event listener to a parent element. Because events bubble up in the DOM, the parent can catch events from its children.This improves performance, reduces memory usage, and is useful when elements are created dynamically. For example, instead of adding a click event to every button inside a list, we add one click event to the list container and detect which child was clicked using event.target.\n\n Event Delegation is commonly used for lists, tables, menus, and dynamic DOM updates.",
+      "JavaScript executes code in response to events like clicks, API calls, timers, and user interactions. These events trigger callback functions that make applications interactive.",
     category: "javascript",
   },
+
+  // ========================================
+  // SECTION 2: Variables & Data Types
+  // ========================================
   {
-    id: 834449,
-    question: "What is the difference between Webpack and Turbopack?",
+    id: 67291,
+    question: "What is the difference between let, var, and const?",
     answer:
-      "Webpack and Turbopack are both bundlers used in modern JavaScript applications, but they differ in performance, architecture, and speed.\n\n🔵 Webpack:\n- The most widely used JavaScript bundler.\n- Written in JavaScript.\n- Supports loaders, plugins, code splitting, tree shaking.\n- Very powerful but can be slow on large projects.\n- Used in React, Angular, Vue for years.\n\n🟣 Turbopack:\n- Next-generation bundler created by Vercel.\n- Written in Rust, designed to replace Webpack.\n- Much faster (up to 700× faster in dev mode).\n- Built for modern frameworks like Next.js.\n- Supports incremental builds and instant updates.\n\n🟡 Key Differences:\n- Speed: Turbopack is significantly faster than Webpack.\n- Language: Webpack uses JavaScript, Turbopack uses Rust.\n- Use Case: Webpack works for all JS apps; Turbopack is optimized for Next.js.\n- Performance: Turbopack provides instant hot reload and better dev experience.\n\nIn short: Webpack is the traditional bundler used widely, while Turbopack is a modern, super-fast bundler designed for Next.js and future web apps.",
+      "var, let, and const are three ways to declare variables in JavaScript, and the difference mainly comes from their scope, re-declaration rules, and how they behave during hoisting.\n\nvar is function-scoped and can be re-declared, which often leads to unexpected behavior because it gets hoisted and initialized with undefined.\n\nlet is block-scoped, meaning it stays inside the curly braces where it's defined. It can be updated but not re-declared in the same block, and it's safer because it doesn't allow access before declaration.\n\nconst is also block-scoped like let, but it cannot be reassigned. The reference stays constant, though the content inside objects or arrays can still change. In modern JavaScript, we prefer using let for values that change and const for values that should stay fixed, and we avoid using var unless absolutely necessary.",
     category: "javascript",
   },
   {
@@ -529,20 +423,6 @@ export const questions: Question[] = [
     category: "javascript",
   },
   {
-    id: 125694,
-    question: "What is Event Handling in JavaScript?",
-    answer:
-      "Event handling in JavaScript means responding to user actions or browser actions — like clicks, key presses, mouse movements, form submissions, or even page load. Whenever something happens on the page, the browser generates an event, and we write functions called event handlers to react to those events. Event handling is what makes a webpage interactive. For example, clicking a button to open a modal, typing in a search box, or submitting a form — all of these work because of event handling.",
-    category: "javascript",
-  },
-  {
-    id: 93330,
-    question: "What is a callback in JavaScript?",
-    answer:
-      "A callback is a function passed as an argument to another function and executed after the completion of that function. It allows JavaScript to handle asynchronous operations like API calls, timers, and event handling.\n\n🔵 Why Callbacks Are Used:\n- To run code after an async task completes.\n- To avoid blocking the main thread.\n- To control execution order in async programming.\n\n🟣 Example:\nfunction fetchData(callback) {\n  setTimeout(() => {\n    callback('Data loaded');\n  }, 2000);\n}\n\nfetchData(function(message) {\n  console.log(message); // Data loaded\n});\n\n🟡 Real-Time Examples:\n- setTimeout()\n- Event listeners\n- Reading files (Node.js)\n- API calls (older style)\n\n🟠 Problem With Callbacks:\n- Nested callbacks lead to callback hell (pyramid of doom).\n- Hard to read, manage, and debug.\n\nIn short: A callback is a function executed after another function finishes, mostly used in asynchronous operations.",
-    category: "javascript",
-  },
-  {
     id: 28,
     question: "What is the difference between mutable and immutable?",
     answer:
@@ -550,40 +430,10 @@ export const questions: Question[] = [
     category: "javascript",
   },
   {
-    id: 67291,
-    question: "What is the difference between let, var, and const?",
+    id: 609765552,
+    question: "What is the difference between null and undefined?",
     answer:
-      "var, let, and const are three ways to declare variables in JavaScript, and the difference mainly comes from their scope, re-declaration rules, and how they behave during hoisting.\n\nvar is function-scoped and can be re-declared, which often leads to unexpected behavior because it gets hoisted and initialized with undefined.\n\nlet is block-scoped, meaning it stays inside the curly braces where it's defined. It can be updated but not re-declared in the same block, and it's safer because it doesn't allow access before declaration.\n\nconst is also block-scoped like let, but it cannot be reassigned. The reference stays constant, though the content inside objects or arrays can still change. In modern JavaScript, we prefer using let for values that change and const for values that should stay fixed, and we avoid using var unless absolutely necessary.",
-    category: "javascript",
-  },
-
-  {
-    id: 2391,
-    question:
-      "What is the difference between function declaration and function initialization (function expression)?",
-    answer:
-      "The difference between a function declaration and a function initialization, which we also call a function expression, mainly comes from how they are defined and how they behave during hoisting.\n\nA function declaration is when we define a function with a name directly in the code using the function keyword. The big advantage is that declarations are fully hoisted, meaning the entire function is moved to the top of its scope. So we can call a function declaration even before it appears in the code.\n\nA function expression is when we assign a function to a variable. Here, the variable gets hoisted but not the actual function value. This means we cannot call a function expression before it's initialized, because until that line is executed, the variable holds undefined. Function expressions are often used when we want more control, like creating anonymous functions, callbacks, or when we want to store functions inside objects.",
-    category: "javascript",
-  },
-  {
-    id: 93192,
-    question: "What is Hoisting in JavaScript?",
-    answer:
-      "Hoisting in JavaScript is the behavior where variable and function declarations are moved to the top of their scope before the code actually runs. This means JavaScript knows about your variables and functions even before execution starts. Function declarations get fully hoisted, so you can call them before they appear in the code. But variables declared with var are hoisted only with the value undefined, and variables declared with let and const are hoisted but kept in something called the temporal dead zone, which means you can't use them until the line where they are actually declared. Hoisting is basically JavaScript's way of setting up memory for variables and functions before running the code.",
-    category: "javascript",
-  },
-  {
-    id: 32,
-    question: "Explain scope in JavaScript (global, function, block)",
-    answer:
-      "Scope determines where variables can be accessed. \n\n Global scope: variables declared outside functions, accessible everywhere. \n\n Function scope: variables declared inside functions (var, let, const), only accessible within that function. \n\n Block scope: variables declared inside {} blocks (let, const only), accessible only within that block. \n\n JavaScript uses lexical scoping where inner functions can access outer scope variables (scope chain).",
-    category: "javascript",
-  },
-  {
-    id: 2193,
-    question: "What is the difference between == and === in JavaScript?",
-    answer:
-      "In JavaScript, == and === are comparison operators, but they work differently.\n\n🔵 == (Loose Equality):\n- Compares values after performing type conversion.\n- If the types are different, JavaScript converts them into the same type before comparing.\n- Can lead to unexpected results.\n\nExample:\n0 == '0'   // true\n1 == true  // true\nnull == undefined // true\n\n🟣 === (Strict Equality):\n- Compares both value AND type.\n- No type conversion is performed.\n- More predictable and recommended.\n\nExample:\n0 === '0'  // false\n1 === true // false\n10 === 10  // true\n\n🟡 Key Difference:\n- == compares values after type coercion.\n- === compares both value and type without coercion.\n\nIn short: === is strict and safer, while == does type conversion before comparing.",
+      "In JavaScript, null and undefined both represent 'no value', but they are used differently.\n\n🟣 undefined:\n- A variable is undefined when it is declared but not assigned.\n- Default value of uninitialized variables.\n- Functions return undefined if no return value is given.\n- Property that does not exist on an object is undefined.\n\nExample:\nlet a;\nconsole.log(a); // undefined\n\n🔵 null:\n- null is an assigned value.\n- It represents 'intentional absence' of value.\n- Developer sets it manually when they want to clear or reset a variable.\n\nExample:\nlet b = null;\nconsole.log(b); // null\n\n🟡 Key Difference:\n- undefined means the value is missing unintentionally.\n- null means the value is intentionally empty.\n\nIn short: undefined = not assigned, null = intentionally assigned empty value.",
     category: "javascript",
   },
   {
@@ -594,32 +444,58 @@ export const questions: Question[] = [
     category: "javascript",
   },
   {
-    id: 1094,
-    question: "What is a closure in JavaScript?",
+    id: 248507,
+    question: "How can you declare a global variable in JavaScript?",
     answer:
-      "A closure is a feature in JavaScript where an inner function remembers and has access to the variables of its outer function even after the outer function has finished executing. This happens because the inner function keeps a reference to the lexical scope in which it was created.\n\nClosures are extremely useful in JavaScript. They allow us to access outer function variables even after the function ends, which is great for creating private variables and data encapsulation. We commonly use closures in callbacks, event handlers, and functional programming patterns.\n\nHere's a simple example:\n\nfunction outer() {\n  let count = 0;\n  return function inner() {\n    count++;\n    console.log(count);\n  };\n}\n\nconst counter = outer();\ncounter(); // 1\ncounter(); // 2\n\nIn this example, the inner function keeps access to the 'count' variable even after the outer function has returned. Each time we call counter(), it remembers the previous value of count and increments it. This is closure in action — the function remembers its environment.",
+      "A global variable in JavaScript can be created in a few different ways depending on how the code is written. If you assign a value to a variable without using var, let, or const, JavaScript automatically creates it as a global variable, although this approach is considered unsafe because it can cause accidental overwrites. When you use var at the top level, outside of any function, the variable also becomes global and is attached to the window object in the browser. Another way is to explicitly add a property to the global object, such as window.myVar in a browser environment. You can also declare variables with let or const at the top level, which makes them global within the module, though they are not attached to the window object, making them slightly safer. In practice, relying on global variables is discouraged because they can create naming conflicts and make the application harder to maintain, so it's better to use modules or structured state management whenever possible.",
+    category: "javascript",
+  },
+
+  // ========================================
+  // SECTION 3: Scope & Hoisting
+  // ========================================
+  {
+    id: 32,
+    question: "Explain scope in JavaScript (global, function, block)",
+    answer:
+      "Scope determines where variables can be accessed. \n\n Global scope: variables declared outside functions, accessible everywhere. \n\n Function scope: variables declared inside functions (var, let, const), only accessible within that function. \n\n Block scope: variables declared inside {} blocks (let, const only), accessible only within that block. \n\n JavaScript uses lexical scoping where inner functions can access outer scope variables (scope chain).",
     category: "javascript",
   },
   {
-    id: 37,
+    id: 93192,
+    question: "What is Hoisting in JavaScript?",
+    answer:
+      "Hoisting in JavaScript is the behavior where variable and function declarations are moved to the top of their scope before the code actually runs. This means JavaScript knows about your variables and functions even before execution starts. Function declarations get fully hoisted, so you can call them before they appear in the code. But variables declared with var are hoisted only with the value undefined, and variables declared with let and const are hoisted but kept in something called the temporal dead zone, which means you can't use them until the line where they are actually declared. Hoisting is basically JavaScript's way of setting up memory for variables and functions before running the code.",
+    category: "javascript",
+  },
+  {
+    id: 53,
+    question: "What is the Temporal Dead Zone (TDZ)?",
+    answer:
+      "The Temporal Dead Zone (TDZ) is the period between entering a block scope and reaching the declaration of a let or const variable. In this phase, the variable is hoisted but not initialized, so any access to it results in a ReferenceError. TDZ ensures predictable behavior by preventing the use of variables before their declaration, unlike var which is initialized to undefined. This helps avoid accidental bugs and makes block-scoped variables more reliable.",
+    category: "javascript",
+  },
+
+  // ========================================
+  // SECTION 4: Operators & Comparisons
+  // ========================================
+  {
+    id: 2193,
+    question: "What is the difference between == and === in JavaScript?",
+    answer:
+      "In JavaScript, == and === are comparison operators, but they work differently.\n\n🔵 == (Loose Equality):\n- Compares values after performing type conversion.\n- If the types are different, JavaScript converts them into the same type before comparing.\n- Can lead to unexpected results.\n\nExample:\n0 == '0'   // true\n1 == true  // true\nnull == undefined // true\n\n🟣 === (Strict Equality):\n- Compares both value AND type.\n- No type conversion is performed.\n- More predictable and recommended.\n\nExample:\n0 === '0'  // false\n1 === true // false\n10 === 10  // true\n\n🟡 Key Difference:\n- == compares values after type coercion.\n- === compares both value and type without coercion.\n\nIn short: === is strict and safer, while == does type conversion before comparing.",
+    category: "javascript",
+  },
+
+  // ========================================
+  // SECTION 5: Functions
+  // ========================================
+  {
+    id: 2391,
     question:
-      "What is the difference between synchronous and asynchronous JavaScript?",
+      "What is the difference between function declaration and function initialization (function expression)?",
     answer:
-      "Synchronous JavaScript executes code line by line and blocks further execution until a task finishes. Each operation must complete before the next one starts. \n\n Asynchronous JavaScript allows non-blocking execution where tasks like API calls, timers, or file operations run in the background and complete later via callbacks, promises, or async/await. This prevents the browser from freezing during long operations.",
-    category: "javascript",
-  },
-  {
-    id: 6573,
-    question: "What is the difference between map and forEach?",
-    answer:
-      "map and forEach are both array iteration methods in JavaScript, but they are used for different purposes.\n\n🔵 forEach:\n- Used only for iterating through an array.\n- Does NOT return a new array.\n- Always returns undefined.\n- Best for performing side effects like logging, updating values, API calls.\n\nExample:\nconst arr = [1, 2, 3];\narr.forEach(item => console.log(item));\n// Output: 1 2 3 (no new array created)\n\n🟣 map:\n- Used to transform each element and return a NEW array.\n- Length remains the same as original array.\n- Best when you need to create a modified array.\n\nExample:\nconst arr = [1, 2, 3];\nconst result = arr.map(item => item * 2);\nconsole.log(result); // [2, 4, 6]\n\n🟡 Key Difference:\n- forEach → Executes logic but returns nothing.\n- map → Executes logic and RETURNS a new transformed array.\n\nIn short: use forEach when you just want to loop, use map when you need a new array.",
-    category: "javascript",
-  },
-  {
-    id: 609765552,
-    question: "What is the difference between null and undefined?",
-    answer:
-      "In JavaScript, null and undefined both represent 'no value', but they are used differently.\n\n🟣 undefined:\n- A variable is undefined when it is declared but not assigned.\n- Default value of uninitialized variables.\n- Functions return undefined if no return value is given.\n- Property that does not exist on an object is undefined.\n\nExample:\nlet a;\nconsole.log(a); // undefined\n\n🔵 null:\n- null is an assigned value.\n- It represents 'intentional absence' of value.\n- Developer sets it manually when they want to clear or reset a variable.\n\nExample:\nlet b = null;\nconsole.log(b); // null\n\n🟡 Key Difference:\n- undefined means the value is missing unintentionally.\n- null means the value is intentionally empty.\n\nIn short: undefined = not assigned, null = intentionally assigned empty value.",
+      "The difference between a function declaration and a function initialization, which we also call a function expression, mainly comes from how they are defined and how they behave during hoisting.\n\nA function declaration is when we define a function with a name directly in the code using the function keyword. The big advantage is that declarations are fully hoisted, meaning the entire function is moved to the top of its scope. So we can call a function declaration even before it appears in the code.\n\nA function expression is when we assign a function to a variable. Here, the variable gets hoisted but not the actual function value. This means we cannot call a function expression before it's initialized, because until that line is executed, the variable holds undefined. Function expressions are often used when we want more control, like creating anonymous functions, callbacks, or when we want to store functions inside objects.",
     category: "javascript",
   },
   {
@@ -631,276 +507,17 @@ export const questions: Question[] = [
     category: "javascript",
   },
   {
-    id: 109.1,
-    question: "What are the types of exports and imports in JavaScript?",
+    id: 75.22,
+    question: "List out type of function in JavaScript?",
     answer:
-      "JavaScript supports two types of exports: default exports and named exports. A default export allows exporting a single main value from a file, and we import it without curly braces. Named exports allow exporting multiple values, and we must import them using curly braces. Default is for primary components or modules, while named exports are useful for utilities and helper functions.",
+      " \n\n1. Anonymous function example: function() { console.log('Hello'); } \n2. Arrow function example: () => { console.log('Hello'); } \n3. Named function example: function myFunction() { console.log('Hello'); } \n4. Constructor function example: function MyConstructor() { this.name = 'John'; } \n5. Generator function example: function* myGenerator() { yield 1; yield 2; yield 3; } \n6. Async function example: async function myAsyncFunction() { await new Promise(resolve => setTimeout(resolve, 1000)); console.log('Hello'); }",
     category: "javascript",
   },
   {
-    id: 10101096,
-    question:
-      "What is the difference between for...in and for...of in JavaScript?",
+    id: 93330,
+    question: "What is a callback in JavaScript?",
     answer:
-      "for...in and for...of are both looping statements, but they are used for different types of iteration.\n\n🔵 for...in:\n- Used to iterate over the **keys (property names)** of an object.\n- Works on objects and arrays (but not recommended for arrays).\n- Returns string keys.\n\nExample:\nconst user = { name: 'Alex', age: 25 };\nfor (let key in user) {\n  console.log(key); // name, age\n}\n\n🟣 for...of:\n- Used to iterate over **values** of an iterable.\n- Works on arrays, strings, maps, sets, NodeLists.\n- Returns actual values, not keys.\n\nExample:\nconst arr = [10, 20, 30];\nfor (let value of arr) {\n  console.log(value); // 10, 20, 30\n}\n\n🟡 Key Difference:\n- for...in → iterates keys (used for objects).\n- for...of → iterates values (used for arrays and iterables).\n\nIn short: Use for...in for object properties and for...of for array or iterable values.",
-    category: "javascript",
-  },
-  {
-    id: 9744,
-    question:
-      "What is the difference between call, apply, and bind in JavaScript?",
-    answer:
-      "call, apply, and bind are all used to control the value of 'this' when we invoke a function. The difference is mainly in how the function is executed and how we pass the arguments.\n\nWith call, we directly invoke the function and pass arguments one by one. It immediately runs the function in the context of the object we provide.\n\napply works almost the same way as call, but the only difference is that it expects the arguments in an array instead of individual values. It's useful when you already have your data in an array and want to pass it directly.\n\nbind is different from both because it does not run the function immediately. Instead, it returns a new function with 'this' permanently bound to the object we pass. We can call that new function later whenever we need it. It's commonly used in event handlers or situations where we want to keep the correct 'this' value for later execution.",
-    category: "javascript",
-  },
-  {
-    id: 60.876555,
-    question: "What is the difference between setTimeout and setInterval?",
-    answer:
-      "setTimeout and setInterval are two timing functions in JavaScript that control when and how often a piece of code runs. setTimeout runs the function only once after a delay, while setInterval keeps running the function repeatedly at a fixed interval until we stop it. So basically, setTimeout is for one-time delayed actions, and setInterval is for continuous repeated actions.\n\nCommon use cases:\n\nsetTimeout: showing alerts after delay, debouncing, delaying API calls, animations, hiding notifications.\n\nsetInterval: live counters, clocks, real-time updates, repeated API polling, progress bars.",
-    category: "javascript",
-  },
-  {
-    id: 59.9099,
-    question:
-      "What is the difference between LocalStorage, SessionStorage, and Cookies?",
-    answer:
-      "LocalStorage, SessionStorage, and Cookies are all used to store data in the browser, but they differ in lifespan, storage size, and usage.\n\nLocalStorage is used for long-term data storage. The data persists even after the browser or tab is closed and has no expiration time. It can store up to around 5MB of data. We typically use LocalStorage for storing things like user preferences, theme settings, or shopping cart items that should remain even after closing the browser.\n\nSessionStorage is similar to LocalStorage in terms of storage capacity (around 5MB), but the key difference is that the data is removed when the tab or window is closed. It exists only for that specific tab session. We use SessionStorage for temporary data like active tab state, form steps, or session-specific flags that should not persist across sessions.\n\nCookies are different from both LocalStorage and SessionStorage because they are sent to the server with every HTTP request. They have a very small storage limit of around 4KB and can have an expiration date set by the developer. Cookies are mainly used for authentication tokens, tracking user behavior, and server communication where the server needs to access the stored data.",
-    category: "javascript",
-  },
-  {
-    id: 12298,
-    question:
-      "What is the difference between event bubbling and event capturing?",
-    answer:
-      "Event bubbling and event capturing are two phases of event propagation in JavaScript that define the order in which events travel through the DOM.\n\nEvent bubbling is the default phase and is most commonly used in JavaScript. In this phase, the event starts from the innermost child element where the event occurred and moves upward to the outer parent elements. For example, if you click a button inside a div, the event first fires on the button, then on the div, then on its parent, and so on up to the document. The flow is: Child → Parent → Grandparent → Document. Event bubbling is particularly useful for event delegation, where we handle events on a parent element instead of attaching listeners to every child.\n\nEvent capturing, also called the trickle-down phase, works in the opposite direction. The event starts from the outermost parent element and moves inward toward the target child element. So the flow is: Document → Grandparent → Parent → Child. Event capturing is less commonly used but can be enabled by passing 'true' as the third parameter in addEventListener, like this: parent.addEventListener('click', handler, true). By default, if you pass false or omit the parameter, it uses bubbling.",
-    category: "javascript",
-  },
-  {
-    id: 4549799,
-    question: "What is the difference between slice and splice in JavaScript?",
-    answer:
-      "In JavaScript, both slice and splice are used to work with arrays, but they behave completely differently.\n\n  slice():slice() is a non-mutating method. It creates a new array by copying a selected portion of the original array. The important thing is that it does not modify the original array. We use slice when we want to extract data without affecting the source array.\n\n splice(): splice(), on the other hand, is a mutating method. It is used to add, remove, or replace elements directly in the original array. Since splice modifies the array in place, it’s commonly used when we need to update array content.",
-    category: "javascript",
-  },
-  {
-    id: 10.34556,
-    question: "What is the difference shallow copy and deep copy?",
-    answer:
-      "Shallow copy and deep copy are two different ways of copying objects in JavaScript, and the main difference is how they handle nested objects or arrays.\n\nA shallow copy only copies the first level of the object. If the object contains nested objects or arrays, those nested items are not actually copied — instead, they remain referenced to the original. This means if you modify a nested object in the copied version, it will also change in the original object because both are pointing to the same nested object in memory. You can create a shallow copy using methods like the spread operator ({...obj}), Object.assign(), or Array.slice() for arrays.\n\nA deep copy, on the other hand, creates a completely independent copy of the entire object, including all nested objects and arrays. Everything is duplicated at every level, so changing anything in the copied object will not affect the original object at all. They are fully independent. To create a deep copy, we typically use JSON.parse(JSON.stringify(obj)) for simple objects, or libraries like Lodash's cloneDeep() for more complex cases with functions or special types.\n\nIn simple terms: shallow copy shares nested references, while deep copy duplicates everything independently.",
-    category: "javascript",
-  },
-  {
-    id: 454799,
-    question:
-      "What is the difference between debounce and Throttling in JavaScript?",
-    answer:
-      "Throttling:Throttling is a technique used to limit how many times a function can execute over a period of time.Even if an event keeps firing continuously—like scroll, resize, or button clicks—the throttled function will only run at fixed intervals.This helps improve performance and prevents unnecessary function calls.\n\n debounce:Debouncing is a technique that delays the execution of a function until a certain amount of time has passed without the event being triggered again.If the event keeps happening repeatedly, the timer resets each time, and the function runs only once after the user stops triggering the event",
-    category: "javascript",
-  },
-  {
-    id: 1256106,
-    question: "How do you identify memory leaks in a React application?",
-    answer:
-      "In React, memory leaks usually happen when components keep holding references to data even after they are unmounted, or when we don’t clean up side effects properly.\n\n🔵 How I identify memory leaks in React:\n1. **Browser DevTools – Memory Tab**\n   - I take heap snapshots before and after performing some actions (like opening/closing modals, navigating between pages).\n   - If the number of objects or memory usage keeps increasing and never comes down, it’s a sign of a memory leak.\n\n2. **Performance Issues / Warning Signs**\n   - App becomes slower over time.\n   - UI starts lagging after navigating for a while.\n   - React gives warnings like: “Can’t perform a React state update on an unmounted component”.\n\n3. **React DevTools Profiler**\n   - I use the Profiler to check which components are re-rendering too often or staying mounted longer than expected.\n\n🔵 Common causes of memory leaks in React:\n- Not cleaning up `useEffect` subscriptions or listeners.\n- setInterval / setTimeout not cleared.\n- Event listeners added on window or document and never removed.\n- WebSocket or API subscriptions not closed.\n\nExample (Bad – no cleanup):\nuseEffect(() => {\n  const interval = setInterval(() => {\n    setCount(c => c + 1);\n  }, 1000);\n}, []);\n\nExample (Fixed – with cleanup):\nuseEffect(() => {\n  const interval = setInterval(() => {\n    setCount(c => c + 1);\n  }, 1000);\n\n  return () => clearInterval(interval); // cleanup\n}, []);\n\n🟡 How I prevent / fix memory leaks:\n- Always return a cleanup function from useEffect for subscriptions, timers, and event listeners.\n- Cancel in-flight API requests when the component unmounts (using AbortController or library support).\n- Avoid storing huge objects or unnecessary data in state.\n\nIn simple words: I detect memory leaks using DevTools (memory snapshots + profiler), watch for growing memory and warnings, and fix them by properly cleaning up effects, timers, listeners, and subscriptions in React.",
-    category: "react",
-  },
-  {
-    id: 1256107,
-    question:
-      "Explain how garbage collection works in modern JavaScript engines.",
-    answer:
-      "Modern JavaScript engines like V8 use automatic garbage collection to free up memory that is no longer needed. Developers don't manually release memory — the engine does it for us.\n\n🔵 How it works:\nJavaScript uses a model called **mark-and-sweep**.\n1. The garbage collector starts from the root objects (like window, global variables).\n2. It 'marks' all objects that are reachable or still in use.\n3. Any object that is NOT reachable is considered garbage.\n4. The engine removes those unreachable objects from memory.\n\nThis prevents memory leaks by making sure unused data doesn't stay in memory forever.\n\n🔵 What makes an object 'reachable'?  \n- Variables currently in scope\n- Objects referenced by other objects\n- Active closures or event listeners\n- Global objects\n\nIf there is no reference pointing to an object, it becomes unreachable and will be collected.\n\n🔵 Example of losing reachability:\nlet user = { name: 'John' };\nuser = null; // The object is now unreachable → Garbage collected.\n\n🔵 Modern optimizations:\n- **Generational GC**: New objects are stored in a 'young' space for quick cleanup.\n- **Incremental GC**: Splits work into small steps to avoid blocking the main thread.\n- **Concurrent GC**: Runs garbage collection in parallel threads.\n- **Idle-time GC**: Runs when the browser is idle.\n\n🟡 Simple Summary:\nGarbage collection automatically removes objects that your code can no longer reach. Modern engines do this efficiently using mark-and-sweep, generational cleanup, and background threads to keep performance smooth.",
-    category: "javascript",
-  },
-  {
-    id: 463100,
-    question:
-      "What is the difference between Object.freeze and Object.seal in JavaScript?",
-    answer:
-      "Object.freeze and Object.seal are used to control modifications on objects, but they provide different levels of restriction.\n\n🔵 Object.freeze():\n- Makes the object completely immutable.\n- Cannot add new properties.\n- Cannot delete properties.\n- Cannot modify existing property values.\n- The strictest form of object protection.\n\nExample:\nconst obj = Object.freeze({ name: 'Alex' });\nobj.name = 'John'; // No effect\nobj.age = 25; // No effect\n\n🟣 Object.seal():\n- Stops adding or deleting properties.\n- Existing properties CAN be modified.\n- Structure is locked but values are still writable.\n\nExample:\nconst user = Object.seal({ name: 'Alex' });\nuser.name = 'John'; // Works\nuser.age = 25; // No effect (cannot add)\ndelete user.name; // No effect\n\n🟡 Key Difference:\n- freeze → No add, no delete, no change (fully locked).\n- seal → No add, no delete, but values can still change.\n\nIn short: Object.freeze makes an object fully read-only, while Object.seal allows modifying existing values but blocks adding or removing properties.",
-    category: "javascript",
-  },
-  {
-    id: 101010102,
-    question: "What is a Promise in JavaScript?",
-    answer:
-      "A Promise in JavaScript is basically a way to handle asynchronous operations in a cleaner and more predictable way. Instead of relying on nested callbacks, a Promise gives us an object that represents a value that we will get in the future — either the operation succeeds or it fails.\n\nA Promise starts in the pending state, and once the async work is done, it either resolves or rejects. We handle the success using .then() and handle errors using .catch(). The main advantage of Promises is that they make async flows easier to manage and help avoid callback hell. Promises are also the foundation of async/await, which makes asynchronous code look and behave more like synchronous code.",
-    category: "javascript",
-  },
-  {
-    id: 45101,
-    question:
-      "What is the difference between Promise.all(), Promise.race(), and Promise.allSettled()?",
-    answer:
-      "These Promise methods are used to handle multiple asynchronous operations together, but each behaves differently.\n\n🔵 Promise.all():\n- Runs all promises in parallel.\n- Resolves only when ALL promises resolve.\n- If ANY promise fails, the entire Promise.all() fails.\n\nExample:\nPromise.all([p1, p2, p3])\n  .then(res => console.log(res))\n  .catch(err => console.log(err));\n\n🟣 Promise.race():\n- Returns the result of the FIRST promise that settles.\n- Whichever promise resolves or rejects first wins.\n\nExample:\nPromise.race([p1, p2, p3])\n  .then(res => console.log(res))\n  .catch(err => console.log(err));\n\n🟡 Promise.allSettled():\n- Waits for ALL promises to finish.\n- Returns an array of results with status: fulfilled or rejected.\n- Never fails, even if some promises fail.\n\nExample:\nPromise.allSettled([p1, p2, p3])\n  .then(result => console.log(result));\n\n🟠 Key Difference:\n- Promise.all → Fails if one fails.\n- Promise.race → Returns whichever completes first.\n- Promise.allSettled → Returns results of all promises, regardless of success or failure.\n\nIn short: Use Promise.all for all-success situations, race for first-result scenarios, and allSettled when you need outcomes of every promise.",
-    category: "javascript",
-  },
-  {
-    id: 99123,
-    question: "What is the difference between call(), apply() and bind()?",
-    answer:
-      "call() is a method that lets you run a function by explicitly setting what this should refer to and by providing the function arguments one by one.It executes the function instantly with the chosen context.\n\n apply() works just like call(), but it takes the function arguments in the form of an array or array-like object.It also executes the function immediately with the specified this. \n\n bind() creates a new function where the value of this is permanently set to the provided object.It does not run the function immediately — it returns a copy that can be called later with the fixed context.",
-    category: "javascript",
-  },
-  {
-    id: 103,
-    question: "What are async and await in JavaScript?",
-    answer:
-      "Async and await are features built on top of Promises that make asynchronous code look and feel like synchronous code. When I mark a function as async, it means that the function will always return a Promise. Inside that function, I can use await to pause the execution until a Promise settles. Instead of chaining multiple .then() calls, I can write async code in a much cleaner, step-by-step style.\n\nThe main benefit is readability — especially when calling multiple APIs or performing sequential async operations. await makes the code easier to understand, handle errors using try/catch, and avoid callback hell. In simple terms, async/await helps us write asynchronous logic in a synchronous manner, but without blocking the main thread.",
-    category: "javascript",
-  },
-  {
-    id: 125687,
-    question: "Which is better: async/await or promises, and why?",
-    answer:
-      "Async/await is not a replacement for Promises — it's actually built on top of Promises — but in most real-world cases I prefer async/await because it makes the code much easier to read and maintain.\n\nWith Promises, when we have multiple async steps, we usually end up chaining .then() and .catch(), and if the flow is a bit complex, the code can become hard to follow.\n\nWith async/await, the same logic looks more like normal synchronous code: I just await each step, and I can handle errors with a simple try/catch. That improves readability, debugging, and makes business logic clearer, especially in larger codebases.\n\nThat said, Promises are still very useful. For example, when I need to run things in parallel using Promise.all, or when I'm working with many independent async operations, Promises are a great fit.\n\nSo my approach is:\n\nFor sequential async logic → I prefer async/await for cleaner code.\n\nFor parallel or more advanced patterns → I still use Promises directly.",
-    category: "javascript",
-  },
-  {
-    id: 50,
-    question: "What is the difference between find() and filter()?",
-    answer:
-      "find() returns the first element in the array that satisfies the given condition. It stops execution as soon as a match is found and returns undefined if no element matches. It always returns a single value.\n\nfilter() returns all elements that satisfy the condition as a new array. It checks the entire array and returns an empty array if no matches are found. It always returns an array.\n\nIn short: use find() when you need only one matching element, and use filter() when you need multiple results.",
-    category: "javascript",
-  },
-  {
-    id: 125690,
-    question: "What is the Event Loop in JavaScript?",
-    answer:
-      "The Event Loop in JavaScript is the mechanism that allows JavaScript to handle asynchronous tasks even though it runs on a single thread. JavaScript can execute only one line of code at a time, but the browser APIs and Node.js handle async work in the background. The Event Loop keeps checking if the call stack is empty, and whenever an async operation like a timer, promise, or API call finishes, the Event Loop pushes its callback back into the call stack when it's safe to run. This is what allows JavaScript to stay non-blocking and responsive, even while doing async work. Promises go to the microtask queue, timers and other callbacks go to the macrotask queue, and the Event Loop decides when each one gets executed.",
-    category: "javascript",
-  },
-  {
-    id: 53,
-    question: "What is the Temporal Dead Zone (TDZ)?",
-    answer:
-      "The Temporal Dead Zone (TDZ) is the period between entering a block scope and reaching the declaration of a let or const variable. In this phase, the variable is hoisted but not initialized, so any access to it results in a ReferenceError. TDZ ensures predictable behavior by preventing the use of variables before their declaration, unlike var which is initialized to undefined. This helps avoid accidental bugs and makes block-scoped variables more reliable.",
-    category: "javascript",
-  },
-  {
-    id: 125691,
-    question: "What are Rest and Spread operators in JavaScript?",
-    answer:
-      "The Rest and Spread operators use the same syntax (three dots ...) but they work in opposite ways.\n\n🔵 Spread Operator:\n- Used to expand or unpack elements from arrays or objects.\n- Commonly used to copy arrays/objects, merge them, or pass values into functions.\n\nExample:\nconst arr = [1, 2, 3];\nconst newArr = [...arr, 4]; // [1,2,3,4]\n\n🔵 Rest Operator:\n- Used to collect or 'gather' multiple elements into a single array.\n- Often used in function parameters or destructuring.\n\nExample:\nfunction sum(...nums) {\n  return nums.reduce((a, b) => a + b, 0);\n}\nsum(1, 2, 3); // 6\n\n🟡 Key Difference:\n- Spread breaks values apart.\n- Rest gathers values together.\n\nIn short: Spread expands data, while Rest collects data, and both make JavaScript more clean and flexible.",
-    category: "javascript",
-  },
-  {
-    id: 56,
-    question: "What is the difference between Debounce and Throttle?",
-    answer:
-      "In JavaScript, Debounce and Throttle are used to control high-frequency events like scroll, resize, typing, mouse move, and repeated clicks. Running a function on every event causes UI lag, too many API calls, high CPU usage, and poor user experience.\n\nDebounce — Debounce delays the execution of a function until there is a pause in the event. It runs only once after the user stops performing the action. Best use cases: search box suggestions, form validation while typing, and resize end detection. Example: When a user types a → ap → app → apple, debounce waits for 500ms and triggers only one API call.\n\nThrottle — Throttle allows a function to run at fixed time intervals even if the event fires continuously. Best use cases: scroll handling (infinite scroll, analytics), map dragging, and preventing multiple button clicks. Example: Resend OTP button — even if the user clicks 20 times, OTP sends only once in 30 seconds.\n\nIn short: Debounce waits for user inactivity before executing, while Throttle executes at fixed intervals.",
-    category: "javascript",
-  },
-
-  {
-    id: 57,
-    question: "What is the difference between every() and find()?",
-    answer:
-      "every() tests whether all elements in an array satisfy a given condition. It returns true only if every element passes and stops early as soon as one element fails.\n\nfind() returns the first element that matches a given condition and stops once a match is found. If no element satisfies the condition, it returns undefined.\n\nIn short: every() validates all elements, find() locates a single matching element.",
-    category: "javascript",
-  },
-  {
-    id: 125692,
-    question: "What are shift and unshift in JavaScript?",
-    answer:
-      "Shift and unshift are array methods in JavaScript that help us add or remove elements at the beginning of an array.\n\nshift removes the first element and returns it, and the remaining elements move one step forward.\n\nunshift does the opposite — it adds one or more elements to the start of the array and shifts the existing elements to the right.",
-    category: "javascript",
-  },
-  {
-    id: 1256104,
-    question: "How does the browser parse and execute JavaScript internally?",
-    answer:
-      "When we write JavaScript code, the browser doesn't run it directly. It goes through a clear process inside the JavaScript engine (like V8 in Chrome).\n\n🔵 1. Reading the Code (Parsing):\nThe browser first reads the entire JavaScript file from top to bottom and checks for syntax errors. If the code is valid, it converts it into a structure called the AST — basically a format the engine understands.\n\n🔵 2. Compiling the Code:\nModern browsers use JIT (Just-In-Time) compilation. This means instead of interpreting everything line by line, they convert hot or frequently used code into machine code to make it faster.\n\n🔵 3. Executing the Code:\nAfter compilation, the code runs inside the JavaScript call stack. JavaScript is single-threaded, so it runs one task at a time.\n\n🔵 4. Handling Async Tasks:\nFor things like setTimeout, fetch, or events, the browser does not block. These tasks go to Web APIs. After they finish, their callbacks are sent to queues, and the Event Loop pushes them to the call stack when it's free.\n\n🔵 5. Memory Management:\nThe browser also manages memory — it allocates memory for variables and automatically cleans up unused objects using garbage collection.\n\n🟡 Simple Summary:\nThe browser reads the code → converts it → compiles it → runs it → handles async work with the event loop → and manages memory in the background.\n\nThis entire process happens extremely fast, which is why JavaScript feels smooth and responsive in the browser.",
-    category: "javascript",
-  },
-
-  {
-    id: 59,
-    question: "What is split() in JavaScript?",
-    answer:
-      "split() is a string method that divides a string into an array of substrings based on a given separator. The separator can be a character, string, or regular expression. If the separator is not found, it returns an array with the original string. Using an empty string ('') splits the string into characters. An optional limit parameter restricts the number of elements returned. It is commonly used for parsing text, tokenizing sentences, or handling formatted data.",
-    category: "javascript",
-  },
-  {
-    id: 60,
-    question: "What is the difference between indexOf() and findIndex()?",
-    answer:
-      "indexOf() searches for an exact value in an array using strict equality (===) and returns the index, or -1 if not found. It cannot use custom logic.\n\nfindIndex() executes a callback function and returns the index of the first element that satisfies the condition, or -1 if none match.\n\nIn short: indexOf() is for direct value lookup, findIndex() is for condition-based searches.",
-    category: "javascript",
-  },
-  {
-    id: 62,
-    question: "What is Promise chaining and how does it work?",
-    answer:
-      "Promise chaining is a technique where multiple asynchronous operations are executed in sequence by returning a new Promise from one .then() and handling it in the next .then(). Each .then() passes its result to the next one. This allows running async tasks step by step. If an error happens anywhere in the chain, it can be caught in a single .catch() at the end. This makes async code more readable and maintainable than nested callbacks.",
-    category: "javascript",
-  },
-  {
-    id: 63,
-    question: "What happens if you don't return a value in a .then() block?",
-    answer:
-      "If you don't explicitly return a value in a .then() block, the next .then() in the chain will receive undefined as its input. This can break the chain if subsequent operations expect a value. Always return a value or a Promise from .then() to pass data to the next handler in the chain.",
-    category: "javascript",
-  },
-  {
-    id: 64,
-    question:
-      "What is the difference between returning a value vs returning a Promise in .then()?",
-    answer:
-      "Returning a regular value passes it immediately to the next .then() - the value is automatically wrapped in a resolved Promise. \n\nReturning a Promise makes the next .then() wait until that Promise resolves before executing. This is useful for sequential async operations. If you return a value, the chain continues immediately; if you return a Promise, the chain waits for that Promise to settle.",
-    category: "javascript",
-  },
-  {
-    id: 106,
-    question:
-      "What is the difference between call by value and call by reference in JavaScript?",
-    answer:
-      "Call by value and call by reference describe how data is passed into functions in JavaScript.\n\nFor primitive types like numbers, strings, and booleans, JavaScript uses call by value. This means the function receives a copy of the actual value. If we change it inside the function, it doesn't affect the original value outside.\n\nFor non-primitive types like objects and arrays, JavaScript uses call by reference. In this case, the function receives a reference to the original object, not a separate copy. So if we modify the object or array inside the function, the changes will reflect outside as well, because both the function and the outer variable point to the same memory location.",
-    category: "javascript",
-  },
-  {
-    id: 66,
-    question: "How does Promise.all behave when one Promise rejects?",
-    answer:
-      "If one promise rejects in Promise.all, it immediately rejects with that error and stops waiting for other promises. The results of successfully resolved promises are ignored. This fail-fast behavior means Promise.all is suitable only when all operations must succeed. \n\n If you need results from all promises regardless of failures, use Promise.allSettled instead.",
-    category: "javascript",
-  },
-  {
-    id: 67,
-    question:
-      "When should you use Promise.allSettled() instead of Promise.all()?",
-    answer:
-      "Use Promise.allSettled when you want results of all promises, even if some fail. It's useful when loading multiple resources where failure of one doesn't stop others (e.g., loading user profile, settings, and notifications - you want to show whatever loaded successfully). Promise.allSettled never rejects and returns an array with status (fulfilled/rejected) and value/reason for each promise. Use Promise.all only when all operations must succeed.",
-    category: "javascript",
-  },
-  {
-    id: 68,
-    question: "What happens if you resolve or reject a Promise multiple times?",
-    answer:
-      "A promise can only settle once. After it is resolved or rejected, further resolve or reject calls are ignored. The promise locks into its first settled state. This immutability ensures predictable behavior - once a promise completes, its result cannot change. Subsequent calls to resolve/reject have no effect, and no error is thrown.",
-    category: "javascript",
-  },
-  {
-    id: 57.1,
-    question:
-      "What is the difference between Microtask and Macrotask in JavaScript?",
-    answer:
-      'To understand Microtasks and Macrotasks, you must first understand the Event Loop. JavaScript runs on a single thread, so it uses an Event Loop to decide which task runs first. All async tasks are not equal — they go into different queues.\n\n🟦 Macrotask Queue:\nMacrotasks are big tasks that are executed one by one.\nExamples:\n- setTimeout\n- setInterval\n- setImmediate\n- DOM events\n- Network request callbacks\n\n🟪 Microtask Queue:\nMicrotasks are high-priority small tasks that always run before macrotasks.\nExamples:\n- Promise.then()\n- async/await\n- queueMicrotask()\n- MutationObserver\n\n🚀 Important Rule:\nAfter every macrotask, JavaScript empties the microtask queue first. Microtasks have higher priority, so they run earlier.\n\n🧠 Example:\nconsole.log("A");\nsetTimeout(() => console.log("B"), 0);\nPromise.resolve().then(() => console.log("C"));\nconsole.log("D");\n\nOutput:\nA\nD\nC ← (microtask first)\nB ← (macrotask)\n\nIn short: Microtasks run before macrotasks because they have higher priority in the Event Loop.',
-    category: "javascript",
-  },
-  {
-    id: 70,
-    question: "How does error propagation work in Promise chains?",
-    answer:
-      "If an error happens in a promise chain (either a rejection or a thrown error), it propagates down the chain to the nearest .catch() handler. All .then() handlers in between are skipped. If no .catch() is present, it causes an unhandled promise rejection. You can have multiple .catch() handlers - after catching an error, you can return a value to recover and continue the chain. Errors can be re-thrown in .catch() to propagate further.",
-    category: "javascript",
-  },
-  {
-    id: 71.1,
-    question: "What is async/await in JavaScript?",
-    answer:
-      "Async/await is a way to handle asynchronous operations in JavaScript with cleaner syntax. When you put 'async' before a function, it always returns a Promise. Inside that function, you can use the 'await' keyword to pause execution until a Promise resolves or rejects. It makes asynchronous code look like synchronous code, making it easier to read and maintain compared to chaining .then() methods. Errors can be caught using try/catch blocks.",
+      "A callback is a function passed as an argument to another function and executed after the completion of that function. It allows JavaScript to handle asynchronous operations like API calls, timers, and event handling.\n\n🔵 Why Callbacks Are Used:\n- To run code after an async task completes.\n- To avoid blocking the main thread.\n- To control execution order in async programming.\n\n🟣 Example:\nfunction fetchData(callback) {\n  setTimeout(() => {\n    callback('Data loaded');\n  }, 2000);\n}\n\nfetchData(function(message) {\n  console.log(message); // Data loaded\n});\n\n🟡 Real-Time Examples:\n- setTimeout()\n- Event listeners\n- Reading files (Node.js)\n- API calls (older style)\n\n🟠 Problem With Callbacks:\n- Nested callbacks lead to callback hell (pyramid of doom).\n- Hard to read, manage, and debug.\n\nIn short: A callback is a function executed after another function finishes, mostly used in asynchronous operations.",
     category: "javascript",
   },
   {
@@ -918,18 +535,81 @@ export const questions: Question[] = [
     category: "javascript",
   },
   {
-    id: 75.22,
-    question: "List out type of function in JavaScript?",
+    id: 248502,
+    question: "What is Pure functions",
     answer:
-      " \n\n1. Anonymous function example: function() { console.log('Hello'); } \n2. Arrow function example: () => { console.log('Hello'); } \n3. Named function example: function myFunction() { console.log('Hello'); } \n4. Constructor function example: function MyConstructor() { this.name = 'John'; } \n5. Generator function example: function* myGenerator() { yield 1; yield 2; yield 3; } \n6. Async function example: async function myAsyncFunction() { await new Promise(resolve => setTimeout(resolve, 1000)); console.log('Hello'); }",
+      "A pure function is a function that always gives the same output for the same input and does not cause any side effects. That means it doesn't modify anything outside the function — it doesn't change global variables, doesn't update the DOM, and doesn't depend on external changing data",
+    category: "javascript",
+  },
+  {
+    id: 248503,
+    question: "What is Composition",
+    answer:
+      "Composition is a programming concept where we build complex functionality by combining smaller, reusable pieces together. Instead of creating big, complicated functions or components, we compose them from smaller ones that each do one clear job.\n\n\n\nIn React, composition means we build UI by combining components — passing data or UI as children or props. It gives more flexibility than inheritance, makes components easy to reuse, and keeps the code cleaner and easier to maintain.\n\n\n\nSo in simple terms, composition is about building bigger features by putting smaller pieces together, like Lego blocks",
     category: "javascript",
   },
 
+  // ========================================
+  // SECTION 6: The 'this' Keyword
+  // ========================================
   {
-    id: 76.1,
-    question: "Explain ES6 new features?",
+    id: 248508,
+    question: "What is the 'this' keyword? Explain.",
     answer:
-      "ES6 (ES2015) introduced many important features that modernized JavaScript:\n\n1. **let and const**: Block-scoped variable declarations\n\n2. **Arrow Functions**: Shorter syntax with lexical 'this' binding (=>)\n\n3. **Template Literals**: String interpolation using backticks (`Hello ${name}`)\n\n4. **Destructuring**: Extract values from arrays/objects ({name, age} = obj)\n\n5. **Default Parameters**: function greet(name = 'Guest')\n\n6. **Spread Operator**: Expand arrays/objects (...array, ...obj)\n\n7. **Rest Parameters**: Collect remaining arguments (...args)\n\n8. **Classes**: Syntactic sugar for constructor functions\n\n9. **Promises**: Better async handling\n\n10. **Modules**: import/export for code organization\n\n11. **Enhanced Object Literals**: Shorthand properties, computed keys\n\n12. **for...of Loop**: Iterate over iterable objects\n\n13. **Map and Set**: New data structures\n\n14. **Symbol**: New primitive type for unique identifiers\n\n15. **Iterators and Generators**: Custom iteration with function*",
+      "'this' in JavaScript refers to the object that is currently calling or owning the function. It doesn't depend on where the function is written, but on how it is called.\n\n1. In normal functions, 'this' points to the global object (or undefined in strict mode).\n2. In object methods, it refers to that object.\n3. Arrow functions don't have their own 'this' — they use the 'this' from their surrounding scope.\n4. In event listeners, 'this' is the DOM element that triggered the event.\n5. And with call, apply, bind we can manually set the value of 'this'.",
+    category: "javascript",
+  },
+  {
+    id: 9744,
+    question:
+      "What is the difference between call, apply, and bind in JavaScript?",
+    answer:
+      "call, apply, and bind are all used to control the value of 'this' when we invoke a function. The difference is mainly in how the function is executed and how we pass the arguments.\n\nWith call, we directly invoke the function and pass arguments one by one. It immediately runs the function in the context of the object we provide.\n\napply works almost the same way as call, but the only difference is that it expects the arguments in an array instead of individual values. It's useful when you already have your data in an array and want to pass it directly.\n\nbind is different from both because it does not run the function immediately. Instead, it returns a new function with 'this' permanently bound to the object we pass. We can call that new function later whenever we need it. It's commonly used in event handlers or situations where we want to keep the correct 'this' value for later execution.",
+    category: "javascript",
+  },
+  {
+    id: 99123,
+    question: "What is the difference between call(), apply() and bind()?",
+    answer:
+      "call() is a method that lets you run a function by explicitly setting what this should refer to and by providing the function arguments one by one.It executes the function instantly with the chosen context.\n\n apply() works just like call(), but it takes the function arguments in the form of an array or array-like object.It also executes the function immediately with the specified this. \n\n bind() creates a new function where the value of this is permanently set to the provided object.It does not run the function immediately — it returns a copy that can be called later with the fixed context.",
+    category: "javascript",
+  },
+
+  // ========================================
+  // SECTION 7: Closures
+  // ========================================
+  {
+    id: 1094,
+    question: "What is a closure in JavaScript?",
+    answer:
+      "A closure is a feature in JavaScript where an inner function remembers and has access to the variables of its outer function even after the outer function has finished executing. This happens because the inner function keeps a reference to the lexical scope in which it was created.\n\nClosures are extremely useful in JavaScript. They allow us to access outer function variables even after the function ends, which is great for creating private variables and data encapsulation. We commonly use closures in callbacks, event handlers, and functional programming patterns.\n\nHere's a simple example:\n\nfunction outer() {\n  let count = 0;\n  return function inner() {\n    count++;\n    console.log(count);\n  };\n}\n\nconst counter = outer();\ncounter(); // 1\ncounter(); // 2\n\nIn this example, the inner function keeps access to the 'count' variable even after the outer function has returned. Each time we call counter(), it remembers the previous value of count and increments it. This is closure in action — the function remembers its environment.",
+    category: "javascript",
+  },
+
+  // ========================================
+  // SECTION 8: Objects & Arrays
+  // ========================================
+  {
+    id: 106,
+    question:
+      "What is the difference between call by value and call by reference in JavaScript?",
+    answer:
+      "Call by value and call by reference describe how data is passed into functions in JavaScript.\n\nFor primitive types like numbers, strings, and booleans, JavaScript uses call by value. This means the function receives a copy of the actual value. If we change it inside the function, it doesn't affect the original value outside.\n\nFor non-primitive types like objects and arrays, JavaScript uses call by reference. In this case, the function receives a reference to the original object, not a separate copy. So if we modify the object or array inside the function, the changes will reflect outside as well, because both the function and the outer variable point to the same memory location.",
+    category: "javascript",
+  },
+  {
+    id: 10.34556,
+    question: "What is the difference shallow copy and deep copy?",
+    answer:
+      "Shallow copy and deep copy are two different ways of copying objects in JavaScript, and the main difference is how they handle nested objects or arrays.\n\nA shallow copy only copies the first level of the object. If the object contains nested objects or arrays, those nested items are not actually copied — instead, they remain referenced to the original. This means if you modify a nested object in the copied version, it will also change in the original object because both are pointing to the same nested object in memory. You can create a shallow copy using methods like the spread operator ({...obj}), Object.assign(), or Array.slice() for arrays.\n\nA deep copy, on the other hand, creates a completely independent copy of the entire object, including all nested objects and arrays. Everything is duplicated at every level, so changing anything in the copied object will not affect the original object at all. They are fully independent. To create a deep copy, we typically use JSON.parse(JSON.stringify(obj)) for simple objects, or libraries like Lodash's cloneDeep() for more complex cases with functions or special types.\n\nIn simple terms: shallow copy shares nested references, while deep copy duplicates everything independently.",
+    category: "javascript",
+  },
+  {
+    id: 463100,
+    question:
+      "What is the difference between Object.freeze and Object.seal in JavaScript?",
+    answer:
+      "Object.freeze and Object.seal are used to control modifications on objects, but they provide different levels of restriction.\n\n🔵 Object.freeze():\n- Makes the object completely immutable.\n- Cannot add new properties.\n- Cannot delete properties.\n- Cannot modify existing property values.\n- The strictest form of object protection.\n\nExample:\nconst obj = Object.freeze({ name: 'Alex' });\nobj.name = 'John'; // No effect\nobj.age = 25; // No effect\n\n🟣 Object.seal():\n- Stops adding or deleting properties.\n- Existing properties CAN be modified.\n- Structure is locked but values are still writable.\n\nExample:\nconst user = Object.seal({ name: 'Alex' });\nuser.name = 'John'; // Works\nuser.age = 25; // No effect (cannot add)\ndelete user.name; // No effect\n\n🟡 Key Difference:\n- freeze → No add, no delete, no change (fully locked).\n- seal → No add, no delete, but values can still change.\n\nIn short: Object.freeze makes an object fully read-only, while Object.seal allows modifying existing values but blocks adding or removing properties.",
     category: "javascript",
   },
   {
@@ -981,6 +661,269 @@ export const questions: Question[] = [
       "Regular expression methods in JavaScript are built-in functions that operate on regular expressions to perform various operations like finding, replacing, and manipulating strings. Some common regular expression methods are:\n\n1. **test**: Tests for a match in a string\n\n2. **exec**: Executes a search for a match in a specified string\n\n3. **match**: Finds matches of a regular expression in a string\n\n4. **replace**: Replaces matched substrings with a replacement string\n\n5. **search**: Tests for a match in a string\n\n6. **split**: Splits a string into an array of strings by separating the string into substrings",
     category: "javascript",
   },
+
+  // ========================================
+  // SECTION 9: Array Methods (Detailed)
+  // ========================================
+  {
+    id: 6573,
+    question: "What is the difference between map and forEach?",
+    answer:
+      "map and forEach are both array iteration methods in JavaScript, but they are used for different purposes.\n\n🔵 forEach:\n- Used only for iterating through an array.\n- Does NOT return a new array.\n- Always returns undefined.\n- Best for performing side effects like logging, updating values, API calls.\n\nExample:\nconst arr = [1, 2, 3];\narr.forEach(item => console.log(item));\n// Output: 1 2 3 (no new array created)\n\n🟣 map:\n- Used to transform each element and return a NEW array.\n- Length remains the same as original array.\n- Best when you need to create a modified array.\n\nExample:\nconst arr = [1, 2, 3];\nconst result = arr.map(item => item * 2);\nconsole.log(result); // [2, 4, 6]\n\n🟡 Key Difference:\n- forEach → Executes logic but returns nothing.\n- map → Executes logic and RETURNS a new transformed array.\n\nIn short: use forEach when you just want to loop, use map when you need a new array.",
+    category: "javascript",
+  },
+  {
+    id: 248510,
+    question: "map, filter, reduce – Explain with example.",
+    answer:
+      "map: The map method transforms every element of an array and returns a new array of the same size. For example: const numbers = [1, 2, 3, 4]; const doubled = numbers.map(num => num * 2); this gives [2, 4, 6, 8] because each value is multiplied by two.\n\nfilter: The filter method returns a new array containing only the elements that satisfy a given condition. For instance: const numbers = [1, 2, 3, 4, 5, 6]; const evenNumbers = numbers.filter(num => num % 2 === 0); this results in [2, 4, 6] since only the even values pass the check.\n\nreduce: The reduce method takes all elements of an array and combines them into a single output value by applying a reducer function. For example: const numbers = [1, 2, 3, 4]; const sum = numbers.reduce((total, num) => total + num, 0); the final output becomes 10. In simple terms, map transforms elements, filter chooses certain elements, and reduce compresses everything into one final value.",
+    category: "javascript",
+  },
+  {
+    id: 50,
+    question: "What is the difference between find() and filter()?",
+    answer:
+      "find() returns the first element in the array that satisfies the given condition. It stops execution as soon as a match is found and returns undefined if no element matches. It always returns a single value.\n\nfilter() returns all elements that satisfy the condition as a new array. It checks the entire array and returns an empty array if no matches are found. It always returns an array.\n\nIn short: use find() when you need only one matching element, and use filter() when you need multiple results.",
+    category: "javascript",
+  },
+  {
+    id: 4549799,
+    question: "What is the difference between slice and splice in JavaScript?",
+    answer:
+      "In JavaScript, both slice and splice are used to work with arrays, but they behave completely differently.\n\n  slice():slice() is a non-mutating method. It creates a new array by copying a selected portion of the original array. The important thing is that it does not modify the original array. We use slice when we want to extract data without affecting the source array.\n\n splice(): splice(), on the other hand, is a mutating method. It is used to add, remove, or replace elements directly in the original array. Since splice modifies the array in place, it's commonly used when we need to update array content.",
+    category: "javascript",
+  },
+  {
+    id: 57,
+    question: "What is the difference between every() and find()?",
+    answer:
+      "every() tests whether all elements in an array satisfy a given condition. It returns true only if every element passes and stops early as soon as one element fails.\n\nfind() returns the first element that matches a given condition and stops once a match is found. If no element satisfies the condition, it returns undefined.\n\nIn short: every() validates all elements, find() locates a single matching element.",
+    category: "javascript",
+  },
+  {
+    id: 60,
+    question: "What is the difference between indexOf() and findIndex()?",
+    answer:
+      "indexOf() searches for an exact value in an array using strict equality (===) and returns the index, or -1 if not found. It cannot use custom logic.\n\nfindIndex() executes a callback function and returns the index of the first element that satisfies the condition, or -1 if none match.\n\nIn short: indexOf() is for direct value lookup, findIndex() is for condition-based searches.",
+    category: "javascript",
+  },
+  {
+    id: 125692,
+    question: "What are shift and unshift in JavaScript?",
+    answer:
+      "Shift and unshift are array methods in JavaScript that help us add or remove elements at the beginning of an array.\n\nshift removes the first element and returns it, and the remaining elements move one step forward.\n\nunshift does the opposite — it adds one or more elements to the start of the array and shifts the existing elements to the right.",
+    category: "javascript",
+  },
+  {
+    id: 59,
+    question: "What is split() in JavaScript?",
+    answer:
+      "split() is a string method that divides a string into an array of substrings based on a given separator. The separator can be a character, string, or regular expression. If the separator is not found, it returns an array with the original string. Using an empty string ('') splits the string into characters. An optional limit parameter restricts the number of elements returned. It is commonly used for parsing text, tokenizing sentences, or handling formatted data.",
+    category: "javascript",
+  },
+  {
+    id: 10101096,
+    question:
+      "What is the difference between for...in and for...of in JavaScript?",
+    answer:
+      "for...in and for...of are both looping statements, but they are used for different types of iteration.\n\n🔵 for...in:\n- Used to iterate over the **keys (property names)** of an object.\n- Works on objects and arrays (but not recommended for arrays).\n- Returns string keys.\n\nExample:\nconst user = { name: 'Alex', age: 25 };\nfor (let key in user) {\n  console.log(key); // name, age\n}\n\n🟣 for...of:\n- Used to iterate over **values** of an iterable.\n- Works on arrays, strings, maps, sets, NodeLists.\n- Returns actual values, not keys.\n\nExample:\nconst arr = [10, 20, 30];\nfor (let value of arr) {\n  console.log(value); // 10, 20, 30\n}\n\n🟡 Key Difference:\n- for...in → iterates keys (used for objects).\n- for...of → iterates values (used for arrays and iterables).\n\nIn short: Use for...in for object properties and for...of for array or iterable values.",
+    category: "javascript",
+  },
+
+  // ========================================
+  // SECTION 10: DOM & Events
+  // ========================================
+  {
+    id: 125694,
+    question: "What is Event Handling in JavaScript?",
+    answer:
+      "Event handling in JavaScript means responding to user actions or browser actions — like clicks, key presses, mouse movements, form submissions, or even page load. Whenever something happens on the page, the browser generates an event, and we write functions called event handlers to react to those events. Event handling is what makes a webpage interactive. For example, clicking a button to open a modal, typing in a search box, or submitting a form — all of these work because of event handling.",
+    category: "javascript",
+  },
+  {
+    id: 98789889,
+    question: "What is Event Delegation in JavaScript?",
+    answer:
+      "Event Delegation is a technique in JavaScript where instead of adding event listeners to individual child elements, we attach a single event listener to a parent element. Because events bubble up in the DOM, the parent can catch events from its children.This improves performance, reduces memory usage, and is useful when elements are created dynamically. For example, instead of adding a click event to every button inside a list, we add one click event to the list container and detect which child was clicked using event.target.\n\n Event Delegation is commonly used for lists, tables, menus, and dynamic DOM updates.",
+    category: "javascript",
+  },
+  {
+    id: 248509,
+    question: "preventDefault() vs stopPropagation() – What's the difference?",
+    answer:
+      "preventDefault() and stopPropagation() are both event methods, but they do completely different things.\n\n\n\npreventDefault() stops the browser's default action for that event. For example, if you click a link, the default action is to navigate to that URL. If you call preventDefault(), the navigation won't happen, but the event will still propagate (bubble up) to parent elements.\n\nExample: Preventing a form from submitting or a link from navigating.\n\n\n\nstopPropagation() stops the event from bubbling up to parent elements. It doesn't stop the default action — it just prevents the event from reaching other elements in the DOM tree.\n\nExample: If you click a button inside a div, and both have click handlers, calling stopPropagation() on the button prevents the div's handler from running.\n\n\n\nIn short: preventDefault() stops what the browser wants to do, while stopPropagation() stops the event from traveling to other elements.",
+    category: "javascript",
+  },
+  {
+    id: 12298,
+    question:
+      "What is the difference between event bubbling and event capturing?",
+    answer:
+      "Event bubbling and event capturing are two phases of event propagation in JavaScript that define the order in which events travel through the DOM.\n\nEvent bubbling is the default phase and is most commonly used in JavaScript. In this phase, the event starts from the innermost child element where the event occurred and moves upward to the outer parent elements. For example, if you click a button inside a div, the event first fires on the button, then on the div, then on its parent, and so on up to the document. The flow is: Child → Parent → Grandparent → Document. Event bubbling is particularly useful for event delegation, where we handle events on a parent element instead of attaching listeners to every child.\n\nEvent capturing, also called the trickle-down phase, works in the opposite direction. The event starts from the outermost parent element and moves inward toward the target child element. So the flow is: Document → Grandparent → Parent → Child. Event capturing is less commonly used but can be enabled by passing 'true' as the third parameter in addEventListener, like this: parent.addEventListener('click', handler, true). By default, if you pass false or omit the parameter, it uses bubbling.",
+    category: "javascript",
+  },
+
+  // ========================================
+  // SECTION 11: Asynchronous JavaScript
+  // ========================================
+  {
+    id: 37,
+    question:
+      "What is the difference between synchronous and asynchronous JavaScript?",
+    answer:
+      "Synchronous JavaScript executes code line by line and blocks further execution until a task finishes. Each operation must complete before the next one starts. \n\n Asynchronous JavaScript allows non-blocking execution where tasks like API calls, timers, or file operations run in the background and complete later via callbacks, promises, or async/await. This prevents the browser from freezing during long operations.",
+    category: "javascript",
+  },
+  {
+    id: 101010102,
+    question: "What is a Promise in JavaScript?",
+    answer:
+      "A Promise in JavaScript is basically a way to handle asynchronous operations in a cleaner and more predictable way. Instead of relying on nested callbacks, a Promise gives us an object that represents a value that we will get in the future — either the operation succeeds or it fails.\n\nA Promise starts in the pending state, and once the async work is done, it either resolves or rejects. We handle the success using .then() and handle errors using .catch(). The main advantage of Promises is that they make async flows easier to manage and help avoid callback hell. Promises are also the foundation of async/await, which makes asynchronous code look and behave more like synchronous code.",
+    category: "javascript",
+  },
+  {
+    id: 62,
+    question: "What is Promise chaining and how does it work?",
+    answer:
+      "Promise chaining is a technique where multiple asynchronous operations are executed in sequence by returning a new Promise from one .then() and handling it in the next .then(). Each .then() passes its result to the next one. This allows running async tasks step by step. If an error happens anywhere in the chain, it can be caught in a single .catch() at the end. This makes async code more readable and maintainable than nested callbacks.",
+    category: "javascript",
+  },
+  {
+    id: 63,
+    question: "What happens if you don't return a value in a .then() block?",
+    answer:
+      "If you don't explicitly return a value in a .then() block, the next .then() in the chain will receive undefined as its input. This can break the chain if subsequent operations expect a value. Always return a value or a Promise from .then() to pass data to the next handler in the chain.",
+    category: "javascript",
+  },
+  {
+    id: 64,
+    question:
+      "What is the difference between returning a value vs returning a Promise in .then()?",
+    answer:
+      "Returning a regular value passes it immediately to the next .then() - the value is automatically wrapped in a resolved Promise. \n\nReturning a Promise makes the next .then() wait until that Promise resolves before executing. This is useful for sequential async operations. If you return a value, the chain continues immediately; if you return a Promise, the chain waits for that Promise to settle.",
+    category: "javascript",
+  },
+  {
+    id: 66,
+    question: "How does Promise.all behave when one Promise rejects?",
+    answer:
+      "If one promise rejects in Promise.all, it immediately rejects with that error and stops waiting for other promises. The results of successfully resolved promises are ignored. This fail-fast behavior means Promise.all is suitable only when all operations must succeed. \n\n If you need results from all promises regardless of failures, use Promise.allSettled instead.",
+    category: "javascript",
+  },
+  {
+    id: 68,
+    question: "What happens if you resolve or reject a Promise multiple times?",
+    answer:
+      "A promise can only settle once. After it is resolved or rejected, further resolve or reject calls are ignored. The promise locks into its first settled state. This immutability ensures predictable behavior - once a promise completes, its result cannot change. Subsequent calls to resolve/reject have no effect, and no error is thrown.",
+    category: "javascript",
+  },
+  {
+    id: 45101,
+    question:
+      "What is the difference between Promise.all(), Promise.race(), and Promise.allSettled()?",
+    answer:
+      "These Promise methods are used to handle multiple asynchronous operations together, but each behaves differently.\n\n🔵 Promise.all():\n- Runs all promises in parallel.\n- Resolves only when ALL promises resolve.\n- If ANY promise fails, the entire Promise.all() fails.\n\nExample:\nPromise.all([p1, p2, p3])\n  .then(res => console.log(res))\n  .catch(err => console.log(err));\n\n🟣 Promise.race():\n- Returns the result of the FIRST promise that settles.\n- Whichever promise resolves or rejects first wins.\n\nExample:\nPromise.race([p1, p2, p3])\n  .then(res => console.log(res))\n  .catch(err => console.log(err));\n\n🟡 Promise.allSettled():\n- Waits for ALL promises to finish.\n- Returns an array of results with status: fulfilled or rejected.\n- Never fails, even if some promises fail.\n\nExample:\nPromise.allSettled([p1, p2, p3])\n  .then(result => console.log(result));\n\n🟠 Key Difference:\n- Promise.all → Fails if one fails.\n- Promise.race → Returns whichever completes first.\n- Promise.allSettled → Returns results of all promises, regardless of success or failure.\n\nIn short: Use Promise.all for all-success situations, race for first-result scenarios, and allSettled when you need outcomes of every promise.",
+    category: "javascript",
+  },
+  {
+    id: 67,
+    question:
+      "When should you use Promise.allSettled() instead of Promise.all()?",
+    answer:
+      "Use Promise.allSettled when you want results of all promises, even if some fail. It's useful when loading multiple resources where failure of one doesn't stop others (e.g., loading user profile, settings, and notifications - you want to show whatever loaded successfully). Promise.allSettled never rejects and returns an array with status (fulfilled/rejected) and value/reason for each promise. Use Promise.all only when all operations must succeed.",
+    category: "javascript",
+  },
+  {
+    id: 70,
+    question: "How does error propagation work in Promise chains?",
+    answer:
+      "If an error happens in a promise chain (either a rejection or a thrown error), it propagates down the chain to the nearest .catch() handler. All .then() handlers in between are skipped. If no .catch() is present, it causes an unhandled promise rejection. You can have multiple .catch() handlers - after catching an error, you can return a value to recover and continue the chain. Errors can be re-thrown in .catch() to propagate further.",
+    category: "javascript",
+  },
+  {
+    id: 103,
+    question: "What are async and await in JavaScript?",
+    answer:
+      "Async and await are features built on top of Promises that make asynchronous code look and feel like synchronous code. When I mark a function as async, it means that the function will always return a Promise. Inside that function, I can use await to pause the execution until a Promise settles. Instead of chaining multiple .then() calls, I can write async code in a much cleaner, step-by-step style.\n\nThe main benefit is readability — especially when calling multiple APIs or performing sequential async operations. await makes the code easier to understand, handle errors using try/catch, and avoid callback hell. In simple terms, async/await helps us write asynchronous logic in a synchronous manner, but without blocking the main thread.",
+    category: "javascript",
+  },
+  {
+    id: 71.1,
+    question: "What is async/await in JavaScript?",
+    answer:
+      "Async/await is a way to handle asynchronous operations in JavaScript with cleaner syntax. When you put 'async' before a function, it always returns a Promise. Inside that function, you can use the 'await' keyword to pause execution until a Promise resolves or rejects. It makes asynchronous code look like synchronous code, making it easier to read and maintain compared to chaining .then() methods. Errors can be caught using try/catch blocks.",
+    category: "javascript",
+  },
+  {
+    id: 125687,
+    question: "Which is better: async/await or promises, and why?",
+    answer:
+      "Async/await is not a replacement for Promises — it's actually built on top of Promises — but in most real-world cases I prefer async/await because it makes the code much easier to read and maintain.\n\nWith Promises, when we have multiple async steps, we usually end up chaining .then() and .catch(), and if the flow is a bit complex, the code can become hard to follow.\n\nWith async/await, the same logic looks more like normal synchronous code: I just await each step, and I can handle errors with a simple try/catch. That improves readability, debugging, and makes business logic clearer, especially in larger codebases.\n\nThat said, Promises are still very useful. For example, when I need to run things in parallel using Promise.all, or when I'm working with many independent async operations, Promises are a great fit.\n\nSo my approach is:\n\nFor sequential async logic → I prefer async/await for cleaner code.\n\nFor parallel or more advanced patterns → I still use Promises directly.",
+    category: "javascript",
+  },
+
+  // ========================================
+  // SECTION 12: Event Loop & Execution
+  // ========================================
+  {
+    id: 125690,
+    question: "What is the Event Loop in JavaScript?",
+    answer:
+      "The Event Loop in JavaScript is the mechanism that allows JavaScript to handle asynchronous tasks even though it runs on a single thread. JavaScript can execute only one line of code at a time, but the browser APIs and Node.js handle async work in the background. The Event Loop keeps checking if the call stack is empty, and whenever an async operation like a timer, promise, or API call finishes, the Event Loop pushes its callback back into the call stack when it's safe to run. This is what allows JavaScript to stay non-blocking and responsive, even while doing async work. Promises go to the microtask queue, timers and other callbacks go to the macrotask queue, and the Event Loop decides when each one gets executed.",
+    category: "javascript",
+  },
+  {
+    id: 57.1,
+    question:
+      "What is the difference between Microtask and Macrotask in JavaScript?",
+    answer:
+      'To understand Microtasks and Macrotasks, you must first understand the Event Loop. JavaScript runs on a single thread, so it uses an Event Loop to decide which task runs first. All async tasks are not equal — they go into different queues.\n\n🟦 Macrotask Queue:\nMacrotasks are big tasks that are executed one by one.\nExamples:\n- setTimeout\n- setInterval\n- setImmediate\n- DOM events\n- Network request callbacks\n\n🟪 Microtask Queue:\nMicrotasks are high-priority small tasks that always run before macrotasks.\nExamples:\n- Promise.then()\n- async/await\n- queueMicrotask()\n- MutationObserver\n\n🚀 Important Rule:\nAfter every macrotask, JavaScript empties the microtask queue first. Microtasks have higher priority, so they run earlier.\n\n🧠 Example:\nconsole.log("A");\nsetTimeout(() => console.log("B"), 0);\nPromise.resolve().then(() => console.log("C"));\nconsole.log("D");\n\nOutput:\nA\nD\nC ← (microtask first)\nB ← (macrotask)\n\nIn short: Microtasks run before macrotasks because they have higher priority in the Event Loop.',
+    category: "javascript",
+  },
+  {
+    id: 60.876555,
+    question: "What is the difference between setTimeout and setInterval?",
+    answer:
+      "setTimeout and setInterval are two timing functions in JavaScript that control when and how often a piece of code runs. setTimeout runs the function only once after a delay, while setInterval keeps running the function repeatedly at a fixed interval until we stop it. So basically, setTimeout is for one-time delayed actions, and setInterval is for continuous repeated actions.\n\nCommon use cases:\n\nsetTimeout: showing alerts after delay, debouncing, delaying API calls, animations, hiding notifications.\n\nsetInterval: live counters, clocks, real-time updates, repeated API polling, progress bars.",
+    category: "javascript",
+  },
+
+  // ========================================
+  // SECTION 13: Storage
+  // ========================================
+  {
+    id: 59.9099,
+    question:
+      "What is the difference between LocalStorage, SessionStorage, and Cookies?",
+    answer:
+      "LocalStorage, SessionStorage, and Cookies are all used to store data in the browser, but they differ in lifespan, storage size, and usage.\n\nLocalStorage is used for long-term data storage. The data persists even after the browser or tab is closed and has no expiration time. It can store up to around 5MB of data. We typically use LocalStorage for storing things like user preferences, theme settings, or shopping cart items that should remain even after closing the browser.\n\nSessionStorage is similar to LocalStorage in terms of storage capacity (around 5MB), but the key difference is that the data is removed when the tab or window is closed. It exists only for that specific tab session. We use SessionStorage for temporary data like active tab state, form steps, or session-specific flags that should not persist across sessions.\n\nCookies are different from both LocalStorage and SessionStorage because they are sent to the server with every HTTP request. They have a very small storage limit of around 4KB and can have an expiration date set by the developer. Cookies are mainly used for authentication tokens, tracking user behavior, and server communication where the server needs to access the stored data.",
+    category: "javascript",
+  },
+
+  // ========================================
+  // SECTION 14: ES6+ Features
+  // ========================================
+  {
+    id: 76.1,
+    question: "Explain ES6 new features?",
+    answer:
+      "ES6 (ES2015) introduced many important features that modernized JavaScript:\n\n1. **let and const**: Block-scoped variable declarations\n\n2. **Arrow Functions**: Shorter syntax with lexical 'this' binding (=>)\n\n3. **Template Literals**: String interpolation using backticks (`Hello ${name}`)\n\n4. **Destructuring**: Extract values from arrays/objects ({name, age} = obj)\n\n5. **Default Parameters**: function greet(name = 'Guest')\n\n6. **Spread Operator**: Expand arrays/objects (...array, ...obj)\n\n7. **Rest Parameters**: Collect remaining arguments (...args)\n\n8. **Classes**: Syntactic sugar for constructor functions\n\n9. **Promises**: Better async handling\n\n10. **Modules**: import/export for code organization\n\n11. **Enhanced Object Literals**: Shorthand properties, computed keys\n\n12. **for...of Loop**: Iterate over iterable objects\n\n13. **Map and Set**: New data structures\n\n14. **Symbol**: New primitive type for unique identifiers\n\n15. **Iterators and Generators**: Custom iteration with function*",
+    category: "javascript",
+  },
+  {
+    id: 125691,
+    question: "What are Rest and Spread operators in JavaScript?",
+    answer:
+      "The Rest and Spread operators use the same syntax (three dots ...) but they work in opposite ways.\n\n🔵 Spread Operator:\n- Used to expand or unpack elements from arrays or objects.\n- Commonly used to copy arrays/objects, merge them, or pass values into functions.\n\nExample:\nconst arr = [1, 2, 3];\nconst newArr = [...arr, 4]; // [1,2,3,4]\n\n🔵 Rest Operator:\n- Used to collect or 'gather' multiple elements into a single array.\n- Often used in function parameters or destructuring.\n\nExample:\nfunction sum(...nums) {\n  return nums.reduce((a, b) => a + b, 0);\n}\nsum(1, 2, 3); // 6\n\n🟡 Key Difference:\n- Spread breaks values apart.\n- Rest gathers values together.\n\nIn short: Spread expands data, while Rest collects data, and both make JavaScript more clean and flexible.",
+    category: "javascript",
+  },
+  {
+    id: 109.1,
+    question: "What are the types of exports and imports in JavaScript?",
+    answer:
+      "JavaScript supports two types of exports: default exports and named exports. A default export allows exporting a single main value from a file, and we import it without curly braces. Named exports allow exporting multiple values, and we must import them using curly braces. Default is for primary components or modules, while named exports are useful for utilities and helper functions.",
+    category: "javascript",
+  },
   {
     id: 76.9,
     question: "Why do we use 'use strict' in JavaScript?",
@@ -988,6 +931,153 @@ export const questions: Question[] = [
       "'use strict' enables strict mode and helps write cleaner and safer JavaScript code. It prevents accidental global variables, disallows unsafe actions, throws errors for silent failures, and makes debugging easier. For a 3-year experienced developer, it ensures more predictable and maintainable code in larger projects.",
     category: "javascript",
   },
+
+  // ========================================
+  // SECTION 15: Advanced Topics
+  // ========================================
+  {
+    id: 248501,
+    question: "What is Web Workers",
+    answer:
+      "Web Workers are a way to run JavaScript code in the background, on a separate thread, so that heavy tasks don't block the main UI thread. Normally, JavaScript is single-threaded, which means if we do something expensive — like large calculations, data processing, or image manipulation — the UI can freeze. Web Workers solve this by giving us a background worker thread that handles the heavy work while the main thread stays free to keep the page smooth and responsive.\n\n\n\nThe main point is that Web Workers don't have access to the DOM; they communicate with the main thread using messages. They're especially useful for things like data-heavy operations, real-time calculations, or anything that could make the UI lag.",
+    category: "javascript",
+  },
+  {
+    id: 248504,
+    question: "What is Event emitter",
+    answer:
+      "An Event Emitter is a pattern used to handle communication between different parts of an application. Instead of calling functions directly, one part of the system 'emits' an event, and any other part that is listening for that event can react to it.\n\n\n\nIt's basically a publish–subscribe model. One side publishes an event, and listeners subscribe to it. This makes the code loosely coupled because the emitter doesn't need to know who is listening — it just emits the event.\n\n\n\nWe commonly use event emitters in Node.js, real-time systems, chat apps, notifications, or anywhere different components need to communicate without being tightly connected.",
+    category: "javascript",
+  },
+  {
+    id: 56,
+    question: "What is the difference between Debounce and Throttle?",
+    answer:
+      "In JavaScript, Debounce and Throttle are used to control high-frequency events like scroll, resize, typing, mouse move, and repeated clicks. Running a function on every event causes UI lag, too many API calls, high CPU usage, and poor user experience.\n\nDebounce — Debounce delays the execution of a function until there is a pause in the event. It runs only once after the user stops performing the action. Best use cases: search box suggestions, form validation while typing, and resize end detection. Example: When a user types a → ap → app → apple, debounce waits for 500ms and triggers only one API call.\n\nThrottle — Throttle allows a function to run at fixed time intervals even if the event fires continuously. Best use cases: scroll handling (infinite scroll, analytics), map dragging, and preventing multiple button clicks. Example: Resend OTP button — even if the user clicks 20 times, OTP sends only once in 30 seconds.\n\nIn short: Debounce waits for user inactivity before executing, while Throttle executes at fixed intervals.",
+    category: "javascript",
+  },
+  {
+    id: 454799,
+    question:
+      "What is the difference between debounce and Throttling in JavaScript?",
+    answer:
+      "Throttling:Throttling is a technique used to limit how many times a function can execute over a period of time.Even if an event keeps firing continuously—like scroll, resize, or button clicks—the throttled function will only run at fixed intervals.This helps improve performance and prevents unnecessary function calls.\n\n debounce:Debouncing is a technique that delays the execution of a function until a certain amount of time has passed without the event being triggered again.If the event keeps happening repeatedly, the timer resets each time, and the function runs only once after the user stops triggering the event",
+    category: "javascript",
+  },
+
+  // ========================================
+  // SECTION 16: Performance & Memory
+  // ========================================
+  {
+    id: 1256105,
+    question:
+      "What is layout thrashing and how do you prevent forced reflows in the browser?",
+    answer:
+      "Layout thrashing happens when the browser has to repeatedly recalculate layout and re-render the page because JavaScript is constantly reading and writing DOM values in a mixed and inefficient way.\n\nWhen JavaScript asks for layout information (like offsetHeight, scrollHeight, width, etc.) right after changing the DOM, the browser is forced to recalculate styles and layout again and again. This repeated cycle slows down the page and hurts performance.\n\n🔵 What causes layout thrashing?\n- Reading DOM properties immediately after writing them.\n- Making multiple style changes one by one.\n- Frequent DOM manipulations inside loops.\n- Using JavaScript animations instead of CSS.\n\n🔵 How to prevent forced reflows and layout thrashing?\n1. **Batch DOM reads and writes**\n   - Read all layout values together.\n   - Write all DOM changes together.\n\n2. **Use requestAnimationFrame() for smooth updates**\n   - Lets the browser group changes before repainting.\n\n3. **Use CSS classes instead of multiple style updates**\n   - Apply one class instead of setting many inline styles.\n\n4. **Avoid measuring DOM values too often**\n   - Cache values when possible.\n\n5. **Use CSS transitions/animations instead of JavaScript animations**\n   - They run on the GPU and avoid extra layout calculations.\n\n🟡 Simple Summary:\nLayout thrashing happens when we mix DOM reads and writes too fast. To prevent it, batch changes, avoid unnecessary DOM reads, and let the browser handle updates efficiently.",
+    category: "javascript",
+  },
+  {
+    id: 1256104,
+    question: "How does the browser parse and execute JavaScript internally?",
+    answer:
+      "When we write JavaScript code, the browser doesn't run it directly. It goes through a clear process inside the JavaScript engine (like V8 in Chrome).\n\n🔵 1. Reading the Code (Parsing):\nThe browser first reads the entire JavaScript file from top to bottom and checks for syntax errors. If the code is valid, it converts it into a structure called the AST — basically a format the engine understands.\n\n🔵 2. Compiling the Code:\nModern browsers use JIT (Just-In-Time) compilation. This means instead of interpreting everything line by line, they convert hot or frequently used code into machine code to make it faster.\n\n🔵 3. Executing the Code:\nAfter compilation, the code runs inside the JavaScript call stack. JavaScript is single-threaded, so it runs one task at a time.\n\n🔵 4. Handling Async Tasks:\nFor things like setTimeout, fetch, or events, the browser does not block. These tasks go to Web APIs. After they finish, their callbacks are sent to queues, and the Event Loop pushes them to the call stack when it's free.\n\n🔵 5. Memory Management:\nThe browser also manages memory — it allocates memory for variables and automatically cleans up unused objects using garbage collection.\n\n🟡 Simple Summary:\nThe browser reads the code → converts it → compiles it → runs it → handles async work with the event loop → and manages memory in the background.\n\nThis entire process happens extremely fast, which is why JavaScript feels smooth and responsive in the browser.",
+    category: "javascript",
+  },
+  {
+    id: 1256107,
+    question:
+      "Explain how garbage collection works in modern JavaScript engines.",
+    answer:
+      "Modern JavaScript engines like V8 use automatic garbage collection to free up memory that is no longer needed. Developers don't manually release memory — the engine does it for us.\n\n🔵 How it works:\nJavaScript uses a model called **mark-and-sweep**.\n1. The garbage collector starts from the root objects (like window, global variables).\n2. It 'marks' all objects that are reachable or still in use.\n3. Any object that is NOT reachable is considered garbage.\n4. The engine removes those unreachable objects from memory.\n\nThis prevents memory leaks by making sure unused data doesn't stay in memory forever.\n\n🔵 What makes an object 'reachable'?  \n- Variables currently in scope\n- Objects referenced by other objects\n- Active closures or event listeners\n- Global objects\n\nIf there is no reference pointing to an object, it becomes unreachable and will be collected.\n\n🔵 Example of losing reachability:\nlet user = { name: 'John' };\nuser = null; // The object is now unreachable → Garbage collected.\n\n🔵 Modern optimizations:\n- **Generational GC**: New objects are stored in a 'young' space for quick cleanup.\n- **Incremental GC**: Splits work into small steps to avoid blocking the main thread.\n- **Concurrent GC**: Runs garbage collection in parallel threads.\n- **Idle-time GC**: Runs when the browser is idle.\n\n🟡 Simple Summary:\nGarbage collection automatically removes objects that your code can no longer reach. Modern engines do this efficiently using mark-and-sweep, generational cleanup, and background threads to keep performance smooth.",
+    category: "javascript",
+  },
+
+  // ========================================
+  // SECTION 17: Build Tools & Loading
+  // ========================================
+  {
+    id: 834449,
+    question: "What is the difference between Webpack and Turbopack?",
+    answer:
+      "Webpack and Turbopack are both bundlers used in modern JavaScript applications, but they differ in performance, architecture, and speed.\n\n🔵 Webpack:\n- The most widely used JavaScript bundler.\n- Written in JavaScript.\n- Supports loaders, plugins, code splitting, tree shaking.\n- Very powerful but can be slow on large projects.\n- Used in React, Angular, Vue for years.\n\n🟣 Turbopack:\n- Next-generation bundler created by Vercel.\n- Written in Rust, designed to replace Webpack.\n- Much faster (up to 700× faster in dev mode).\n- Built for modern frameworks like Next.js.\n- Supports incremental builds and instant updates.\n\n🟡 Key Differences:\n- Speed: Turbopack is significantly faster than Webpack.\n- Language: Webpack uses JavaScript, Turbopack uses Rust.\n- Use Case: Webpack works for all JS apps; Turbopack is optimized for Next.js.\n- Performance: Turbopack provides instant hot reload and better dev experience.\n\nIn short: Webpack is the traditional bundler used widely, while Turbopack is a modern, super-fast bundler designed for Next.js and future web apps.",
+    category: "javascript",
+  },
+  {
+    id: 70.98754333333,
+    question:
+      "What is the difference between async and defer in JavaScript script loading?",
+    answer:
+      "async and defer are script attributes that control how external JavaScript files are loaded and executed in the browser. Both allow the script to download in parallel while the HTML is still being parsed, but they behave very differently when it comes to execution. When a script uses async, it starts downloading in the background and executes as soon as the download finishes, even if the HTML parsing is still in progress. Because of this, the execution order is not guaranteed, and async is usually used for scripts that work independently, such as analytics or tracking code. On the other hand, defer also downloads the script in parallel, but it waits to execute until the entire HTML document has been fully parsed. This ensures that scripts execute in the same order they appear in the page, making defer the better choice for scripts that depend on DOM elements or rely on a specific execution sequence. In simple terms, async runs the moment it's ready, while defer waits for the HTML to finish loading before running.",
+    category: "javascript",
+  },
+  {
+    id: 248505,
+    question: 'What\'s the output of: 1 == "1" & 1 === "1"?',
+    answer:
+      'The output is 0 (or false).\n\n1 == "1" returns true because == does type coercion (loose equality), so the string "1" is converted to number 1.\n\n1 === "1" returns false because === checks both value and type (strict equality), and number 1 is not the same type as string "1".\n\nThe & operator is a bitwise AND operator. When used with booleans, true is converted to 1 and false is converted to 0. So true & false becomes 1 & 0, which equals 0.',
+    category: "output-based",
+  },
+  {
+    id: 248506,
+    question:
+      "What is the output of true == typeof(var a = 10) == number ? true : false",
+    answer:
+      'This code will throw a SyntaxError because you cannot declare a variable inside the typeof operator. The syntax typeof(var a = 10) is invalid.\n\nIf the question was asking about a valid expression like: var a = 10; typeof a == "number" ? true : false, then the output would be true because typeof 10 returns the string "number", and "number" == "number" is true, so the ternary operator returns true.',
+    category: "output-based",
+  },
+  {
+    id: 248511,
+    question:
+      "What's the output of this code?\n\nvar a = 10;\nfunction check() {\n  var a = 20;\n  console.log(a);\n  a = a + a;\n}\nconsole.log(a);\ncheck();\nconsole.log(a);",
+    answer:
+      "The output is:\n10\n20\n10\n\nExplanation:\n1. First console.log(a) prints 10 (the global variable a)\n2. Inside the check() function, var a = 20 creates a new local variable that shadows the global a. So console.log(a) inside the function prints 20.\n3. The line a = a + a makes the local a equal to 40, but this doesn't affect the global a.\n4. After the function finishes, the final console.log(a) prints 10 because the global a was never changed.\n\nThis demonstrates variable shadowing with var — the local variable shadows the global one inside the function scope.",
+    category: "output-based",
+  },
+  {
+    id: 248512,
+    question:
+      "What's the output of this code?\n\nconst a = 10;\nfunction check() {\n  a = 20;\n  console.log(a);\n  a = a + a;\n}\nconsole.log(a);\ncheck();\nconsole.log(a);",
+    answer:
+      "The output is:\n10\nThen it throws a TypeError: Assignment to constant variable.\n\nExplanation:\n1. First console.log(a) prints 10.\n2. When check() is called, it tries to reassign a = 20, but a is declared with const, which means it cannot be reassigned.\n3. This causes a TypeError: Assignment to constant variable, and the code stops executing.\n4. The second console.log inside the function never runs, and neither does the final console.log(a) outside.\n\nThis demonstrates that const variables cannot be reassigned. If you try to change a const variable, JavaScript throws an error immediately.",
+    category: "output-based",
+  },
+  {
+    id: 24850734,
+    question: "How can you declare a global variable in JavaScript?",
+    answer:
+      "A global variable in JavaScript can be created in a few different ways depending on how the code is written. If you assign a value to a variable without using var, let, or const, JavaScript automatically creates it as a global variable, although this approach is considered unsafe because it can cause accidental overwrites. When you use var at the top level, outside of any function, the variable also becomes global and is attached to the window object in the browser. Another way is to explicitly add a property to the global object, such as window.myVar in a browser environment. You can also declare variables with let or const at the top level, which makes them global within the module, though they are not attached to the window object, making them slightly safer. In practice, relying on global variables is discouraged because they can create naming conflicts and make the application harder to maintain, so it's better to use modules or structured state management whenever possible.",
+    category: "javascript",
+  },
+  {
+    id: 2485089,
+    question: "What is the 'this' keyword? Explain.",
+    answer:
+      "'this' in JavaScript refers to the object that is currently calling or owning the function. It doesn’t depend on where the function is written, but on how it is called.\n\n1. In normal functions, 'this' points to the global object (or undefined in strict mode).\n2. In object methods, it refers to that object.\n3. Arrow functions don’t have their own 'this' — they use the 'this' from their surrounding scope.\n4. In event listeners, 'this' is the DOM element that triggered the event.\n5. And with call, apply, bind we can manually set the value of 'this'.",
+    category: "javascript",
+  },  
+  {
+    id: 2485099,
+    question: "preventDefault() vs stopPropagation() – What's the difference?",
+    answer:
+      "preventDefault() and stopPropagation() are both event methods, but they do completely different things.\n\n\n\npreventDefault() stops the browser's default action for that event. For example, if you click a link, the default action is to navigate to that URL. If you call preventDefault(), the navigation won't happen, but the event will still propagate (bubble up) to parent elements.\n\nExample: Preventing a form from submitting or a link from navigating.\n\n\n\nstopPropagation() stops the event from bubbling up to parent elements. It doesn't stop the default action — it just prevents the event from reaching other elements in the DOM tree.\n\nExample: If you click a button inside a div, and both have click handlers, calling stopPropagation() on the button prevents the div's handler from running.\n\n\n\nIn short: preventDefault() stops what the browser wants to do, while stopPropagation() stops the event from traveling to other elements.",
+    category: "javascript",
+  },
+  {
+    id: 2485109,
+    question: "map, filter, reduce – Explain with example.",
+    answer:
+      "map: The map method transforms every element of an array and returns a new array of the same size. For example: const numbers = [1, 2, 3, 4]; const doubled = numbers.map(num => num * 2); this gives [2, 4, 6, 8] because each value is multiplied by two.\n\nfilter: The filter method returns a new array containing only the elements that satisfy a given condition. For instance: const numbers = [1, 2, 3, 4, 5, 6]; const evenNumbers = numbers.filter(num => num % 2 === 0); this results in [2, 4, 6] since only the even values pass the check.\n\nreduce: The reduce method takes all elements of an array and combines them into a single output value by applying a reducer function. For example: const numbers = [1, 2, 3, 4]; const sum = numbers.reduce((total, num) => total + num, 0); the final output becomes 10. In simple terms, map transforms elements, filter chooses certain elements, and reduce compresses everything into one final value.",
+    category: "javascript",
+  },
+  {
+    id: 12561059,
+    question:
+      "What is layout thrashing and how do you prevent forced reflows in the browser?",
+    answer:
+      "Layout thrashing happens when the browser has to repeatedly recalculate layout and re-render the page because JavaScript is constantly reading and writing DOM values in a mixed and inefficient way.\n\nWhen JavaScript asks for layout information (like offsetHeight, scrollHeight, width, etc.) right after changing the DOM, the browser is forced to recalculate styles and layout again and again. This repeated cycle slows down the page and hurts performance.\n\n🔵 What causes layout thrashing?\n- Reading DOM properties immediately after writing them.\n- Making multiple style changes one by one.\n- Frequent DOM manipulations inside loops.\n- Using JavaScript animations instead of CSS.\n\n🔵 How to prevent forced reflows and layout thrashing?\n1. **Batch DOM reads and writes**\n   - Read all layout values together.\n   - Write all DOM changes together.\n\n2. **Use requestAnimationFrame() for smooth updates**\n   - Lets the browser group changes before repainting.\n\n3. **Use CSS classes instead of multiple style updates**\n   - Apply one class instead of setting many inline styles.\n\n4. **Avoid measuring DOM values too often**\n   - Cache values when possible.\n\n5. **Use CSS transitions/animations instead of JavaScript animations**\n   - They run on the GPU and avoid extra layout calculations.\n\n🟡 Simple Summary:\nLayout thrashing happens when we mix DOM reads and writes too fast. To prevent it, batch changes, avoid unnecessary DOM reads, and let the browser handle updates efficiently.",
+    category: "javascript",
+  },
+
   {
     id: 77,
     question: "What is the output of console.log('2' == 2)?",
