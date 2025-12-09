@@ -15,6 +15,7 @@ const categoryTabs = [
   { id: "redux", label: "Redux", icon: "🔄" },
   { id: "socket", label: "Socket", icon: "🔌" },
   { id: "output-based", label: "Output Based", icon: "🖥️" },
+  { id: "program", label: "Program", icon: "💻" },
 ];
 
 export default function Home() {
@@ -80,7 +81,7 @@ export default function Home() {
         </header>
 
         {/* Main content */}
-        <main className="mx-auto max-w-5xl px-4 py-6">
+        <main className="mx-auto max-w-7xl px-4 py-6">
           {/* Tabs */}
           <Tabs
             tabs={categoryTabs}

@@ -9,3 +9,27 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* Custom scrollbar for tabs */
+.tabs-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #6366f1 #1e293b;
+}
+
+.tabs-scrollbar::-webkit-scrollbar {
+  height: 6px;
+}
+
+.tabs-scrollbar::-webkit-scrollbar-track {
+  background: #1e293b;
+  border-radius: 10px;
+}
+
+.tabs-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, #7c3aed, #c026d3);
+  border-radius: 10px;
+}
+
+.tabs-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to right, #8b5cf6, #d946ef);
+}

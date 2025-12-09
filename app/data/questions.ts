@@ -11,7 +11,8 @@ export interface Question {
     | "react"
     | "output-based"
     | "redux"
-    | "socket";
+    | "socket"
+    | "program";
 }
 
 export const questions: Question[] = [
@@ -2493,6 +2494,150 @@ So useEffect gives us mount, update, and unmount behavior in a single hook`,
     answer:
       "Output:\nstart\nend\npromise\ntimeout\n\nReason: Synchronous code executes first, then microtasks (Promise), then macrotasks (setTimeout).",
     category: "output-based",
+  },
+
+  // ========================================
+  // PROGRAM QUESTIONS (Coding Problems)
+  // ========================================
+  {
+    id: 5001,
+    question: "Write a function to reverse a string",
+    answer:
+      "🔵 Inbuilt Method:\n```javascript\nfunction reverseString(str) {\n  return str.split('').reverse().join('');\n}\nconsole.log(reverseString('hello')); // 'olleh'\n```\n\n🟣 Manual Method (Loop):\n```javascript\nfunction reverseString(str) {\n  let reversed = '';\n  for (let i = str.length - 1; i >= 0; i--) {\n    reversed += str[i];\n  }\n  return reversed;\n}\nconsole.log(reverseString('hello')); // 'olleh'\n```",
+    category: "program",
+  },
+  {
+    id: 5002,
+    question: "Write a function to check if a string is a palindrome",
+    answer:
+      "🔵 Inbuilt Method:\n```javascript\nfunction isPalindrome(str) {\n  const reversed = str.split('').reverse().join('');\n  return str === reversed;\n}\nconsole.log(isPalindrome('madam')); // true\nconsole.log(isPalindrome('hello')); // false\n```\n\n🟣 Manual Method (Loop):\n```javascript\nfunction isPalindrome(str) {\n  let left = 0;\n  let right = str.length - 1;\n  while (left < right) {\n    if (str[left] !== str[right]) {\n      return false;\n    }\n    left++;\n    right--;\n  }\n  return true;\n}\nconsole.log(isPalindrome('madam')); // true\n```",
+    category: "program",
+  },
+  {
+    id: 5003,
+    question: "Write a function to find the largest number in an array",
+    answer:
+      "🔵 Inbuilt Method:\n```javascript\nfunction findLargest(arr) {\n  return Math.max(...arr);\n}\nconsole.log(findLargest([3, 7, 2, 9, 1])); // 9\n```\n\n🟣 Manual Method (Loop):\n```javascript\nfunction findLargest(arr) {\n  let max = arr[0];\n  for (let i = 1; i < arr.length; i++) {\n    if (arr[i] > max) {\n      max = arr[i];\n    }\n  }\n  return max;\n}\nconsole.log(findLargest([3, 7, 2, 9, 1])); // 9\n```",
+    category: "program",
+  },
+  {
+    id: 5004,
+    question: "Write a function to remove duplicates from an array",
+    answer:
+      "🔵 Inbuilt Method:\n```javascript\nfunction removeDuplicates(arr) {\n  return [...new Set(arr)];\n}\nconsole.log(removeDuplicates([1, 2, 2, 3, 4, 4, 5])); // [1, 2, 3, 4, 5]\n```\n\n🟣 Manual Method (Loop):\n```javascript\nfunction removeDuplicates(arr) {\n  let unique = [];\n  for (let i = 0; i < arr.length; i++) {\n    if (!unique.includes(arr[i])) {\n      unique.push(arr[i]);\n    }\n  }\n  return unique;\n}\nconsole.log(removeDuplicates([1, 2, 2, 3, 4, 4, 5])); // [1, 2, 3, 4, 5]\n```",
+    category: "program",
+  },
+  {
+    id: 5005,
+    question: "Write a function to find factorial of a number",
+    answer:
+      "🔵 Recursion Method:\n```javascript\nfunction factorial(n) {\n  if (n === 0 || n === 1) return 1;\n  return n * factorial(n - 1);\n}\nconsole.log(factorial(5)); // 120\n```\n\n🟣 Manual Method (Loop):\n```javascript\nfunction factorial(n) {\n  let result = 1;\n  for (let i = 2; i <= n; i++) {\n    result *= i;\n  }\n  return result;\n}\nconsole.log(factorial(5)); // 120\n```",
+    category: "program",
+  },
+  {
+    id: 5006,
+    question: "Write a function to check if a number is prime",
+    answer:
+      "🔵 Optimized Method:\n```javascript\nfunction isPrime(n) {\n  if (n <= 1) return false;\n  if (n <= 3) return true;\n  if (n % 2 === 0 || n % 3 === 0) return false;\n  for (let i = 5; i * i <= n; i += 6) {\n    if (n % i === 0 || n % (i + 2) === 0) return false;\n  }\n  return true;\n}\nconsole.log(isPrime(17)); // true\n```\n\n🟣 Manual Method (Loop):\n```javascript\nfunction isPrime(n) {\n  if (n <= 1) return false;\n  for (let i = 2; i < n; i++) {\n    if (n % i === 0) return false;\n  }\n  return true;\n}\nconsole.log(isPrime(17)); // true\n```",
+    category: "program",
+  },
+  {
+    id: 5007,
+    question: "Write a function to reverse an array",
+    answer:
+      "🔵 Inbuilt Method:\n```javascript\nfunction reverseArray(arr) {\n  return arr.reverse();\n}\nconsole.log(reverseArray([1, 2, 3, 4, 5])); // [5, 4, 3, 2, 1]\n```\n\n🟣 Manual Method (Loop):\n```javascript\nfunction reverseArray(arr) {\n  let reversed = [];\n  for (let i = arr.length - 1; i >= 0; i--) {\n    reversed.push(arr[i]);\n  }\n  return reversed;\n}\nconsole.log(reverseArray([1, 2, 3, 4, 5])); // [5, 4, 3, 2, 1]\n```",
+    category: "program",
+  },
+  {
+    id: 5008,
+    question: "Write a function to find the sum of all elements in an array",
+    answer:
+      "🔵 Inbuilt Method:\n```javascript\nfunction sumArray(arr) {\n  return arr.reduce((sum, num) => sum + num, 0);\n}\nconsole.log(sumArray([1, 2, 3, 4, 5])); // 15\n```\n\n🟣 Manual Method (Loop):\n```javascript\nfunction sumArray(arr) {\n  let sum = 0;\n  for (let i = 0; i < arr.length; i++) {\n    sum += arr[i];\n  }\n  return sum;\n}\nconsole.log(sumArray([1, 2, 3, 4, 5])); // 15\n```",
+    category: "program",
+  },
+  {
+    id: 5009,
+    question: "Write a function to count vowels in a string",
+    answer:
+      "🔵 Inbuilt Method:\n```javascript\nfunction countVowels(str) {\n  const matches = str.match(/[aeiou]/gi);\n  return matches ? matches.length : 0;\n}\nconsole.log(countVowels('hello world')); // 3\n```\n\n🟣 Manual Method (Loop):\n```javascript\nfunction countVowels(str) {\n  const vowels = 'aeiouAEIOU';\n  let count = 0;\n  for (let i = 0; i < str.length; i++) {\n    if (vowels.includes(str[i])) {\n      count++;\n    }\n  }\n  return count;\n}\nconsole.log(countVowels('hello world')); // 3\n```",
+    category: "program",
+  },
+  {
+    id: 5010,
+    question: "Write a function to find the second largest number in an array",
+    answer:
+      "🔵 Inbuilt Method:\n```javascript\nfunction secondLargest(arr) {\n  const unique = [...new Set(arr)];\n  unique.sort((a, b) => b - a);\n  return unique[1];\n}\nconsole.log(secondLargest([3, 7, 2, 9, 1])); // 7\n```\n\n🟣 Manual Method (Loop):\n```javascript\nfunction secondLargest(arr) {\n  let first = -Infinity;\n  let second = -Infinity;\n  for (let i = 0; i < arr.length; i++) {\n    if (arr[i] > first) {\n      second = first;\n      first = arr[i];\n    } else if (arr[i] > second && arr[i] !== first) {\n      second = arr[i];\n    }\n  }\n  return second;\n}\nconsole.log(secondLargest([3, 7, 2, 9, 1])); // 7\n```",
+    category: "program",
+  },
+  {
+    id: 5011,
+    question: "Write a function to sort an array in ascending order",
+    answer:
+      "🔵 Inbuilt Method:\n```javascript\nfunction sortArray(arr) {\n  return arr.sort((a, b) => a - b);\n}\nconsole.log(sortArray([5, 2, 8, 1, 9])); // [1, 2, 5, 8, 9]\n```\n\n🟣 Manual Method (Bubble Sort):\n```javascript\nfunction sortArray(arr) {\n  for (let i = 0; i < arr.length; i++) {\n    for (let j = 0; j < arr.length - i - 1; j++) {\n      if (arr[j] > arr[j + 1]) {\n        let temp = arr[j];\n        arr[j] = arr[j + 1];\n        arr[j + 1] = temp;\n      }\n    }\n  }\n  return arr;\n}\nconsole.log(sortArray([5, 2, 8, 1, 9])); // [1, 2, 5, 8, 9]\n```",
+    category: "program",
+  },
+  {
+    id: 5012,
+    question: "Write a function to find Fibonacci series up to n terms",
+    answer:
+      "🔵 Recursion Method:\n```javascript\nfunction fibonacci(n) {\n  if (n <= 1) return n;\n  return fibonacci(n - 1) + fibonacci(n - 2);\n}\nfor (let i = 0; i < 10; i++) console.log(fibonacci(i));\n// 0, 1, 1, 2, 3, 5, 8, 13, 21, 34\n```\n\n🟣 Manual Method (Loop):\n```javascript\nfunction fibonacciSeries(n) {\n  let fib = [0, 1];\n  for (let i = 2; i < n; i++) {\n    fib[i] = fib[i - 1] + fib[i - 2];\n  }\n  return fib;\n}\nconsole.log(fibonacciSeries(10));\n// [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]\n```",
+    category: "program",
+  },
+  {
+    id: 5013,
+    question: "Write a function to flatten a nested array",
+    answer:
+      "🔵 Inbuilt Method:\n```javascript\nfunction flattenArray(arr) {\n  return arr.flat(Infinity);\n}\nconsole.log(flattenArray([1, [2, [3, [4]]]])); // [1, 2, 3, 4]\n```\n\n🟣 Manual Method (Recursion):\n```javascript\nfunction flattenArray(arr) {\n  let result = [];\n  for (let i = 0; i < arr.length; i++) {\n    if (Array.isArray(arr[i])) {\n      result = result.concat(flattenArray(arr[i]));\n    } else {\n      result.push(arr[i]);\n    }\n  }\n  return result;\n}\nconsole.log(flattenArray([1, [2, [3, [4]]]])); // [1, 2, 3, 4]\n```",
+    category: "program",
+  },
+  {
+    id: 5014,
+    question: "Write a function to capitalize first letter of each word",
+    answer:
+      "🔵 Inbuilt Method:\n```javascript\nfunction capitalizeWords(str) {\n  return str.split(' ').map(word => \n    word.charAt(0).toUpperCase() + word.slice(1)\n  ).join(' ');\n}\nconsole.log(capitalizeWords('hello world')); // 'Hello World'\n```\n\n🟣 Manual Method (Loop):\n```javascript\nfunction capitalizeWords(str) {\n  let result = '';\n  let capitalizeNext = true;\n  for (let i = 0; i < str.length; i++) {\n    if (str[i] === ' ') {\n      result += ' ';\n      capitalizeNext = true;\n    } else if (capitalizeNext) {\n      result += str[i].toUpperCase();\n      capitalizeNext = false;\n    } else {\n      result += str[i];\n    }\n  }\n  return result;\n}\nconsole.log(capitalizeWords('hello world')); // 'Hello World'\n```",
+    category: "program",
+  },
+  {
+    id: 5015,
+    question: "Write a function to find common elements in two arrays",
+    answer:
+      "🔵 Inbuilt Method:\n```javascript\nfunction findCommon(arr1, arr2) {\n  return arr1.filter(item => arr2.includes(item));\n}\nconsole.log(findCommon([1, 2, 3, 4], [3, 4, 5, 6])); // [3, 4]\n```\n\n🟣 Manual Method (Loop):\n```javascript\nfunction findCommon(arr1, arr2) {\n  let common = [];\n  for (let i = 0; i < arr1.length; i++) {\n    for (let j = 0; j < arr2.length; j++) {\n      if (arr1[i] === arr2[j] && !common.includes(arr1[i])) {\n        common.push(arr1[i]);\n      }\n    }\n  }\n  return common;\n}\nconsole.log(findCommon([1, 2, 3, 4], [3, 4, 5, 6])); // [3, 4]\n```",
+    category: "program",
+  },
+  {
+    id: 5016,
+    question: "Write a function to find the frequency of each character in a string",
+    answer:
+      "🔵 Inbuilt Method:\n```javascript\nfunction charFrequency(str) {\n  return str.split('').reduce((acc, char) => {\n    acc[char] = (acc[char] || 0) + 1;\n    return acc;\n  }, {});\n}\nconsole.log(charFrequency('hello')); // {h: 1, e: 1, l: 2, o: 1}\n```\n\n🟣 Manual Method (Loop):\n```javascript\nfunction charFrequency(str) {\n  let freq = {};\n  for (let i = 0; i < str.length; i++) {\n    if (freq[str[i]]) {\n      freq[str[i]]++;\n    } else {\n      freq[str[i]] = 1;\n    }\n  }\n  return freq;\n}\nconsole.log(charFrequency('hello')); // {h: 1, e: 1, l: 2, o: 1}\n```",
+    category: "program",
+  },
+  {
+    id: 5017,
+    question: "Write a function to merge two sorted arrays",
+    answer:
+      "🔵 Inbuilt Method:\n```javascript\nfunction mergeSortedArrays(arr1, arr2) {\n  return [...arr1, ...arr2].sort((a, b) => a - b);\n}\nconsole.log(mergeSortedArrays([1, 3, 5], [2, 4, 6])); // [1, 2, 3, 4, 5, 6]\n```\n\n🟣 Manual Method (Two Pointers):\n```javascript\nfunction mergeSortedArrays(arr1, arr2) {\n  let merged = [];\n  let i = 0, j = 0;\n  while (i < arr1.length && j < arr2.length) {\n    if (arr1[i] < arr2[j]) {\n      merged.push(arr1[i]);\n      i++;\n    } else {\n      merged.push(arr2[j]);\n      j++;\n    }\n  }\n  while (i < arr1.length) merged.push(arr1[i++]);\n  while (j < arr2.length) merged.push(arr2[j++]);\n  return merged;\n}\nconsole.log(mergeSortedArrays([1, 3, 5], [2, 4, 6])); // [1, 2, 3, 4, 5, 6]\n```",
+    category: "program",
+  },
+  {
+    id: 5018,
+    question: "Write a function to check if two strings are anagrams",
+    answer:
+      "🔵 Inbuilt Method:\n```javascript\nfunction isAnagram(str1, str2) {\n  const normalize = str => str.toLowerCase().split('').sort().join('');\n  return normalize(str1) === normalize(str2);\n}\nconsole.log(isAnagram('listen', 'silent')); // true\n```\n\n🟣 Manual Method (Loop):\n```javascript\nfunction isAnagram(str1, str2) {\n  if (str1.length !== str2.length) return false;\n  let freq = {};\n  for (let char of str1.toLowerCase()) {\n    freq[char] = (freq[char] || 0) + 1;\n  }\n  for (let char of str2.toLowerCase()) {\n    if (!freq[char]) return false;\n    freq[char]--;\n  }\n  return true;\n}\nconsole.log(isAnagram('listen', 'silent')); // true\n```",
+    category: "program",
+  },
+  {
+    id: 5019,
+    question: "Write a function to find missing number in array from 1 to n",
+    answer:
+      "🔵 Math Formula Method:\n```javascript\nfunction findMissing(arr, n) {\n  const expectedSum = (n * (n + 1)) / 2;\n  const actualSum = arr.reduce((sum, num) => sum + num, 0);\n  return expectedSum - actualSum;\n}\nconsole.log(findMissing([1, 2, 4, 5, 6], 6)); // 3\n```\n\n🟣 Manual Method (Loop):\n```javascript\nfunction findMissing(arr, n) {\n  for (let i = 1; i <= n; i++) {\n    let found = false;\n    for (let j = 0; j < arr.length; j++) {\n      if (arr[j] === i) {\n        found = true;\n        break;\n      }\n    }\n    if (!found) return i;\n  }\n  return -1;\n}\nconsole.log(findMissing([1, 2, 4, 5, 6], 6)); // 3\n```",
+    category: "program",
+  },
+  {
+    id: 5020,
+    question: "Write a function to convert string to title case",
+    answer:
+      "🔵 Inbuilt Method:\n```javascript\nfunction toTitleCase(str) {\n  return str.toLowerCase().split(' ').map(word => \n    word.charAt(0).toUpperCase() + word.slice(1)\n  ).join(' ');\n}\nconsole.log(toTitleCase('hello WORLD test')); // 'Hello World Test'\n```\n\n🟣 Manual Method (Loop):\n```javascript\nfunction toTitleCase(str) {\n  let result = '';\n  let newWord = true;\n  for (let i = 0; i < str.length; i++) {\n    if (str[i] === ' ') {\n      result += ' ';\n      newWord = true;\n    } else if (newWord) {\n      result += str[i].toUpperCase();\n      newWord = false;\n    } else {\n      result += str[i].toLowerCase();\n    }\n  }\n  return result;\n}\nconsole.log(toTitleCase('hello WORLD test')); // 'Hello World Test'\n```",
+    category: "program",
   },
 ];
 

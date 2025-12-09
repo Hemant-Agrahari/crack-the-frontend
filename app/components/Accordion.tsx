@@ -88,18 +88,11 @@ interface AccordionProps {
 }
 
 export function Accordion({ questions }: AccordionProps) {
-  const [openItems, setOpenItems] = useState<Set<number>>(new Set());
+  const [openItem, setOpenItem] = useState<number | null>(null);
 
   const toggleItem = (id: number) => {
-    setOpenItems((prev) => {
-      const newSet = new Set(prev);
-      if (newSet.has(id)) {
-        newSet.delete(id);
-      } else {
-        newSet.add(id);
-      }
-      return newSet;
-    });
+    // If same item clicked, close it. Otherwise open the new one (and close previous)
+    setOpenItem((prev) => (prev === id ? null : id));
   };
 
   if (questions.length === 0) {
@@ -118,7 +111,7 @@ export function Accordion({ questions }: AccordionProps) {
           key={q.id}
           question={q.question}
           answer={q.answer}
-          isOpen={openItems.has(q.id)}
+          isOpen={openItem === q.id}
           onToggle={() => toggleItem(q.id)}
           index={index}
         />
