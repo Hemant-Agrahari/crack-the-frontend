@@ -508,13 +508,6 @@ export const questions: Question[] = [
     category: "javascript",
   },
   {
-    id: 98789888,
-    question: "What is Strict Mode?",
-    answer:
-      "StrictMode is a development-only tool that helps identify potential issues in React applications. It highlights unsafe lifecycle methods, accidental side effects, and deprecated APIs by running certain functions twice. It doesn’t affect production; it just helps us write cleaner and more future-proof code.",
-    category: "javascript",
-  },
-  {
     id: 98789889,
     question: "What is Event Delegation in JavaScript?",
     answer:
