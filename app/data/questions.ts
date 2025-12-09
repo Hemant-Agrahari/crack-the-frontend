@@ -443,9 +443,9 @@ export const questions: Question[] = [
     id: 248508,
     question: "What is the 'this' keyword? Explain.",
     answer:
-      "The 'this' keyword in JavaScript refers to the object that is currently executing the code. What 'this' points to depends on how and where the function is called.\n\n\n\n1. In a regular function: 'this' refers to the global object (window in browsers, global in Node.js). In strict mode, it's undefined.\n\n2. In an object method: 'this' refers to the object that owns the method.\n   Example: const obj = { name: 'John', greet() { console.log(this.name); } }; obj.greet(); // 'John'\n\n3. In arrow functions: 'this' is inherited from the surrounding scope (lexical this). Arrow functions don't have their own 'this'.\n\n4. In event handlers: 'this' refers to the element that received the event.\n   Example: button.addEventListener('click', function() { console.log(this); }); // refers to button\n\n5. With call, apply, or bind: You can explicitly set what 'this' refers to.\n\n\n\nThe key thing to remember is that 'this' is determined by how a function is called, not where it's defined.",
+      "'this' in JavaScript refers to the object that is currently calling or owning the function. It doesn’t depend on where the function is written, but on how it is called.\n\n1. In normal functions, 'this' points to the global object (or undefined in strict mode).\n2. In object methods, it refers to that object.\n3. Arrow functions don’t have their own 'this' — they use the 'this' from their surrounding scope.\n4. In event listeners, 'this' is the DOM element that triggered the event.\n5. And with call, apply, bind we can manually set the value of 'this'.",
     category: "javascript",
-  },
+  },  
   {
     id: 248509,
     question: "preventDefault() vs stopPropagation() – What's the difference?",
