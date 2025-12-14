@@ -2851,12 +2851,84 @@ So useEffect gives us mount, update, and unmount behavior in a single hook`,
     category: "javascript",
   },
   {
+    id: 203333445101,
+    question: "Difference between setTimeout() and setImmediate()",
+    answer:
+      "setTimeout() and setImmediate() are both used to execute asynchronous code, but they work differently in the event loop. \n\n setTimeout() schedules a function to run after a specified delay in milliseconds. Even if the delay is set to 0, the callback is executed only after the timer phase of the event loop, not immediately. \n\n setImmediate(), on the other hand, schedules a function to run immediately after the current I/O operations are completed. It executes in the check phase of the event loop and does not use any time delay. \n\n In simple terms, setTimeout() is time-based, while setImmediate() is event-loop based. setImmediate() is mainly used in Node.js environments, whereas setTimeout() works in both browsers and Node.js.",
+    category: "javascript",
+  },
+  {
     id: 2030,
     question: "Why does hydration mismatch happen in Next.js?",
     answer:
       "Hydration mismatch happens when the HTML rendered on the server is different from what React renders on the client during hydration. Since Next.js renders pages on the server first, any difference in data or markup between server and client causes this error. Common reasons include using browser-only APIs like window or localStorage during render, using time-based or random values, or rendering different content on server and client. To fix it, browser-specific code should run inside useEffect, dynamic imports with SSR disabled can be used, and the HTML structure should remain consistent.",
     category: "nextjs",
   },
+  {
+    id: 98989001,
+    question: "What is Redux and why was it introduced?",
+    answer:
+      "Redux is a state management library that provides a single source of truth for application state. It was introduced to solve problems like prop drilling, inconsistent state across components, and difficulty debugging state changes in large applications. Redux makes state changes predictable by using actions and reducers.",
+    category: "redux",
+  },
+  {
+    id: 98989002,
+    question: "What problem does middleware solve in Redux?",
+    answer:
+      "Redux middleware solves the problem of handling side effects such as API calls, asynchronous logic, logging, and authentication. Since reducers must be pure and synchronous, middleware allows us to run custom or async logic between dispatching an action and updating the state.",
+    category: "redux",
+  },
+  {
+    id: 98989003,
+    question: "How does Redux middleware work internally?",
+    answer:
+      "Redux middleware sits between the dispatch function and the reducer. When an action is dispatched, it first goes through middleware, where it can be modified, delayed, blocked, or used to dispatch other actions before finally reaching the reducer to update the store.",
+    category: "redux",
+  },
+  {
+    id: 98989004,
+    question: "Redux Thunk vs Redux Saga",
+    answer:
+      "Redux Thunk uses functions to handle asynchronous logic and is simple to implement, making it suitable for small to medium applications. Redux Saga uses generator functions to manage complex async flows like cancellation, retry, and parallel tasks, making it better for large and complex applications.",
+    category: "redux",
+  },
+  {
+    id: 98989005,
+    question: "How does redux-persist work?",
+    answer:
+      "redux-persist automatically saves the Redux store to persistent storage such as localStorage or AsyncStorage. When the app reloads, it restores the saved state back into the Redux store using a rehydration process, so the state is not lost on refresh.",
+    category: "redux",
+  },
+  {
+    id: 98989006,
+    question:
+      "Where does Redux store data — memory, localStorage, or AsyncStorage?",
+    answer:
+      "By default, Redux stores data in memory inside the JavaScript runtime. It does not use localStorage or AsyncStorage unless redux-persist or custom persistence logic is configured. Storage depends on the platform and configuration.",
+    category: "redux",
+  },
+  {
+    id: 98989007,
+    question: "How does persisted state rehydrate on app launch?",
+    answer:
+      "On app launch, redux-persist reads the saved state from storage and dispatches a REHYDRATE action. The Redux store is then updated with this persisted data, and the UI renders using the restored state. This process is called rehydration.",
+    category: "redux",
+  },
+  {
+    id: 98989008,
+    question: "What are the risks of storing sensitive data in Redux?",
+    answer:
+      "Storing sensitive data in Redux is risky because the state can be inspected using Redux DevTools and persisted data can be accessed from storage. This increases the risk of data leakage through XSS attacks. Sensitive information like passwords or tokens should not be stored in Redux.",
+    category: "redux",
+  },
+  {
+    id: 98989009,
+    question: "Can Redux replace local state completely?",
+    answer:
+      "No, Redux should not replace local state completely. Redux is meant for managing global and shared state that is used across multiple components, such as user data, authentication status, or app-wide settings. Local state, managed using useState or useReducer, is better suited for UI-specific state like form inputs, toggles, modals, or dropdown visibility. Using Redux for every small UI state can make the code more complex and harder to maintain. The best practice is to use local state for component-level UI logic and Redux only when state needs to be shared or persisted across the application.",
+    category: "redux"
+  }
+  
 ];
 
 export const getCategoryQuestions = (
