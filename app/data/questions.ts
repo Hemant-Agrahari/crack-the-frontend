@@ -929,7 +929,7 @@ export const questions: Question[] = [
     id: 76.9,
     question: "Why do we use 'use strict' in JavaScript?",
     answer:
-      "'use strict' enables strict mode and helps write cleaner and safer JavaScript code. It prevents accidental global variables, disallows unsafe actions, throws errors for silent failures, and makes debugging easier. For a 3-year experienced developer, it ensures more predictable and maintainable code in larger projects.",
+      "'use strict' enables strict mode in JavaScript, which helps catch common coding mistakes and makes your code safer. It was introduced in ES5 to enforce better coding practices. When you write 'use strict' at the top of a file or function, JavaScript becomes more strict about how you write code. The main benefit is that it prevents accidental global variables. Without strict mode, if you forget to declare a variable with let, const, or var and just write x = 10, JavaScript creates a global variable automatically, which can cause bugs. With strict mode, this throws an error, forcing you to declare variables properly. Strict mode also converts silent errors into thrown errors, making debugging easier. For example, trying to delete a variable or assigning to a read-only property will throw an error instead of failing silently. It also makes 'this' undefined in functions that are not called as methods, preventing accidental global object modifications. Additionally, it disallows duplicate parameter names and prohibits the use of the with statement. You can enable it globally by adding 'use strict' at the top of your file, or per function by adding it at the start of the function. Modern ES6 modules and classes automatically run in strict mode, so if you're using import/export syntax, you're already using it.",
     category: "javascript",
   },
 
@@ -1041,34 +1041,6 @@ export const questions: Question[] = [
     answer:
       "The output is:\n10\nThen it throws a TypeError: Assignment to constant variable.\n\nExplanation:\n1. First console.log(a) prints 10.\n2. When check() is called, it tries to reassign a = 20, but a is declared with const, which means it cannot be reassigned.\n3. This causes a TypeError: Assignment to constant variable, and the code stops executing.\n4. The second console.log inside the function never runs, and neither does the final console.log(a) outside.\n\nThis demonstrates that const variables cannot be reassigned. If you try to change a const variable, JavaScript throws an error immediately.",
     category: "output-based",
-  },
-  {
-    id: 24850734,
-    question: "How can you declare a global variable in JavaScript?",
-    answer:
-      "A global variable in JavaScript can be created in a few different ways depending on how the code is written. If you assign a value to a variable without using var, let, or const, JavaScript automatically creates it as a global variable, although this approach is considered unsafe because it can cause accidental overwrites. When you use var at the top level, outside of any function, the variable also becomes global and is attached to the window object in the browser. Another way is to explicitly add a property to the global object, such as window.myVar in a browser environment. You can also declare variables with let or const at the top level, which makes them global within the module, though they are not attached to the window object, making them slightly safer. In practice, relying on global variables is discouraged because they can create naming conflicts and make the application harder to maintain, so it's better to use modules or structured state management whenever possible.",
-    category: "javascript",
-  },
-  {
-    id: 2485089,
-    question: "What is the 'this' keyword? Explain.",
-    answer:
-      "'this' in JavaScript refers to the object that is currently calling or owning the function. It doesn’t depend on where the function is written, but on how it is called.\n\n1. In normal functions, 'this' points to the global object (or undefined in strict mode).\n2. In object methods, it refers to that object.\n3. Arrow functions don’t have their own 'this' — they use the 'this' from their surrounding scope.\n4. In event listeners, 'this' is the DOM element that triggered the event.\n5. And with call, apply, bind we can manually set the value of 'this'.",
-    category: "javascript",
-  },  
-  {
-    id: 2485099,
-    question: "preventDefault() vs stopPropagation() – What's the difference?",
-    answer:
-      "preventDefault() and stopPropagation() are both event methods, but they do completely different things.\n\n\n\npreventDefault() stops the browser's default action for that event. For example, if you click a link, the default action is to navigate to that URL. If you call preventDefault(), the navigation won't happen, but the event will still propagate (bubble up) to parent elements.\n\nExample: Preventing a form from submitting or a link from navigating.\n\n\n\nstopPropagation() stops the event from bubbling up to parent elements. It doesn't stop the default action — it just prevents the event from reaching other elements in the DOM tree.\n\nExample: If you click a button inside a div, and both have click handlers, calling stopPropagation() on the button prevents the div's handler from running.\n\n\n\nIn short: preventDefault() stops what the browser wants to do, while stopPropagation() stops the event from traveling to other elements.",
-    category: "javascript",
-  },
-  {
-    id: 2485109,
-    question: "map, filter, reduce – Explain with example.",
-    answer:
-      "map: The map method transforms every element of an array and returns a new array of the same size. For example: const numbers = [1, 2, 3, 4]; const doubled = numbers.map(num => num * 2); this gives [2, 4, 6, 8] because each value is multiplied by two.\n\nfilter: The filter method returns a new array containing only the elements that satisfy a given condition. For instance: const numbers = [1, 2, 3, 4, 5, 6]; const evenNumbers = numbers.filter(num => num % 2 === 0); this results in [2, 4, 6] since only the even values pass the check.\n\nreduce: The reduce method takes all elements of an array and combines them into a single output value by applying a reducer function. For example: const numbers = [1, 2, 3, 4]; const sum = numbers.reduce((total, num) => total + num, 0); the final output becomes 10. In simple terms, map transforms elements, filter chooses certain elements, and reduce compresses everything into one final value.",
-    category: "javascript",
   },
   {
     id: 12561059,
