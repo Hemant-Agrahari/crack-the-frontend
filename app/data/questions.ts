@@ -781,8 +781,7 @@ export const questions: Question[] = [
     answer:
       "A Promise in JavaScript is an object used to handle asynchronous operations by representing a value that will be available in the future. It allows us to manage async tasks like API calls or background operations in a structured and predictable way. A Promise has three states: pending, fulfilled, and rejected. When the operation succeeds, the promise is resolved and handled using .then(); when it fails, it is rejected and handled using .catch(). Promises help avoid callback hell, improve error handling, and form the foundation of async/await, making asynchronous code easier to read and maintain.",
     category: "javascript",
-  }
-,  
+  },
   {
     id: 62,
     question: "What is Promise chaining and how does it work?",
@@ -2579,7 +2578,8 @@ So useEffect gives us mount, update, and unmount behavior in a single hook`,
   },
   {
     id: 5016,
-    question: "Write a function to find the frequency of each character in a string",
+    question:
+      "Write a function to find the frequency of each character in a string",
     answer:
       "🔵 Inbuilt Method:\n```javascript\nfunction charFrequency(str) {\n  return str.split('').reduce((acc, char) => {\n    acc[char] = (acc[char] || 0) + 1;\n    return acc;\n  }, {});\n}\nconsole.log(charFrequency('hello')); // {h: 1, e: 1, l: 2, o: 1}\n```\n\n🟣 Manual Method (Loop):\n```javascript\nfunction charFrequency(str) {\n  let freq = {};\n  for (let i = 0; i < str.length; i++) {\n    if (freq[str[i]]) {\n      freq[str[i]]++;\n    } else {\n      freq[str[i]] = 1;\n    }\n  }\n  return freq;\n}\nconsole.log(charFrequency('hello')); // {h: 1, e: 1, l: 2, o: 1}\n```",
     category: "program",
@@ -2612,13 +2612,14 @@ So useEffect gives us mount, update, and unmount behavior in a single hook`,
       "🔵 Inbuilt Method:\n```javascript\nfunction toTitleCase(str) {\n  return str.toLowerCase().split(' ').map(word => \n    word.charAt(0).toUpperCase() + word.slice(1)\n  ).join(' ');\n}\nconsole.log(toTitleCase('hello WORLD test')); // 'Hello World Test'\n```\n\n🟣 Manual Method (Loop):\n```javascript\nfunction toTitleCase(str) {\n  let result = '';\n  let newWord = true;\n  for (let i = 0; i < str.length; i++) {\n    if (str[i] === ' ') {\n      result += ' ';\n      newWord = true;\n    } else if (newWord) {\n      result += str[i].toUpperCase();\n      newWord = false;\n    } else {\n      result += str[i].toLowerCase();\n    }\n  }\n  return result;\n}\nconsole.log(toTitleCase('hello WORLD test')); // 'Hello World Test'\n```",
     category: "program",
   },
-  
+
   // ========================================
   // SECTION: Additional JavaScript L1 & L2 Questions
   // ========================================
   {
     id: 2001,
-    question: "What is the difference between 'Pass by Value' and 'Pass by Reference'?",
+    question:
+      "What is the difference between 'Pass by Value' and 'Pass by Reference'?",
     answer:
       "In JavaScript, the way data is passed to functions depends on the data type. Pass by Value applies to primitive data types like string, number, boolean, null, undefined, symbol, and bigint. When we pass a primitive value to a function, a copy of the actual value is passed, which means any changes made inside the function do not affect the original variable. For example, if we have a variable num with value 10 and pass it to a function that changes it to 20, the original num remains 10 because only a copy was modified.\n\nOn the other hand, Pass by Reference applies to non-primitive data types such as objects, arrays, and functions. When we pass these types to a function, the reference or memory address to the actual object is passed, not a copy of the object itself. This means that any changes made inside the function will affect the original object. For instance, if we pass an object with a name property set to 'John' to a function that changes it to 'Alice', the original object will also reflect this change because both the function parameter and the original variable point to the same object in memory. In short, primitives are copied when passed to functions, while objects are referenced, making them behave differently when modified inside functions.",
     category: "javascript",
@@ -2716,9 +2717,9 @@ So useEffect gives us mount, update, and unmount behavior in a single hook`,
   },
   {
     id: 2015,
-    question: "What is the output of 3+2+\"7\"?",
+    question: 'What is the output of 3+2+"7"?',
     answer:
-      "The output is \"57\". To understand why, we need to look at how JavaScript evaluates this expression from left to right. First, JavaScript evaluates 3 + 2, and since both are numbers, it performs mathematical addition, giving us 5. Then, JavaScript evaluates 5 + \"7\", where 5 is a number and \"7\" is a string. At this point, JavaScript performs type coercion, converting the number 5 to the string \"5\", and then performs string concatenation instead of addition. So \"5\" + \"7\" results in \"57\".\n\nThe key concept here is type coercion. When you add a number and a string in JavaScript, the number is automatically converted to a string, and concatenation is performed instead of mathematical addition. This behavior is consistent across similar operations. For example, 3 + 2 + \"7\" gives \"57\", but \"7\" + 3 + 2 gives \"732\" because once a string is encountered, all subsequent operations become string concatenations. Similarly, 3 + \"2\" + 2 results in \"322\". However, with subtraction like 3 - 2 + \"7\", you get \"17\" because subtraction is performed first, giving 1, which is then concatenated with \"7\". Interestingly, subtraction and multiplication with strings behave differently: \"7\" - 2 gives 5 because JavaScript converts the string to a number for subtraction, and \"7\" * 2 gives 14 for the same reason. In short, the expression 3+2+\"7\" equals 5+\"7\" which equals \"57\" due to number addition happening first, followed by string concatenation.",
+      'The output is "57". To understand why, we need to look at how JavaScript evaluates this expression from left to right. First, JavaScript evaluates 3 + 2, and since both are numbers, it performs mathematical addition, giving us 5. Then, JavaScript evaluates 5 + "7", where 5 is a number and "7" is a string. At this point, JavaScript performs type coercion, converting the number 5 to the string "5", and then performs string concatenation instead of addition. So "5" + "7" results in "57".\n\nThe key concept here is type coercion. When you add a number and a string in JavaScript, the number is automatically converted to a string, and concatenation is performed instead of mathematical addition. This behavior is consistent across similar operations. For example, 3 + 2 + "7" gives "57", but "7" + 3 + 2 gives "732" because once a string is encountered, all subsequent operations become string concatenations. Similarly, 3 + "2" + 2 results in "322". However, with subtraction like 3 - 2 + "7", you get "17" because subtraction is performed first, giving 1, which is then concatenated with "7". Interestingly, subtraction and multiplication with strings behave differently: "7" - 2 gives 5 because JavaScript converts the string to a number for subtraction, and "7" * 2 gives 14 for the same reason. In short, the expression 3+2+"7" equals 5+"7" which equals "57" due to number addition happening first, followed by string concatenation.',
     category: "output-based",
   },
   {
@@ -2786,7 +2787,8 @@ So useEffect gives us mount, update, and unmount behavior in a single hook`,
   },
   {
     id: 2025,
-    question: "What are the difference between undeclared and undefined variables?",
+    question:
+      "What are the difference between undeclared and undefined variables?",
     answer:
       "Undeclared and undefined variables are different concepts in JavaScript that often cause confusion. An undefined variable is one that has been declared using var, let, or const but has not been assigned a value yet. When you declare a variable without assigning it a value, JavaScript automatically initializes it to undefined. For example, if you write let x; without assigning a value, x is declared but its value is undefined. You can access an undefined variable without getting an error, and typeof will return 'undefined'. Undefined is actually a primitive value in JavaScript that represents the absence of a value for a declared variable.\n\nAn undeclared variable, on the other hand, is one that has not been declared at all in the current scope. If you try to access a variable that was never declared using var, let, or const, JavaScript will throw a ReferenceError saying the variable is not defined. Undeclared variables don't exist in memory and have no value or type. However, there's a special case: if you assign a value to a variable without declaring it first in non-strict mode, JavaScript will automatically create it as a global variable. For example, if you write x = 10 without declaring x, JavaScript creates a global variable, but this is considered bad practice and doesn't happen in strict mode.\n\nThe key differences are that undefined variables are declared but not initialized, while undeclared variables are not declared at all. Accessing an undefined variable returns undefined, while accessing an undeclared variable throws a ReferenceError. Using typeof on an undefined variable returns 'undefined', while using typeof on an undeclared variable also returns 'undefined' without throwing an error, which is one of the quirks of JavaScript. Undefined variables exist in memory with the value undefined, while undeclared variables don't exist in memory unless accidentally created in global scope. In strict mode, JavaScript prevents the automatic creation of undeclared variables, making your code safer. In short, undefined means declared but no value assigned, while undeclared means the variable was never declared in the first place.",
     category: "javascript",
@@ -2807,7 +2809,8 @@ So useEffect gives us mount, update, and unmount behavior in a single hook`,
   },
   {
     id: 2028,
-    question: "What is the difference between nullish coalescing operator (??) and logical OR (||)?",
+    question:
+      "What is the difference between nullish coalescing operator (??) and logical OR (||)?",
     answer:
       "The nullish coalescing operator (??) and the logical OR operator (||) are both used to provide default values, but they behave differently when evaluating falsy values. The logical OR operator (||) returns the right-hand side value when the left-hand side is any falsy value, including false, 0, empty string (''), NaN, null, or undefined. This means if you write const value = userInput || 'default', and userInput is 0 or an empty string, it will return 'default' even though 0 and empty string might be valid values you want to keep. This behavior can lead to bugs when you actually want to use falsy values like 0, false, or empty strings.\n\nThe nullish coalescing operator (??), introduced in ES2020, only returns the right-hand side value when the left-hand side is null or undefined. It treats all other values, including 0, false, empty string, and NaN, as valid values and returns them. For example, if you write const value = userInput ?? 'default', it will only use 'default' when userInput is null or undefined, but it will keep 0, false, or empty string if those are the actual values. This makes ?? more precise and safer when you want to distinguish between intentionally set falsy values and missing values.\n\nThe key difference is that || checks for any falsy value while ?? only checks for null or undefined. This makes ?? the better choice in most scenarios where you want to provide default values but still allow falsy values like 0, false, or empty strings to be used. For example, when setting a user's age where 0 might be a valid value, you should use age ?? 18 rather than age || 18, because the latter would replace 0 with 18 incorrectly. Similarly, for boolean flags where false is a valid value, you should use isEnabled ?? true rather than isEnabled || true. Common use cases for ?? include handling optional function parameters where 0 or false are valid, setting default values for potentially null or undefined API responses, providing fallback values in configuration objects, and working with form inputs where empty strings might be intentional. In short, use || when you want to replace any falsy value, and use ?? when you only want to replace null or undefined while keeping other falsy values like 0, false, and empty strings.",
     category: "javascript",
@@ -2818,16 +2821,42 @@ So useEffect gives us mount, update, and unmount behavior in a single hook`,
     answer:
       "React Server Components run only on the server and render once. They are not executed in the browser, so they don’t have a component lifecycle or access to the DOM. Hooks like useState and useEffect are meant for client-side interactivity—useState updates UI on user actions, and useEffect runs side effects after rendering in the browser. Since Server Components don’t run in the browser, these hooks cannot work. To use them, the component must be marked with 'use client' so it runs on the client.",
     category: "react",
-  }
-,  
+  },
+  {
+    id: 203330,
+    question: "What is the difference between axios and fetch",
+    answer:
+      "Fetch and Axios are both used to make HTTP requests in JavaScript.The main difference is that fetch is a built-in browser API, while Axios is a third-party library \n\n With fetch, we have to manually handle JSON parsing using response.json() and also check response.ok for errors, because fetch only rejects on network failures \n\n Axios, on the other hand, automatically parses JSON and treats HTTP errors like 4xx and 5xx as rejected promises, which makes error handling simpler.\n\n Axios also provides additional features like interceptors, request cancellation, timeouts, and global configuration, which are very useful in medium to large applications",
+    category: "javascript",
+  },
+  {
+    id: 20333099,
+    question: "What is the difference between HTTP and HTTPS?",
+    answer:
+      "HTTP and HTTPS are protocols used for communication between a client and a server. The main difference is security. \n\n HTTP sends data in plain text, which means anyone can intercept and read the data during transmission. It does not provide encryption, so it is not secure for sensitive information like passwords or payment details. \n\n HTTPS is the secure version of HTTP. It uses SSL/TLS encryption to encrypt the data before sending it over the network. This ensures data confidentiality, integrity, and authentication, meaning the data cannot be easily read or modified by attackers. \n\n In simple terms, HTTP is fast but insecure, while HTTPS is secure and trusted. That’s why HTTPS is mandatory for modern websites, especially for login, forms, and payments.",
+    category: "javascript",
+  },
+  {
+    id: 123456789,
+    question: "REST API vs GraphQL – Which is better for your project?",
+    answer:
+      "REST API and GraphQL are both used to fetch data from the backend, but they work in different ways. REST uses multiple endpoints for different resources, while GraphQL usually exposes a single endpoint where the client can request exactly the data it needs. \n\n In REST, over-fetching or under-fetching of data can happen because the server decides the response structure. In GraphQL, the client controls the response, which helps reduce unnecessary data transfer. \n\n REST is simpler, easy to cache, and works very well for small to medium applications. GraphQL is more flexible and powerful for complex applications with multiple clients like web and mobile apps. \n\n So, for simple CRUD-based projects, REST is usually a better choice. For large, data-driven applications where flexibility is important, GraphQL is often the better option.",
+    category: "javascript",
+  },
+  {
+    id: 203335100,
+    question: "Core OOP Concepts – Encapsulation, Inheritance, Polymorphism",
+    answer:
+      "Object-Oriented Programming is based on core concepts that help us write clean, reusable, and maintainable code. \n\n Encapsulation means wrapping data and methods together inside a class and controlling access to them. It helps protect data from unauthorized access. For example, using private variables and public methods to read or update them. \n\n Inheritance allows one class to reuse the properties and methods of another class. This helps avoid code duplication and improves reusability. For example, a Child class inheriting features from a Parent class. \n\n Polymorphism means the same method name can behave differently based on the object or class. This can be achieved using method overriding or method overloading. It improves flexibility and scalability of the code. \n\n In simple terms, Encapsulation is about data protection, Inheritance is about code reuse, and Polymorphism is about flexibility.",
+    category: "javascript",
+  },
   {
     id: 2030,
     question: "Why does hydration mismatch happen in Next.js?",
     answer:
       "Hydration mismatch happens when the HTML rendered on the server is different from what React renders on the client during hydration. Since Next.js renders pages on the server first, any difference in data or markup between server and client causes this error. Common reasons include using browser-only APIs like window or localStorage during render, using time-based or random values, or rendering different content on server and client. To fix it, browser-specific code should run inside useEffect, dynamic imports with SSR disabled can be used, and the HTML structure should remain consistent.",
     category: "nextjs",
-  }
-  
+  },
 ];
 
 export const getCategoryQuestions = (
