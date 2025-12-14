@@ -2927,8 +2927,31 @@ So useEffect gives us mount, update, and unmount behavior in a single hook`,
     answer:
       "No, Redux should not replace local state completely. Redux is meant for managing global and shared state that is used across multiple components, such as user data, authentication status, or app-wide settings. Local state, managed using useState or useReducer, is better suited for UI-specific state like form inputs, toggles, modals, or dropdown visibility. Using Redux for every small UI state can make the code more complex and harder to maintain. The best practice is to use local state for component-level UI logic and Redux only when state needs to be shared or persisted across the application.",
     category: "redux"
+  },{
+    id: 98989234010,
+    question: "What is an Execution Context in JavaScript?",
+    answer:
+      "An Execution Context is the environment in which JavaScript code is created and executed. It determines which variables, functions, and objects are accessible at a given time. When JavaScript runs, it first creates a Global Execution Context, and every time a function is called, a new Function Execution Context is created. Each execution context contains a Variable Environment (for var and function declarations), a Lexical Environment (for let, const, and scope chaining), and a this binding. Execution contexts are managed using the call stack, which ensures code runs in the correct order.",
+    category: "javascript"
+  },{
+    id: 9898349011,
+    question: "What is the Creation Phase and Execution Phase in JavaScript?",
+    answer:
+      "Every execution context in JavaScript goes through two phases: the Creation Phase and the Execution Phase. In the Creation Phase, memory is allocated before the code runs. During this phase, variables declared with var are initialized with undefined, function declarations are fully hoisted and stored in memory, and the value of the this keyword is determined. No code is executed at this stage. In the Execution Phase, JavaScript starts executing the code line by line. Variables are assigned their actual values, functions are invoked, and expressions are evaluated. These two phases together explain how hoisting and execution work internally in JavaScript.",
+    category: "javascript"
+  },{
+    id: 98123989012,
+    question: "What is a Lexical Environment in JavaScript?",
+    answer:
+      "A Lexical Environment is the internal structure where JavaScript stores variables and defines scope. It is determined at write-time, not at run-time, meaning the scope of variables is decided based on where the code is written. A lexical environment consists of an Environment Record, which holds variables and function declarations, and a reference to the outer lexical environment. This outer reference allows JavaScript to access variables from parent scopes.",
+    category: "javascript"
+  },{
+    id: 98989234013,
+    question: "What is the Scope Chain in JavaScript?",
+    answer:
+      "The Scope Chain is the mechanism JavaScript uses to resolve variable access. When JavaScript looks for a variable, it first checks the current lexical scope. If the variable is not found, it moves to the parent scope, then continues upward through outer scopes until it reaches the global scope. If the variable is still not found, the search stops and a reference error is thrown. This chain of lexical environments is called the scope chain.",
+    category: "javascript"
   }
-  
 ];
 
 export const getCategoryQuestions = (
