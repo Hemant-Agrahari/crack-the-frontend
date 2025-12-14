@@ -779,9 +779,10 @@ export const questions: Question[] = [
     id: 101010102,
     question: "What is a Promise in JavaScript?",
     answer:
-      "A Promise in JavaScript is basically a way to handle asynchronous operations in a cleaner and more predictable way. Instead of relying on nested callbacks, a Promise gives us an object that represents a value that we will get in the future — either the operation succeeds or it fails.\n\nA Promise starts in the pending state, and once the async work is done, it either resolves or rejects. We handle the success using .then() and handle errors using .catch(). The main advantage of Promises is that they make async flows easier to manage and help avoid callback hell. Promises are also the foundation of async/await, which makes asynchronous code look and behave more like synchronous code.",
+      "A Promise in JavaScript is an object used to handle asynchronous operations by representing a value that will be available in the future. It allows us to manage async tasks like API calls or background operations in a structured and predictable way. A Promise has three states: pending, fulfilled, and rejected. When the operation succeeds, the promise is resolved and handled using .then(); when it fails, it is rejected and handled using .catch(). Promises help avoid callback hell, improve error handling, and form the foundation of async/await, making asynchronous code easier to read and maintain.",
     category: "javascript",
-  },
+  }
+,  
   {
     id: 62,
     question: "What is Promise chaining and how does it work?",
@@ -2811,6 +2812,22 @@ So useEffect gives us mount, update, and unmount behavior in a single hook`,
       "The nullish coalescing operator (??) and the logical OR operator (||) are both used to provide default values, but they behave differently when evaluating falsy values. The logical OR operator (||) returns the right-hand side value when the left-hand side is any falsy value, including false, 0, empty string (''), NaN, null, or undefined. This means if you write const value = userInput || 'default', and userInput is 0 or an empty string, it will return 'default' even though 0 and empty string might be valid values you want to keep. This behavior can lead to bugs when you actually want to use falsy values like 0, false, or empty strings.\n\nThe nullish coalescing operator (??), introduced in ES2020, only returns the right-hand side value when the left-hand side is null or undefined. It treats all other values, including 0, false, empty string, and NaN, as valid values and returns them. For example, if you write const value = userInput ?? 'default', it will only use 'default' when userInput is null or undefined, but it will keep 0, false, or empty string if those are the actual values. This makes ?? more precise and safer when you want to distinguish between intentionally set falsy values and missing values.\n\nThe key difference is that || checks for any falsy value while ?? only checks for null or undefined. This makes ?? the better choice in most scenarios where you want to provide default values but still allow falsy values like 0, false, or empty strings to be used. For example, when setting a user's age where 0 might be a valid value, you should use age ?? 18 rather than age || 18, because the latter would replace 0 with 18 incorrectly. Similarly, for boolean flags where false is a valid value, you should use isEnabled ?? true rather than isEnabled || true. Common use cases for ?? include handling optional function parameters where 0 or false are valid, setting default values for potentially null or undefined API responses, providing fallback values in configuration objects, and working with form inputs where empty strings might be intentional. In short, use || when you want to replace any falsy value, and use ?? when you only want to replace null or undefined while keeping other falsy values like 0, false, and empty strings.",
     category: "javascript",
   },
+  {
+    id: 2029,
+    question: "Why React Server Components cannot use useState or useEffect?",
+    answer:
+      "React Server Components run only on the server and render once. They are not executed in the browser, so they don’t have a component lifecycle or access to the DOM. Hooks like useState and useEffect are meant for client-side interactivity—useState updates UI on user actions, and useEffect runs side effects after rendering in the browser. Since Server Components don’t run in the browser, these hooks cannot work. To use them, the component must be marked with 'use client' so it runs on the client.",
+    category: "react",
+  }
+,  
+  {
+    id: 2030,
+    question: "Why does hydration mismatch happen in Next.js?",
+    answer:
+      "Hydration mismatch happens when the HTML rendered on the server is different from what React renders on the client during hydration. Since Next.js renders pages on the server first, any difference in data or markup between server and client causes this error. Common reasons include using browser-only APIs like window or localStorage during render, using time-based or random values, or rendering different content on server and client. To fix it, browser-specific code should run inside useEffect, dynamic imports with SSR disabled can be used, and the HTML structure should remain consistent.",
+    category: "nextjs",
+  }
+  
 ];
 
 export const getCategoryQuestions = (
