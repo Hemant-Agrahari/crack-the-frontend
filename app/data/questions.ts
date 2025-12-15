@@ -430,13 +430,13 @@ export const questions: Question[] = [
       "Immutable:Immutable means once created, the value cannot be changed. All primitive types (string, number, boolean, etc.) are immutable. When you modify a primitive, you create a new value. \n\n Mutable: means the object's contents can be modified after creation. All non-primitive types (objects, arrays) are mutable. Changes affect the original object. For example, strings are immutable - you can't change a character, but objects are mutable - you can add/modify properties.",
     category: "javascript",
   },
-  {
-    id: 609765552,
-    question: "What is the difference between null and undefined?",
-    answer:
-      "In JavaScript, null and undefined both represent 'no value', but they are used differently.\n\n🟣 undefined:\n- A variable is undefined when it is declared but not assigned.\n- Default value of uninitialized variables.\n- Functions return undefined if no return value is given.\n- Property that does not exist on an object is undefined.\n\nExample:\nlet a;\nconsole.log(a); // undefined\n\n🔵 null:\n- null is an assigned value.\n- It represents 'intentional absence' of value.\n- Developer sets it manually when they want to clear or reset a variable.\n\nExample:\nlet b = null;\nconsole.log(b); // null\n\n🟡 Key Difference:\n- undefined means the value is missing unintentionally.\n- null means the value is intentionally empty.\n\nIn short: undefined = not assigned, null = intentionally assigned empty value.",
-    category: "javascript",
-  },
+ {
+  id: 609765552,
+  question: "What is the difference between null and undefined?",
+  answer:
+    "In JavaScript, undefined means a variable has been declared but has not been assigned any value, usually by default from the JavaScript engine. Null, on the other hand, is an intentional value assigned by the developer to represent an empty or cleared state. In short, undefined is unintentional or system-assigned, while null is intentional and developer-assigned.",
+  category: "javascript"
+},
   {
     id: 34,
     question: "What are truthy and falsy values?",
@@ -470,57 +470,63 @@ export const questions: Question[] = [
     category: "javascript",
   },
   {
-    id: 53,
-    question: "What is the Temporal Dead Zone (TDZ)?",
-    answer:
-      "The Temporal Dead Zone (TDZ) is the period between entering a block scope and reaching the declaration of a let or const variable. In this phase, the variable is hoisted but not initialized, so any access to it results in a ReferenceError. TDZ ensures predictable behavior by preventing the use of variables before their declaration, unlike var which is initialized to undefined. This helps avoid accidental bugs and makes block-scoped variables more reliable.",
-    category: "javascript",
-  },
+  id: 609765553,
+  question: "What is Temporal Dead Zone (TDZ) in JavaScript?",
+  answer:
+    "The Temporal Dead Zone refers to the time between entering a block scope and the actual declaration of a variable using let or const. During this phase, the variable exists in memory but cannot be accessed, and attempting to do so results in a ReferenceError. TDZ helps prevent bugs by ensuring variables are not used before they are properly declared and initialized.",
+  category: "javascript"
+}
+,
 
   // ========================================
   // SECTION 4: Operators & Comparisons
   // ========================================
   {
-    id: 2193,
-    question: "What is the difference between == and === in JavaScript?",
-    answer:
-      "In JavaScript, == and === are comparison operators, but they work differently.\n\n🔵 == (Loose Equality):\n- Compares values after performing type conversion.\n- If the types are different, JavaScript converts them into the same type before comparing.\n- Can lead to unexpected results.\n\nExample:\n0 == '0'   // true\n1 == true  // true\nnull == undefined // true\n\n🟣 === (Strict Equality):\n- Compares both value AND type.\n- No type conversion is performed.\n- More predictable and recommended.\n\nExample:\n0 === '0'  // false\n1 === true // false\n10 === 10  // true\n\n🟡 Key Difference:\n- == compares values after type coercion.\n- === compares both value and type without coercion.\n\nIn short: === is strict and safer, while == does type conversion before comparing.",
-    category: "javascript",
-  },
+  id: 2193,
+  question: "What is the difference between == and === in JavaScript?",
+  answer:
+    "In JavaScript, == compares only the values and allows type conversion if the operands are of different types. === compares both the value and the data type without performing any type conversion. Because === is stricter and avoids unexpected behavior caused by implicit type coercion, it is generally preferred in real-world applications.",
+  category: "javascript"
+},
 
   // ========================================
   // SECTION 5: Functions
   // ========================================
   {
-    id: 2391,
-    question:
-      "What is the difference between function declaration and function initialization (function expression)?",
-    answer:
-      "The difference between a function declaration and a function initialization, which we also call a function expression, mainly comes from how they are defined and how they behave during hoisting.\n\nA function declaration is when we define a function with a name directly in the code using the function keyword. The big advantage is that declarations are fully hoisted, meaning the entire function is moved to the top of its scope. So we can call a function declaration even before it appears in the code.\n\nA function expression is when we assign a function to a variable. Here, the variable gets hoisted but not the actual function value. This means we cannot call a function expression before it's initialized, because until that line is executed, the variable holds undefined. Function expressions are often used when we want more control, like creating anonymous functions, callbacks, or when we want to store functions inside objects.",
-    category: "javascript",
-  },
+  id: 2391,
+  question:
+    "What is the difference between function declaration and function initialization (function expression)?",
+  answer:
+    "A function declaration is defined using the function keyword with a name and is fully hoisted, which means it can be called before its definition in the code. A function expression is created by assigning a function to a variable; in this case, only the variable is hoisted, not the function itself, so it cannot be used before initialization. In practice, function declarations are useful for reusable logic, while function expressions are commonly used for callbacks, closures, and more controlled function behavior.",
+  category: "javascript"
+}
+,
   {
-    id: 4095,
-    question:
-      "What is the difference between arrow function and normal function in JavaScript?",
-    answer:
-      "Arrow functions and normal functions both help define functions, but they behave differently in terms of syntax, this binding, arguments handling, and usage.\n\n🔵 Normal Function:\n- Has its own 'this' context.\n- 'this' depends on how the function is called.\n- Has 'arguments' object.\n- Can be used as constructors.\n- More flexible but longer syntax.\n\nExample:\nfunction add(a, b) {\n  return a + b;\n}\n\n🟣 Arrow Function:\n- Does NOT have its own 'this'.\n- Inherits 'this' from the parent (lexical this).\n- Does NOT have 'arguments' object.\n- Cannot be used as constructors.\n- Shorter and cleaner syntax.\n\nExample:\nconst add = (a, b) => a + b;\n\n🟡 Key Differences:\n- Normal functions have their own this; arrow functions do not.\n- Arrow functions cannot use arguments or be used with new.\n- Arrow functions are shorter and preferred for callbacks.\n\nIn short: Normal functions have their own this and arguments, while arrow functions use lexical this and are better for concise, callback-style code.",
-    category: "javascript",
-  },
+  id: 4093455,
+  question:
+    "What is the difference between arrow function and normal function in JavaScript?",
+  answer:
+    "The main difference between arrow functions and normal functions lies in how they handle `this` and function behavior. Normal functions have their own `this` context, which depends on how the function is called, and they also have access to the `arguments` object and can be used as constructors. Arrow functions do not have their own `this`; instead, they inherit `this` from their surrounding scope, which makes them very useful in callbacks and React components. Arrow functions also do not have the `arguments` object and cannot be used with the `new` keyword. Because of their concise syntax and predictable `this` behavior, arrow functions are commonly preferred for inline and callback functions.",
+  category: "javascript"
+}
+,
   {
-    id: 75.22,
-    question: "List out type of function in JavaScript?",
-    answer:
-      " \n\n1. Anonymous function example: function() { console.log('Hello'); } \n2. Arrow function example: () => { console.log('Hello'); } \n3. Named function example: function myFunction() { console.log('Hello'); } \n4. Constructor function example: function MyConstructor() { this.name = 'John'; } \n5. Generator function example: function* myGenerator() { yield 1; yield 2; yield 3; } \n6. Async function example: async function myAsyncFunction() { await new Promise(resolve => setTimeout(resolve, 1000)); console.log('Hello'); }",
-    category: "javascript",
-  },
+  id: 75.22,
+  question: "List out type of function in JavaScript?",
+  answer:
+    "JavaScript supports multiple types of functions used in different scenarios.\n\nNamed function: Functions declared with a name and commonly used for reusable and well-structured logic.\n\nAnonymous function: Functions without a name, usually used as callbacks or passed as arguments to other functions.\n\nArrow function: Provides a shorter syntax and uses lexical `this`, making it very useful in callbacks and React components.\n\nConstructor function: Used with the `new` keyword to create and initialize objects.\n\nGenerator function: Allows pausing and resuming execution using the `yield` keyword, useful for handling sequences and iteration.\n\nAsync function: Used to handle asynchronous operations in a clean and readable way using `async` and `await`.",
+  category: "javascript"
+}
+
+,
   {
-    id: 93330,
-    question: "What is a callback in JavaScript?",
-    answer:
-      "A callback is a function passed as an argument to another function and executed after the completion of that function. It allows JavaScript to handle asynchronous operations like API calls, timers, and event handling.\n\n🔵 Why Callbacks Are Used:\n- To run code after an async task completes.\n- To avoid blocking the main thread.\n- To control execution order in async programming.\n\n🟣 Example:\nfunction fetchData(callback) {\n  setTimeout(() => {\n    callback('Data loaded');\n  }, 2000);\n}\n\nfetchData(function(message) {\n  console.log(message); // Data loaded\n});\n\n🟡 Real-Time Examples:\n- setTimeout()\n- Event listeners\n- Reading files (Node.js)\n- API calls (older style)\n\n🟠 Problem With Callbacks:\n- Nested callbacks lead to callback hell (pyramid of doom).\n- Hard to read, manage, and debug.\n\nIn short: A callback is a function executed after another function finishes, mostly used in asynchronous operations.",
-    category: "javascript",
-  },
+  id: 93330,
+  question: "What is a callback in JavaScript?",
+  answer:
+    "A callback in JavaScript is a function that is passed as an argument to another function and executed later, usually after an asynchronous operation completes. Callbacks are commonly used to handle tasks like API calls, timers, and event handling without blocking the main thread. They help control the order of execution in asynchronous code, but excessive nesting of callbacks can make code hard to read and maintain, which is why promises and async/await are preferred in modern JavaScript.",
+  category: "javascript"
+}
+,
   {
     id: 73,
     question: "What is a currying function?",
@@ -528,13 +534,13 @@ export const questions: Question[] = [
       "Currying is a technique in JavaScript where a function is transformed into a sequence of functions, each taking a single argument. Instead of passing all arguments at once (func(a, b, c)), you pass them one by one (func(a)(b)(c)). Each function returns another function until all arguments are received. Benefits: partial application (pre-fill some arguments), reusability, and functional composition. Example: const add = a => b => c => a + b + c; add(1)(2)(3) returns 6.",
     category: "javascript",
   },
-  {
-    id: 76107,
-    question: "What is a Higher-Order Function in JavaScript?",
-    answer:
-      "A Higher-Order Function (HOF) is a function that either takes another function as an argument, returns a function, or does both. It allows functional programming techniques and makes code more reusable and modular.\n\n🔵 Characteristics of Higher-Order Functions:\n- Accepts one or more functions as parameters.\n- Can return another function.\n- Helps in abstraction and cleaner code.\n\n🟣 Examples of Higher-Order Functions:\n1. Built-in HOFs: map(), filter(), reduce(), forEach(), setTimeout().\n2. Custom HOF Example:\n\nfunction greet(message) {\n  return function(name) {\n    return message + ' ' + name;\n  };\n}\n\nconst sayHello = greet('Hello');\nconsole.log(sayHello('Hemant')); // Hello Hemant\n\n🟡 Why Higher-Order Functions Are Useful:\n- Improve reusability.\n- Help write clean and maintainable code.\n- Enable functional programming patterns.\n- Make async operations easier.\n\nIn short: A higher-order function is any function that takes another function as input or returns a new function as output.",
-    category: "javascript",
-  },
+ {
+  id: 76107,
+  question: "What is a Higher-Order Function in JavaScript?",
+  answer:
+    "A Higher-Order Function is a function that either takes another function as an argument, returns a function, or does both. It is commonly used to write reusable, modular, and clean code. In real-world JavaScript, functions like map, filter, reduce, and setTimeout are higher-order functions, and they are widely used for data transformation, abstraction, and functional programming patterns.",
+  category: "javascript"
+},
   {
     id: 248502,
     question: "What is Pure functions",
@@ -561,20 +567,16 @@ export const questions: Question[] = [
     category: "javascript",
   },
   {
-    id: 9744,
-    question:
-      "What is the difference between call, apply, and bind in JavaScript?",
-    answer:
-      "call, apply, and bind are all used to control the value of 'this' when we invoke a function. The difference is mainly in how the function is executed and how we pass the arguments.\n\nWith call, we directly invoke the function and pass arguments one by one. It immediately runs the function in the context of the object we provide.\n\napply works almost the same way as call, but the only difference is that it expects the arguments in an array instead of individual values. It's useful when you already have your data in an array and want to pass it directly.\n\nbind is different from both because it does not run the function immediately. Instead, it returns a new function with 'this' permanently bound to the object we pass. We can call that new function later whenever we need it. It's commonly used in event handlers or situations where we want to keep the correct 'this' value for later execution.",
-    category: "javascript",
-  },
-  {
-    id: 99123,
-    question: "What is the difference between call(), apply() and bind()?",
-    answer:
-      "call() is a method that lets you run a function by explicitly setting what this should refer to and by providing the function arguments one by one.It executes the function instantly with the chosen context.\n\n apply() works just like call(), but it takes the function arguments in the form of an array or array-like object.It also executes the function immediately with the specified this. \n\n bind() creates a new function where the value of this is permanently set to the provided object.It does not run the function immediately — it returns a copy that can be called later with the fixed context.",
-    category: "javascript",
-  },
+  id: 129744,
+  question:
+    "What is the difference between call, apply, and bind in JavaScript?",
+  answer:
+    "call, apply, and bind are built-in methods of JavaScript functions used to control what `this` refers to when a function runs.\n\ncall method is used to execute the function immediately, and arguments are passed one by one.\n\napply method is also used to execute the function immediately, but arguments are passed as an array, which is helpful when values are already grouped.\n\nbind method is different because it does not execute the function immediately. Instead, it returns a new function with `this` fixed to a specific object, which can be called later. In real-world code, call and apply are used for immediate execution, while bind is commonly used in callbacks and event handlers to preserve the correct `this` value.",
+  category: "javascript"
+}
+
+,
+
 
   // ========================================
   // SECTION 7: Closures
