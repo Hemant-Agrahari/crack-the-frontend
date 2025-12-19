@@ -20,9 +20,9 @@ export function Tabs({ tabs, activeTab, onTabChange }: TabsProps) {
           <button
             key={tab.id}
             onClick={() => onTabChange(tab.id)}
-            className={`flex items-center gap-2 whitespace-nowrap rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300 ${
+            className={`flex items-center gap-2 whitespace-nowrap rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300 cursor-pointer ${
               activeTab === tab.id
-                ? "bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white shadow-lg shadow-violet-500/25"
+                ? "bg-linear-to-r from-violet-600 to-fuchsia-600 text-white shadow-lg shadow-violet-500/25"
                 : "text-slate-400 hover:bg-slate-800/50 hover:text-slate-200"
             }`}
           >
