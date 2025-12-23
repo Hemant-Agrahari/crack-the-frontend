@@ -366,7 +366,7 @@ export const questions: Question[] = [
     id: 2485,
     question: "What is JavaScript?",
     answer:
-      "JavaScript is a high-level, dynamic programming language that enables interactive and responsive behavior on the web. It runs directly in the browser and allows developers to update the UI in real time, handle user actions, communicate with servers, and manage application logic without requiring a page reload. Over the years, JavaScript has evolved into a powerful ecosystem that supports modern development patterns, including functional, object-oriented, and asynchronous programming using promises and async/await. With its ability to manipulate the DOM, interact with APIs, and run both on the client and server through technologies like Node.js, JavaScript has become the backbone of modern web applications. For example, a simple line like console.log('Hello JavaScript') immediately executes in the browser console, showing how quickly the language responds. In essence, JavaScript is the core language that drives dynamic user experiences and powers everything from small UI interactions to full-scale single-page applications.",
+      "JavaScript is a high-level, event-driven scripting language used to build dynamic and interactive web applications. It handles user interactions, DOM manipulation, and asynchronous operations, and also enables server-side development using runtimes like Node.js. In modern applications, JavaScript plays a key role in state management, API communication, performance optimization, and building scalable UI architectures with frameworks like React and Next.js.",
     category: "javascript",
   },
   {
