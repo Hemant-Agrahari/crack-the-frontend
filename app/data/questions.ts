@@ -430,13 +430,13 @@ export const questions: Question[] = [
       "Immutable:Immutable means once created, the value cannot be changed. All primitive types (string, number, boolean, etc.) are immutable. When you modify a primitive, you create a new value. \n\n Mutable: means the object's contents can be modified after creation. All non-primitive types (objects, arrays) are mutable. Changes affect the original object. For example, strings are immutable - you can't change a character, but objects are mutable - you can add/modify properties.",
     category: "javascript",
   },
- {
-  id: 609765552,
-  question: "What is the difference between null and undefined?",
-  answer:
-    "In JavaScript, undefined means a variable has been declared but has not been assigned any value, usually by default from the JavaScript engine. Null, on the other hand, is an intentional value assigned by the developer to represent an empty or cleared state. In short, undefined is unintentional or system-assigned, while null is intentional and developer-assigned.",
-  category: "javascript"
-},
+  {
+    id: 609765552,
+    question: "What is the difference between null and undefined?",
+    answer:
+      "In JavaScript, undefined means a variable has been declared but has not been assigned any value, usually by default from the JavaScript engine. Null, on the other hand, is an intentional value assigned by the developer to represent an empty or cleared state. In short, undefined is unintentional or system-assigned, while null is intentional and developer-assigned.",
+    category: "javascript",
+  },
   {
     id: 34,
     question: "What are truthy and falsy values?",
@@ -470,63 +470,57 @@ export const questions: Question[] = [
     category: "javascript",
   },
   {
-  id: 609765553,
-  question: "What is Temporal Dead Zone (TDZ) in JavaScript?",
-  answer:
-    "The Temporal Dead Zone refers to the time between entering a block scope and the actual declaration of a variable using let or const. During this phase, the variable exists in memory but cannot be accessed, and attempting to do so results in a ReferenceError. TDZ helps prevent bugs by ensuring variables are not used before they are properly declared and initialized.",
-  category: "javascript"
-}
-,
-
+    id: 609765553,
+    question: "What is Temporal Dead Zone (TDZ) in JavaScript?",
+    answer:
+      "The Temporal Dead Zone refers to the time between entering a block scope and the actual declaration of a variable using let or const. During this phase, the variable exists in memory but cannot be accessed, and attempting to do so results in a ReferenceError. TDZ helps prevent bugs by ensuring variables are not used before they are properly declared and initialized.",
+    category: "javascript",
+  },
   // ========================================
   // SECTION 4: Operators & Comparisons
   // ========================================
   {
-  id: 2193,
-  question: "What is the difference between == and === in JavaScript?",
-  answer:
-    "In JavaScript, == compares only the values and allows type conversion if the operands are of different types. === compares both the value and the data type without performing any type conversion. Because === is stricter and avoids unexpected behavior caused by implicit type coercion, it is generally preferred in real-world applications.",
-  category: "javascript"
-},
+    id: 2193,
+    question: "What is the difference between == and === in JavaScript?",
+    answer:
+      "In JavaScript, == compares only the values and allows type conversion if the operands are of different types. === compares both the value and the data type without performing any type conversion. Because === is stricter and avoids unexpected behavior caused by implicit type coercion, it is generally preferred in real-world applications.",
+    category: "javascript",
+  },
 
   // ========================================
   // SECTION 5: Functions
   // ========================================
   {
-  id: 2391,
-  question:
-    "What is the difference between function declaration and function initialization (function expression)?",
-  answer:
-    "A function declaration is defined using the function keyword with a name and is fully hoisted, which means it can be called before its definition in the code. A function expression is created by assigning a function to a variable; in this case, only the variable is hoisted, not the function itself, so it cannot be used before initialization. In practice, function declarations are useful for reusable logic, while function expressions are commonly used for callbacks, closures, and more controlled function behavior.",
-  category: "javascript"
-}
-,
+    id: 2391,
+    question:
+      "What is the difference between function declaration and function initialization (function expression)?",
+    answer:
+      "A function declaration is defined using the function keyword with a name and is fully hoisted, which means it can be called before its definition in the code. A function expression is created by assigning a function to a variable; in this case, only the variable is hoisted, not the function itself, so it cannot be used before initialization. In practice, function declarations are useful for reusable logic, while function expressions are commonly used for callbacks, closures, and more controlled function behavior.",
+    category: "javascript",
+  },
   {
-  id: 4093455,
-  question:
-    "What is the difference between arrow function and normal function in JavaScript?",
-  answer:
-    "The main difference between arrow functions and normal functions lies in how they handle `this` and function behavior. Normal functions have their own `this` context, which depends on how the function is called, and they also have access to the `arguments` object and can be used as constructors. Arrow functions do not have their own `this`; instead, they inherit `this` from their surrounding scope, which makes them very useful in callbacks and React components. Arrow functions also do not have the `arguments` object and cannot be used with the `new` keyword. Because of their concise syntax and predictable `this` behavior, arrow functions are commonly preferred for inline and callback functions.",
-  category: "javascript"
-}
-,
+    id: 4093455,
+    question:
+      "What is the difference between arrow function and normal function in JavaScript?",
+    answer:
+      "The main difference between arrow functions and normal functions lies in how they handle `this` and function behavior. Normal functions have their own `this` context, which depends on how the function is called, and they also have access to the `arguments` object and can be used as constructors. Arrow functions do not have their own `this`; instead, they inherit `this` from their surrounding scope, which makes them very useful in callbacks and React components. Arrow functions also do not have the `arguments` object and cannot be used with the `new` keyword. Because of their concise syntax and predictable `this` behavior, arrow functions are commonly preferred for inline and callback functions.",
+    category: "javascript",
+  },
   {
-  id: 75.22,
-  question: "List out type of function in JavaScript?",
-  answer:
-    "JavaScript supports multiple types of functions used in different scenarios.\n\nNamed function: Functions declared with a name and commonly used for reusable and well-structured logic.\n\nAnonymous function: Functions without a name, usually used as callbacks or passed as arguments to other functions.\n\nArrow function: Provides a shorter syntax and uses lexical `this`, making it very useful in callbacks and React components.\n\nConstructor function: Used with the `new` keyword to create and initialize objects.\n\nGenerator function: Allows pausing and resuming execution using the `yield` keyword, useful for handling sequences and iteration.\n\nAsync function: Used to handle asynchronous operations in a clean and readable way using `async` and `await`.",
-  category: "javascript"
-}
+    id: 75.22,
+    question: "List out type of function in JavaScript?",
+    answer:
+      "JavaScript supports multiple types of functions used in different scenarios.\n\nNamed function: Functions declared with a name and commonly used for reusable and well-structured logic.\n\nAnonymous function: Functions without a name, usually used as callbacks or passed as arguments to other functions.\n\nArrow function: Provides a shorter syntax and uses lexical `this`, making it very useful in callbacks and React components.\n\nConstructor function: Used with the `new` keyword to create and initialize objects.\n\nGenerator function: Allows pausing and resuming execution using the `yield` keyword, useful for handling sequences and iteration.\n\nAsync function: Used to handle asynchronous operations in a clean and readable way using `async` and `await`.",
+    category: "javascript",
+  },
 
-,
   {
-  id: 93330,
-  question: "What is a callback in JavaScript?",
-  answer:
-    "A callback in JavaScript is a function that is passed as an argument to another function and executed later, usually after an asynchronous operation completes. Callbacks are commonly used to handle tasks like API calls, timers, and event handling without blocking the main thread. They help control the order of execution in asynchronous code, but excessive nesting of callbacks can make code hard to read and maintain, which is why promises and async/await are preferred in modern JavaScript.",
-  category: "javascript"
-}
-,
+    id: 93330,
+    question: "What is a callback in JavaScript?",
+    answer:
+      "A callback in JavaScript is a function that is passed as an argument to another function and executed later, usually after an asynchronous operation completes. Callbacks are commonly used to handle tasks like API calls, timers, and event handling without blocking the main thread. They help control the order of execution in asynchronous code, but excessive nesting of callbacks can make code hard to read and maintain, which is why promises and async/await are preferred in modern JavaScript.",
+    category: "javascript",
+  },
   {
     id: 73,
     question: "What is a currying function?",
@@ -534,13 +528,13 @@ export const questions: Question[] = [
       "Currying is a technique in JavaScript where a function is transformed into a sequence of functions, each taking a single argument. Instead of passing all arguments at once (func(a, b, c)), you pass them one by one (func(a)(b)(c)). Each function returns another function until all arguments are received. Benefits: partial application (pre-fill some arguments), reusability, and functional composition. Example: const add = a => b => c => a + b + c; add(1)(2)(3) returns 6.",
     category: "javascript",
   },
- {
-  id: 76107,
-  question: "What is a Higher-Order Function in JavaScript?",
-  answer:
-    "A Higher-Order Function is a function that either takes another function as an argument, returns a function, or does both. It is commonly used to write reusable, modular, and clean code. In real-world JavaScript, functions like map, filter, reduce, and setTimeout are higher-order functions, and they are widely used for data transformation, abstraction, and functional programming patterns.",
-  category: "javascript"
-},
+  {
+    id: 76107,
+    question: "What is a Higher-Order Function in JavaScript?",
+    answer:
+      "A Higher-Order Function is a function that either takes another function as an argument, returns a function, or does both. It is commonly used to write reusable, modular, and clean code. In real-world JavaScript, functions like map, filter, reduce, and setTimeout are higher-order functions, and they are widely used for data transformation, abstraction, and functional programming patterns.",
+    category: "javascript",
+  },
   {
     id: 248502,
     question: "What is Pure functions",
@@ -567,16 +561,13 @@ export const questions: Question[] = [
     category: "javascript",
   },
   {
-  id: 129744,
-  question:
-    "What is the difference between call, apply, and bind in JavaScript?",
-  answer:
-    "call, apply, and bind are built-in methods of JavaScript functions used to control what `this` refers to when a function runs.\n\ncall method is used to execute the function immediately, and arguments are passed one by one.\n\napply method is also used to execute the function immediately, but arguments are passed as an array, which is helpful when values are already grouped.\n\nbind method is different because it does not execute the function immediately. Instead, it returns a new function with `this` fixed to a specific object, which can be called later. In real-world code, call and apply are used for immediate execution, while bind is commonly used in callbacks and event handlers to preserve the correct `this` value.",
-  category: "javascript"
-}
-
-,
-
+    id: 129744,
+    question:
+      "What is the difference between call, apply, and bind in JavaScript?",
+    answer:
+      "call, apply, and bind are built-in methods of JavaScript functions used to control what `this` refers to when a function runs.\n\ncall method is used to execute the function immediately, and arguments are passed one by one.\n\napply method is also used to execute the function immediately, but arguments are passed as an array, which is helpful when values are already grouped.\n\nbind method is different because it does not execute the function immediately. Instead, it returns a new function with `this` fixed to a specific object, which can be called later. In real-world code, call and apply are used for immediate execution, while bind is commonly used in callbacks and event handlers to preserve the correct `this` value.",
+    category: "javascript",
+  },
 
   // ========================================
   // SECTION 7: Closures
@@ -612,7 +603,7 @@ export const questions: Question[] = [
     question:
       "What is the difference between Object.freeze and Object.seal in JavaScript?",
     answer:
-      "Object.freeze and Object.seal are used to control modifications on objects, but they provide different levels of restriction.\n\n🔵 Object.freeze():\n- Makes the object completely immutable.\n- Cannot add new properties.\n- Cannot delete properties.\n- Cannot modify existing property values.\n- The strictest form of object protection.\n\nExample:\nconst obj = Object.freeze({ name: 'Alex' });\nobj.name = 'John'; // No effect\nobj.age = 25; // No effect\n\n🟣 Object.seal():\n- Stops adding or deleting properties.\n- Existing properties CAN be modified.\n- Structure is locked but values are still writable.\n\nExample:\nconst user = Object.seal({ name: 'Alex' });\nuser.name = 'John'; // Works\nuser.age = 25; // No effect (cannot add)\ndelete user.name; // No effect\n\n🟡 Key Difference:\n- freeze → No add, no delete, no change (fully locked).\n- seal → No add, no delete, but values can still change.\n\nIn short: Object.freeze makes an object fully read-only, while Object.seal allows modifying existing values but blocks adding or removing properties.",
+      "Object.freeze and Object.seal are both used to restrict changes to JavaScript objects, but freeze is more strict. Object.freeze makes an object completely immutable, meaning you cannot add new properties, delete existing ones, or modify any values. Object.seal, on the other hand, locks only the structure of the object. You cannot add or remove properties, but you can still change the values of existing properties. In simple terms, freeze locks both structure and values, while seal locks only the structure.",
     category: "javascript",
   },
   {
@@ -672,7 +663,7 @@ export const questions: Question[] = [
     id: 6573,
     question: "What is the difference between map and forEach?",
     answer:
-      "map and forEach are both array iteration methods in JavaScript, but they are used for different purposes.\n\n🔵 forEach:\n- Used only for iterating through an array.\n- Does NOT return a new array.\n- Always returns undefined.\n- Best for performing side effects like logging, updating values, API calls.\n\nExample:\nconst arr = [1, 2, 3];\narr.forEach(item => console.log(item));\n// Output: 1 2 3 (no new array created)\n\n🟣 map:\n- Used to transform each element and return a NEW array.\n- Length remains the same as original array.\n- Best when you need to create a modified array.\n\nExample:\nconst arr = [1, 2, 3];\nconst result = arr.map(item => item * 2);\nconsole.log(result); // [2, 4, 6]\n\n🟡 Key Difference:\n- forEach → Executes logic but returns nothing.\n- map → Executes logic and RETURNS a new transformed array.\n\nIn short: use forEach when you just want to loop, use map when you need a new array.",
+      "Both map and forEach are used to iterate over arrays in JavaScript, but they serve different purposes. forEach is mainly used when you just want to loop through an array and perform some action like logging values, updating variables, or making API calls. It does not return anything and always returns undefined. On the other hand, map is used when you want to transform each element of an array and get a new array as a result. It returns a new array with the same length, where each element is the transformed version of the original. In short, forEach is for side effects, while map is for creating a new array.",
     category: "javascript",
   },
   {
@@ -729,10 +720,9 @@ export const questions: Question[] = [
     question:
       "What is the difference between for...in and for...of in JavaScript?",
     answer:
-      "for...in and for...of are both looping statements, but they are used for different types of iteration.\n\n🔵 for...in:\n- Used to iterate over the **keys (property names)** of an object.\n- Works on objects and arrays (but not recommended for arrays).\n- Returns string keys.\n\nExample:\nconst user = { name: 'Alex', age: 25 };\nfor (let key in user) {\n  console.log(key); // name, age\n}\n\n🟣 for...of:\n- Used to iterate over **values** of an iterable.\n- Works on arrays, strings, maps, sets, NodeLists.\n- Returns actual values, not keys.\n\nExample:\nconst arr = [10, 20, 30];\nfor (let value of arr) {\n  console.log(value); // 10, 20, 30\n}\n\n🟡 Key Difference:\n- for...in → iterates keys (used for objects).\n- for...of → iterates values (used for arrays and iterables).\n\nIn short: Use for...in for object properties and for...of for array or iterable values.",
+      "Both for...in and for...of are looping statements in JavaScript, but they are used for different purposes. for...in is mainly used to iterate over the keys or property names of an object. It gives you the index or key as a string and is generally not recommended for arrays because it can include inherited properties. On the other hand, for...of is used to iterate over the actual values of iterable data structures like arrays, strings, maps, sets, and NodeLists. It directly returns each value, making it the preferred choice for looping over arrays. In simple terms, for...in is used for object keys, while for...of is used for values of arrays and other iterables.",
     category: "javascript",
   },
-
   // ========================================
   // SECTION 10: DOM & Events
   // ========================================
@@ -825,7 +815,7 @@ export const questions: Question[] = [
     question:
       "What is the difference between Promise.all(), Promise.race(), and Promise.allSettled()?",
     answer:
-      "These Promise methods are used to handle multiple asynchronous operations together, but each behaves differently.\n\n🔵 Promise.all():\n- Runs all promises in parallel.\n- Resolves only when ALL promises resolve.\n- If ANY promise fails, the entire Promise.all() fails.\n\nExample:\nPromise.all([p1, p2, p3])\n  .then(res => console.log(res))\n  .catch(err => console.log(err));\n\n🟣 Promise.race():\n- Returns the result of the FIRST promise that settles.\n- Whichever promise resolves or rejects first wins.\n\nExample:\nPromise.race([p1, p2, p3])\n  .then(res => console.log(res))\n  .catch(err => console.log(err));\n\n🟡 Promise.allSettled():\n- Waits for ALL promises to finish.\n- Returns an array of results with status: fulfilled or rejected.\n- Never fails, even if some promises fail.\n\nExample:\nPromise.allSettled([p1, p2, p3])\n  .then(result => console.log(result));\n\n🟠 Key Difference:\n- Promise.all → Fails if one fails.\n- Promise.race → Returns whichever completes first.\n- Promise.allSettled → Returns results of all promises, regardless of success or failure.\n\nIn short: Use Promise.all for all-success situations, race for first-result scenarios, and allSettled when you need outcomes of every promise.",
+      "These Promise methods are used to handle multiple asynchronous operations, but they differ in behavior. Promise.all executes all promises in parallel and resolves only when every promise succeeds; if any promise rejects, it immediately fails. Promise.race returns the result of the first promise that settles, whether it resolves or rejects, so the fastest one decides the outcome. Promise.allSettled waits for all promises to finish and returns the status and value of each promise, regardless of success or failure, and it never rejects. In short, Promise.all is best when all tasks must succeed, Promise.race is useful when only the first result matters, and Promise.allSettled is ideal when you need the result of every promise.",
     category: "javascript",
   },
   {
@@ -917,7 +907,7 @@ export const questions: Question[] = [
     id: 125691,
     question: "What are Rest and Spread operators in JavaScript?",
     answer:
-      "The Rest and Spread operators use the same syntax (three dots ...) but they work in opposite ways.\n\n🔵 Spread Operator:\n- Used to expand or unpack elements from arrays or objects.\n- Commonly used to copy arrays/objects, merge them, or pass values into functions.\n\nExample:\nconst arr = [1, 2, 3];\nconst newArr = [...arr, 4]; // [1,2,3,4]\n\n🔵 Rest Operator:\n- Used to collect or 'gather' multiple elements into a single array.\n- Often used in function parameters or destructuring.\n\nExample:\nfunction sum(...nums) {\n  return nums.reduce((a, b) => a + b, 0);\n}\nsum(1, 2, 3); // 6\n\n🟡 Key Difference:\n- Spread breaks values apart.\n- Rest gathers values together.\n\nIn short: Spread expands data, while Rest collects data, and both make JavaScript more clean and flexible.",
+      "Rest and Spread operators use the same three-dot syntax (...) but serve opposite purposes. The Spread operator is used to expand elements of an array or object, such as copying data, merging arrays or objects, or passing multiple values into a function. On the other hand, the Rest operator is used to collect multiple values into a single array, commonly in function parameters or destructuring. In simple terms, spread breaks data apart, while rest gathers data together, making code cleaner and more flexible.",
     category: "javascript",
   },
   {
@@ -953,19 +943,35 @@ export const questions: Question[] = [
     category: "javascript",
   },
   {
-    id: 56,
-    question: "What is the difference between Debounce and Throttle?",
+    id: 454799,
+    question:
+      "What is the difference between debounce and throttling in JavaScript?",
     answer:
-      "In JavaScript, Debounce and Throttle are used to control high-frequency events like scroll, resize, typing, mouse move, and repeated clicks. Running a function on every event causes UI lag, too many API calls, high CPU usage, and poor user experience.\n\nDebounce — Debounce delays the execution of a function until there is a pause in the event. It runs only once after the user stops performing the action. Best use cases: search box suggestions, form validation while typing, and resize end detection. Example: When a user types a → ap → app → apple, debounce waits for 500ms and triggers only one API call.\n\nThrottle — Throttle allows a function to run at fixed time intervals even if the event fires continuously. Best use cases: scroll handling (infinite scroll, analytics), map dragging, and preventing multiple button clicks. Example: Resend OTP button — even if the user clicks 20 times, OTP sends only once in 30 seconds.\n\nIn short: Debounce waits for user inactivity before executing, while Throttle executes at fixed intervals.",
+      "Debounce and throttling are performance optimization techniques used to control how frequently a function executes. Throttling ensures that a function runs at regular intervals, even if an event like scrolling or resizing keeps firing continuously. This is useful when you want consistent updates without overloading the system. Debouncing, on the other hand, delays the function execution until a certain amount of time has passed since the last event. If the event keeps occurring, the function never runs until the activity stops. In simple terms, throttling runs a function at fixed intervals, while debouncing runs it only after the user stops triggering the event.",
     category: "javascript",
   },
   {
-    id: 454799,
+    id: 9876587874,
     question:
-      "What is the difference between debounce and Throttling in JavaScript?",
+      "How does the Event Loop work? Which has more priority: the macro task queue or the micro task queue? If there are 100 macro tasks and 1 micro task, which will execute first?",
     answer:
-      "Throttling:Throttling is a technique used to limit how many times a function can execute over a period of time.Even if an event keeps firing continuously—like scroll, resize, or button clicks—the throttled function will only run at fixed intervals.This helps improve performance and prevents unnecessary function calls.\n\n debounce:Debouncing is a technique that delays the execution of a function until a certain amount of time has passed without the event being triggered again.If the event keeps happening repeatedly, the timer resets each time, and the function runs only once after the user stops triggering the event",
+      "The Event Loop allows JavaScript to handle asynchronous operations while running on a single thread. When the call stack becomes empty, the Event Loop checks the task queues and decides what to execute next. Micro tasks, such as Promise callbacks, have higher priority than macro tasks like setTimeout or DOM events. After every execution cycle, the Event Loop always clears the entire micro task queue before picking the next macro task. So even if there are 100 macro tasks and only 1 micro task, the micro task will execute first.",
     category: "javascript",
+  },
+  {
+    id: 77465656421,
+    question: "How would you debug a production issue without writing logs?",
+    answer:
+      "When debugging a production issue without writing logs, I would first try to reproduce the issue by understanding the exact user flow, browser, device, and conditions under which the problem occurs. I would use browser developer tools to inspect network requests, API responses, headers, and payloads to check for failures or unexpected data. Tools like error monitoring services, stack traces, and performance metrics help identify where the issue is happening. I would also use feature flags or environment-based configurations to isolate problematic code paths and compare behavior between working and failing scenarios. In short, by reproducing the issue, analyzing network and runtime behavior, and using monitoring and debugging tools, we can identify and fix production issues even without adding logs.",
+    category: "react",
+  },
+  {
+    id: 884517672,
+    question:
+      "If the browser cache becomes full due to your application storing too much data, how would you prevent the application from crashing or breaking? How can you debug and stop a React component from re-rendering multiple times due to changes in another component?",
+    answer:
+      "If the browser cache or storage becomes full, I would first limit how much data the application stores by avoiding unnecessary or large payloads and clearing outdated or unused data regularly. I would use appropriate storage options like sessionStorage instead of localStorage when persistence is not required, implement size checks before saving data, and add error handling around storage operations to gracefully handle quota-exceeded errors. For caching strategies, I would also rely on HTTP caching and service workers instead of storing everything in browser storage. \n\nTo debug and stop unnecessary re-renders in React, I would use React DevTools to identify which components are re-rendering and why. I would check for unnecessary state updates, prop changes, or new object and function references being passed on each render. To fix this, I would memoize components using React.memo, stabilize functions with useCallback, memoize derived values with useMemo, and avoid lifting state higher than necessary. In short, controlling storage usage prevents crashes, and controlling state, props, and references helps stop unwanted React re-renders.",
+    category: "react",
   },
 
   // ========================================
@@ -976,7 +982,7 @@ export const questions: Question[] = [
     question:
       "What is layout thrashing and how do you prevent forced reflows in the browser?",
     answer:
-      "Layout thrashing happens when the browser has to repeatedly recalculate layout and re-render the page because JavaScript is constantly reading and writing DOM values in a mixed and inefficient way.\n\nWhen JavaScript asks for layout information (like offsetHeight, scrollHeight, width, etc.) right after changing the DOM, the browser is forced to recalculate styles and layout again and again. This repeated cycle slows down the page and hurts performance.\n\n🔵 What causes layout thrashing?\n- Reading DOM properties immediately after writing them.\n- Making multiple style changes one by one.\n- Frequent DOM manipulations inside loops.\n- Using JavaScript animations instead of CSS.\n\n🔵 How to prevent forced reflows and layout thrashing?\n1. **Batch DOM reads and writes**\n   - Read all layout values together.\n   - Write all DOM changes together.\n\n2. **Use requestAnimationFrame() for smooth updates**\n   - Lets the browser group changes before repainting.\n\n3. **Use CSS classes instead of multiple style updates**\n   - Apply one class instead of setting many inline styles.\n\n4. **Avoid measuring DOM values too often**\n   - Cache values when possible.\n\n5. **Use CSS transitions/animations instead of JavaScript animations**\n   - They run on the GPU and avoid extra layout calculations.\n\n🟡 Simple Summary:\nLayout thrashing happens when we mix DOM reads and writes too fast. To prevent it, batch changes, avoid unnecessary DOM reads, and let the browser handle updates efficiently.",
+      "Layout thrashing occurs when JavaScript repeatedly forces the browser to recalculate layout by mixing DOM reads and writes in an inefficient way. For example, when code changes the DOM and immediately reads layout-related properties like offsetHeight or scrollWidth, the browser is forced to perform multiple reflows and repaints, which significantly hurts performance. This usually happens due to frequent DOM manipulations, measuring layout values too often, or updating styles one by one. To prevent forced reflows, you should batch DOM reads and writes separately, use CSS classes instead of multiple inline style changes, rely on requestAnimationFrame for visual updates, cache layout values when possible, and prefer CSS transitions or animations over JavaScript-based animations. In short, avoiding unnecessary layout calculations and letting the browser optimize rendering helps prevent layout thrashing.",
     category: "javascript",
   },
   {
@@ -991,7 +997,7 @@ export const questions: Question[] = [
     question:
       "Explain how garbage collection works in modern JavaScript engines.",
     answer:
-      "Modern JavaScript engines like V8 use automatic garbage collection to free up memory that is no longer needed. Developers don't manually release memory — the engine does it for us.\n\n🔵 How it works:\nJavaScript uses a model called **mark-and-sweep**.\n1. The garbage collector starts from the root objects (like window, global variables).\n2. It 'marks' all objects that are reachable or still in use.\n3. Any object that is NOT reachable is considered garbage.\n4. The engine removes those unreachable objects from memory.\n\nThis prevents memory leaks by making sure unused data doesn't stay in memory forever.\n\n🔵 What makes an object 'reachable'?  \n- Variables currently in scope\n- Objects referenced by other objects\n- Active closures or event listeners\n- Global objects\n\nIf there is no reference pointing to an object, it becomes unreachable and will be collected.\n\n🔵 Example of losing reachability:\nlet user = { name: 'John' };\nuser = null; // The object is now unreachable → Garbage collected.\n\n🔵 Modern optimizations:\n- **Generational GC**: New objects are stored in a 'young' space for quick cleanup.\n- **Incremental GC**: Splits work into small steps to avoid blocking the main thread.\n- **Concurrent GC**: Runs garbage collection in parallel threads.\n- **Idle-time GC**: Runs when the browser is idle.\n\n🟡 Simple Summary:\nGarbage collection automatically removes objects that your code can no longer reach. Modern engines do this efficiently using mark-and-sweep, generational cleanup, and background threads to keep performance smooth.",
+      "Modern JavaScript engines automatically manage memory using garbage collection, so developers don’t need to free memory manually. Most engines, like V8, use a technique called mark-and-sweep. The garbage collector starts from root objects such as global variables and the current call stack, then marks all objects that are still reachable through references. Any object that cannot be reached is considered unused and is removed from memory. An object becomes unreachable when no variable or reference points to it, for example when it is set to null. To keep performance smooth, modern engines also use optimizations like generational garbage collection, incremental and concurrent cleanup, and running garbage collection during idle time.",
     category: "javascript",
   },
 
@@ -1002,7 +1008,7 @@ export const questions: Question[] = [
     id: 834449,
     question: "What is the difference between Webpack and Turbopack?",
     answer:
-      "Webpack and Turbopack are both bundlers used in modern JavaScript applications, but they differ in performance, architecture, and speed.\n\n🔵 Webpack:\n- The most widely used JavaScript bundler.\n- Written in JavaScript.\n- Supports loaders, plugins, code splitting, tree shaking.\n- Very powerful but can be slow on large projects.\n- Used in React, Angular, Vue for years.\n\n🟣 Turbopack:\n- Next-generation bundler created by Vercel.\n- Written in Rust, designed to replace Webpack.\n- Much faster (up to 700× faster in dev mode).\n- Built for modern frameworks like Next.js.\n- Supports incremental builds and instant updates.\n\n🟡 Key Differences:\n- Speed: Turbopack is significantly faster than Webpack.\n- Language: Webpack uses JavaScript, Turbopack uses Rust.\n- Use Case: Webpack works for all JS apps; Turbopack is optimized for Next.js.\n- Performance: Turbopack provides instant hot reload and better dev experience.\n\nIn short: Webpack is the traditional bundler used widely, while Turbopack is a modern, super-fast bundler designed for Next.js and future web apps.",
+      "Webpack and Turbopack are both bundlers used in modern JavaScript applications, but they differ mainly in performance and architecture. Webpack is a widely used and mature bundler written in JavaScript that supports features like loaders, plugins, code splitting, and tree shaking, but it can become slow as projects grow larger. Turbopack, on the other hand, is a next-generation bundler developed by Vercel and written in Rust. It is designed for speed and provides extremely fast builds and instant updates, especially in development mode. Turbopack is optimized for modern frameworks like Next.js and focuses on incremental builds for a better developer experience. In short, Webpack is powerful and battle-tested, while Turbopack is a modern, high-performance bundler built for speed and scalability.",
     category: "javascript",
   },
   {
@@ -2928,32 +2934,36 @@ So useEffect gives us mount, update, and unmount behavior in a single hook`,
     question: "Can Redux replace local state completely?",
     answer:
       "No, Redux should not replace local state completely. Redux is meant for managing global and shared state that is used across multiple components, such as user data, authentication status, or app-wide settings. Local state, managed using useState or useReducer, is better suited for UI-specific state like form inputs, toggles, modals, or dropdown visibility. Using Redux for every small UI state can make the code more complex and harder to maintain. The best practice is to use local state for component-level UI logic and Redux only when state needs to be shared or persisted across the application.",
-    category: "redux"
-  },{
+    category: "redux",
+  },
+  {
     id: 98989234010,
     question: "What is an Execution Context in JavaScript?",
     answer:
       "An Execution Context is the environment in which JavaScript code is created and executed. It determines which variables, functions, and objects are accessible at a given time. When JavaScript runs, it first creates a Global Execution Context, and every time a function is called, a new Function Execution Context is created. Each execution context contains a Variable Environment (for var and function declarations), a Lexical Environment (for let, const, and scope chaining), and a this binding. Execution contexts are managed using the call stack, which ensures code runs in the correct order.",
-    category: "javascript"
-  },{
+    category: "javascript",
+  },
+  {
     id: 9898349011,
     question: "What is the Creation Phase and Execution Phase in JavaScript?",
     answer:
       "Every execution context in JavaScript goes through two phases: the Creation Phase and the Execution Phase. In the Creation Phase, memory is allocated before the code runs. During this phase, variables declared with var are initialized with undefined, function declarations are fully hoisted and stored in memory, and the value of the this keyword is determined. No code is executed at this stage. In the Execution Phase, JavaScript starts executing the code line by line. Variables are assigned their actual values, functions are invoked, and expressions are evaluated. These two phases together explain how hoisting and execution work internally in JavaScript.",
-    category: "javascript"
-  },{
+    category: "javascript",
+  },
+  {
     id: 98123989012,
     question: "What is a Lexical Environment in JavaScript?",
     answer:
       "A Lexical Environment is the internal structure where JavaScript stores variables and defines scope. It is determined at write-time, not at run-time, meaning the scope of variables is decided based on where the code is written. A lexical environment consists of an Environment Record, which holds variables and function declarations, and a reference to the outer lexical environment. This outer reference allows JavaScript to access variables from parent scopes.",
-    category: "javascript"
-  },{
+    category: "javascript",
+  },
+  {
     id: 98989234013,
     question: "What is the Scope Chain in JavaScript?",
     answer:
       "The Scope Chain is the mechanism JavaScript uses to resolve variable access. When JavaScript looks for a variable, it first checks the current lexical scope. If the variable is not found, it moves to the parent scope, then continues upward through outer scopes until it reaches the global scope. If the variable is still not found, the search stops and a reference error is thrown. This chain of lexical environments is called the scope chain.",
-    category: "javascript"
-  }
+    category: "javascript",
+  },
 ];
 
 export const getCategoryQuestions = (

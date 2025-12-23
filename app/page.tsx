@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { questions } from "./data/questions";
-import { Tabs } from "./components/Tabs";
+import { useMemo, useState } from "react";
 import { Accordion } from "./components/Accordion";
+import { Tabs } from "./components/Tabs";
+import { questions } from "./data/questions";
 
 const categoryTabs = [
   { id: "html", label: "HTML", icon: "🌐" },
@@ -56,11 +56,11 @@ export default function Home() {
           <div className="mx-auto max-w-5xl px-4 py-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 to-fuchsia-600 text-2xl shadow-lg shadow-violet-500/25">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-linear-to-br from-violet-600 to-fuchsia-600 text-2xl shadow-lg shadow-violet-500/25">
                   🚀
                 </div>
                 <div>
-                  <h1 className="text-xl font-bold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
+                  <h1 className="text-xl font-bold bg-linear-to-r from-white to-slate-400 bg-clip-text text-transparent">
                     Frontend-Concepts-Collection
                   </h1>
                   <p className="text-xs text-slate-500">
@@ -69,7 +69,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="flex items-center gap-2 rounded-full bg-slate-800/50 px-4 py-2 border border-slate-700/50">
-                <span className="text-2xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
+                <span className="text-2xl font-bold bg-linear-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
                   {questions.length}
                 </span>
                 <span className="text-xs text-slate-500 uppercase tracking-wider">

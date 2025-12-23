@@ -26,13 +26,13 @@ function AccordionItem({
       }`}
     >
       <button
-        className="flex w-full items-center gap-4 p-4 text-left"
+        className="flex w-full items-center gap-4 p-4 text-left cursor-pointer"
         onClick={onToggle}
       >
-        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-violet-600 to-fuchsia-600 text-xs font-bold text-white">
+        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-linear-to-br from-violet-600 to-fuchsia-600 text-xs font-bold text-white">
           {index + 1}
         </span>
-        <span className="flex-1 text-sm font-medium text-slate-200 leading-relaxed">
+        <span className="flex-1 text-lg font-medium text-gray-400 leading-relaxed">
           {question}
         </span>
         <span
@@ -99,7 +99,9 @@ export function Accordion({ questions }: AccordionProps) {
     return (
       <div className="flex flex-col items-center justify-center rounded-xl border border-slate-700/50 bg-slate-900/50 py-16">
         <div className="mb-4 text-5xl">📭</div>
-        <p className="text-slate-400">No questions available in this category yet.</p>
+        <p className="text-slate-400">
+          No questions available in this category yet.
+        </p>
       </div>
     );
   }
