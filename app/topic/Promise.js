@@ -174,3 +174,4 @@ getActiveUsers
 // [ { id: 1, name: 'Hemant' }, { id: 3, name: 'Amit' } ]
 
 
+//make a promise that resolves after 2 seconds with the message "Promise resolved after 2 seconds"
