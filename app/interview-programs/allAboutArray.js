@@ -243,5 +243,95 @@ const unionArrays = (arr1, arr2) => {
 console.log(unionArrays([1, 2, 3], [3, 4, 5])); // [1, 2, 3, 4, 5]
 
 //find duplicate elements in array
+const findDuplicateElements = (arr) => {
+  const duplicates = [];
+  const seen = new Set();
+  for (let i = 0; i < arr.length; i++) {
+    if (seen.has(arr[i]) && !duplicates.includes(arr[i])) {
+      duplicates.push(arr[i]);
+    } else {
+      seen.add(arr[i]);
+    }
+  }
+  return duplicates;  
+}
+// output
+console.log(findDuplicateElements([1, 2, 2, 3, 4, 4, 5])); // [2, 4]
 
+// Find unique elements only
+const findUniqueElements = (arr) => {
+  const uniqueElements = [];
+  const elementCount = {};
+  for (let i = 0; i < arr.length; i++) {
+    elementCount[arr[i]] = (elementCount[arr[i]] || 0) + 1;
+  }
+  for (let i = 0; i < arr.length; i++) {
+    if (elementCount[arr[i]] === 1) {
+      uniqueElements.push(arr[i]);
+    }
+  }
+  return uniqueElements;
+}
+
+console.log(findUniqueElements([1, 2, 2, 3, 4, 4, 5])); // [1, 3, 5]
+
+// Sort an array in ascending/descending order
+const bubbleSort = (arr) => {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length - i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        // swap
+        let temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+      }
+    }
+  }
+  return arr;
+};
+
+console.log(bubbleSort([5, 2, 9, 1, 3]));
+
+
+// Rotate an array left or right
+
+// Move all zeros to the end
+const moveZerosToEnd = (arr) => {
+  const nonZeros = arr.filter(num => num !== 0);
+  const zeros = arr.filter(num => num === 0);
+  return [...nonZeros, ...zeros];
+};
+
+console.log(moveZerosToEnd([0, 1, 0, 3, 12]));
+// Output: [1, 3, 12, 0, 0]
+
+// Find the largest & smallest element in one loop
+
+// Count the frequency of elements
+
+// Find intersection of two arrays
+
+// Find union of two arrays
+
+// Check if two arrays are equal
+
+// Flatten a nested array
+
+// Split array into chunks
+
+// Find the most frequent element
+
+// Remove falsy values (false, 0, null, undefined)
+
+// Convert array to object
+
+// Group array of objects by a property
+
+// Find sum using reduce()
+
+// Find max using reduce()
+
+// Filter numbers greater than a given value
+
+// Map array to a new transformed array
 
