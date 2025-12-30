@@ -302,18 +302,106 @@ const moveZerosToEnd = (arr) => {
   return [...nonZeros, ...zeros];
 };
 
+//input:aaabbccc
+//output:a3b2c3
+const countWord = (str)=>{
+    let count= 1;
+    let result = ""
+    for(let i =0;i<str.length;i++){
+        if(str[i] === str[i+1]){
+            count++;
+        }else{
+            result +=str[i] + count;
+            count = 1
+        }
+    }
+    return result;
+}
+console.log(countWord("aabbccc"))
+
 console.log(moveZerosToEnd([0, 1, 0, 3, 12]));
-// Output: [1, 3, 12, 0, 0]
+//filter method
+const moveZeroToLast = (arr)=>{
+    const nonZero = arr.filter((a)=>a !== 0);
+    const zero = arr.filter((a) =>a===0);
+    const res = [...nonZero,...zero]
+    console.log(res,"res")
+}
+console.log(moveZeroToLast([1,0,3,0,4]))
+
+//swap method
+
+const moveZeroToLast1 = (arr) => {
+  let nonZeroIndex = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] !== 0) {
+      [arr[i], arr[nonZeroIndex]] = [arr[nonZeroIndex], arr[i]];
+      nonZeroIndex++;
+    }
+  }
+
+  return arr;
+};
+
+console.log(moveZeroToLast1([1,0,3,0,4]));
+// Output: [1, 3, 4, 0, 0]
 
 // Find the largest & smallest element in one loop
+const findMinAndMax = (arr) => {
+  if (arr.length === 0) return null;
+
+  let min = arr[0];
+  let max = arr[0];
+
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] < min) {
+      min = arr[i];
+    }
+    if (arr[i] > max) {
+      max = arr[i];
+    }
+  }
+
+  return { min, max };
+};
+
+console.log(findMinAndMax([3, 1, 9, 7, 2]));
+// { min: 1, max: 9 }
+
 
 // Count the frequency of elements
+const countFrequency = (arr) => {
+  const freq = {};
 
-// Find intersection of two arrays
+  for (let i = 0; i < arr.length; i++) {
+    const value = arr[i];
+    freq[value] = (freq[value] || 0) + 1;
+  }
 
-// Find union of two arrays
+  return freq;
+};
+
+console.log(countFrequency([1, 2, 2, 3, 1, 4, 2]));
+// { 1: 2, 2: 3, 3: 1, 4: 1 }
+
 
 // Check if two arrays are equal
+const areArraysEqual = (arr1, arr2) => {
+  if (arr1.length !== arr2.length) return false;
+
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr1[i] !== arr2[i]) return false;
+  }
+
+  return true;
+};
+
+console.log(areArraysEqual([1, 2, 3], [1, 2, 3])); // true
+console.log(areArraysEqual([1, 2, 3], [3, 2, 1])); // false
+
+//check if two object are equal
+
 
 // Flatten a nested array
 
