@@ -1,4 +1,4 @@
-//simple print a array using for loop
+//1.simple print a array using for loop
 const printArray = (arr)=>{
 for(let i=0;i<arr.length;i++){
     console.log('ur array element is :',arr[i]);
@@ -6,7 +6,7 @@ for(let i=0;i<arr.length;i++){
 }
 console.log(printArray([1,2,3,4,5]));
 
-//sum of array elements
+//2.sum of array elements
 const sumOfArray = (arr)=>{
     let sum =0;
     for(let i=0;i<arr.length;i++){
@@ -291,6 +291,8 @@ const bubbleSort = (arr) => {
 };
 
 console.log(bubbleSort([5, 2, 9, 1, 3]));
+//ouput:[1, 2, 3, 5, 9]
+
 
 
 // Rotate an array left or right
@@ -404,6 +406,11 @@ console.log(areArraysEqual([1, 2, 3], [3, 2, 1])); // false
 
 
 // Flatten a nested array
+const flattenArray = (arr) => {
+  return arr.flat(Infinity);
+};
+
+console.log(flattenArray([1, [2, [3, 4], 5], 6]));
 
 // Split array into chunks
 
