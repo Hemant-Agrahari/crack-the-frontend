@@ -775,6 +775,13 @@ export const questions: Question[] = [
     category: "javascript",
   },
   {
+    id: 62.987612,
+    question: "What is new keyword in promise ?",
+    answer:
+      "The `new` keyword is used to create a new Promise object from the Promise constructor. `Promise` is a built-in constructor in JavaScript, and using `new` initializes a Promise instance with its internal state (pending) and provides access to methods like `.then()`, `.catch()`, and `.finally()`. The function passed to `new Promise()` is called the executor function, which runs immediately and receives `resolve` and `reject` callbacks to settle the Promise.",
+    category: "javascript",
+  },
+  {
     id: 62,
     question: "What is Promise chaining and how does it work?",
     answer:
