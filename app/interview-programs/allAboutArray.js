@@ -321,6 +321,8 @@ const countWord = (str)=>{
 }
 console.log(countWord("aabbccc"))
 
+
+
 console.log(moveZerosToEnd([0, 1, 0, 3, 12]));
 //filter method
 const moveZeroToLast = (arr)=>{
@@ -411,6 +413,20 @@ const flattenArray = (arr) => {
 };
 
 console.log(flattenArray([1, [2, [3, 4], 5], 6]));
+
+//second Method
+const flatArr = (arr)=>{
+    let result = [];
+    for(let i=0;i<=arr.length-1;i++){
+        if(Array.isArray(arr[i])){
+           result.push(...flatArr(arr[i]))
+        }else{
+            result.push(arr[i])
+        }
+    }
+    return result;
+}
+console.log(flatArr([1, [2, [3, 4], 5], 6]))
 
 // Split array into chunks
 
